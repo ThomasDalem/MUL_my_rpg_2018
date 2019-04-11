@@ -1,0 +1,97 @@
+/*
+** EPITECH PROJECT, 2019
+** prototype.h
+** File description:
+** prototype
+*/
+
+#ifndef PROTOTYPE_H
+#define PROTOTYPE_H
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stddef.h>
+#include <string.h>
+#include <SFML/Audio.h>
+#include <SFML/Graphics.h>
+#include <SFML/System.h>
+#include <time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "structures.h"
+#include "my.h"
+
+//close.c
+void close_window(scene_t *scene, pause_s *pause, int *gamemode);
+
+//disp
+void disp_scene(scene_t *scene);
+
+//game.c
+sfRenderWindow *createmywindow(unsigned int width, unsigned int height);
+void game(int *gamemode, scene_t *scene);
+void anime(scene_t *scene, sfVector2f move);
+
+//init_inventory.c
+int init_inventory(inv_t *invent, scene_t *scene);
+
+//init_pause.c
+int init_pause(pause_s *pause);
+
+//main.c
+//mouse.c
+void cond_mouse(scene_t *scene);
+
+//pause.c
+int pause_function(scene_t *scene, pause_s *pause);
+
+//set_str.c
+char *set_attack_str(scene_t *scene);
+char *set_life_str(scene_t *scene);
+char *set_defense_str(scene_t *scene);
+char *set_magic_str(scene_t *scene);
+
+//event.c
+int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
+
+//init.c
+int init_all(scene_t *scene, pause_s *pause, inv_t *invent);
+
+//init perso/ennemie.c
+//static stats create_stat_perso(int life, int attack, int defense, int magic);
+
+//init_menu.c
+int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
+int init_end_button(but_s *button);
+int init_start_button(but_s *button);
+
+//inventory_gestion.c
+int inventory_gestion(inv_t *invent, scene_t *scene);
+
+//menu.c
+void screenevent(sfEvent *event, scene_t *scene, int *gamemode);
+void disp_menu(scene_t *scene);
+int init_menu_scene(scene_t *scene);
+void destroy_menu(scene_t *scene, int *gamemode);
+int mainscreen(int *gamemode, scene_t *scene);
+
+//move.c
+void move_right(scene_t *scene);
+void move_left(scene_t *scene);
+void move_down(scene_t *scene);
+void move_up(scene_t *scene);
+//move ennemie
+void move_enn_up(scene_t *scene, int x, int y);
+void move_enn_down(scene_t *scene, int x, int y);
+void move_enn_left(scene_t *scene, int x, int y);
+void move_enn_right(scene_t *scene, int x, int y);
+void move_ennemie(scene_t *scene);
+
+//select.c
+//tools.c
+int lf_stat(char *str, char **env);
+int my_argvlen(char **argv);
+
+#endif
