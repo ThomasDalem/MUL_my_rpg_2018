@@ -61,8 +61,8 @@ exe:		$(NAME)
 			./$(NAME)
 
 valgrind:	$(OBJ)
-			make -C ./lib
-			gcc -o $(NAME) $(OBJ) $(LIB) $(LE) $(VALGRIND)
+			make -C ./lib/my
+			gcc -o $(NAME) $(OBJ) $(LIB) $(LE)
 			rm -f $(OBJ)
 			valgrind ./$(NAME) $(ARGUMENTS)
 

@@ -1,0 +1,5 @@
+*.o
+*.c~
+*.vgcore
+my_rpg
+libmy.a
