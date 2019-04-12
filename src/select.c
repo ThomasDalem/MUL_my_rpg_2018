@@ -11,7 +11,7 @@ void create_button(but_s *but, int x, int pos_x)
 {
     sfVector2f pos;
     sfVector2f size;
-    sfTexture *texture = sfTexture_createFromFile("assets/link.png", NULL);
+    sfTexture *texture = sfTexture_createFromFile("assets/textures/link.png", NULL);
 
     pos.x = pos_x;
     pos.y = 500;

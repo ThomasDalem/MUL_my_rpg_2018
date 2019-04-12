@@ -32,7 +32,7 @@ static stats create_stat_perso(int life, int attack, int defense, int magic)
 static int init_perso(obj_t *perso)
 {
     perso->sprite_perso = sfSprite_create();
-    perso->texture = sfTexture_createFromFile("assets/link.png", NULL);
+    perso->texture = sfTexture_createFromFile("assets/textures/link.png", NULL);
     perso->char_down = create_char_perso(0, perso->nb_perso * 120, 16, 16);
     perso->char_up = create_char_perso(0, perso->nb_perso * 120 + 61, 16, 16);
     perso->char_left = create_char_perso(0, perso->nb_perso * 120 + 30, 16, 16);

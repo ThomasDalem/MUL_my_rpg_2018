@@ -28,7 +28,7 @@ void create_zone_enn(obj_t *ennemie)
 
 void create_ennemie(obj_t *ennemie)
 {
-    ennemie->texture = sfTexture_createFromFile("assets/link.png", NULL);
+    ennemie->texture = sfTexture_createFromFile("assets/textures/link.png", NULL);
     ennemie->char_down = create_char_perso(0, 120, 16, 16);
     ennemie->char_up = create_char_perso(0, 120 + 61, 16, 16);
     ennemie->char_left = create_char_perso(0, 120 + 30, 16, 16);

@@ -91,7 +91,7 @@ int init_inventory(inv_t *invent, scene_t *scene)
 
     pos_sprite.x = 100;
     pos_sprite.y = 50;
-    invent->font = sfFont_createFromFile("./assets/pause.ttf"); 
+    invent->font = sfFont_createFromFile("./assets/texts/pause.ttf"); 
     invent->button = malloc(sizeof(but_s) * 11);
     if (invent->button == NULL || set_text_inventory(invent, scene) == 84)
         return (84);

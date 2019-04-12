@@ -85,7 +85,7 @@ static int init_quitgame(pause_s *pause)
 int init_pause(pause_s *pause)
 {
     init_filter(pause);
-    pause->font = sfFont_createFromFile("./assets/pause.ttf");
+    pause->font = sfFont_createFromFile("./assets/texts/pause.ttf");
     pause->txt = malloc(sizeof(sfText *) * 4);
     if (pause->txt == NULL)
         return (84);
