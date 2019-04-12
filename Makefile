@@ -5,26 +5,26 @@
 ## My_Sokoban
 ##
 
-SRC =	src/anime_ennemie.c 	\
-		src/close.c				\
-		src/disp.c 				\
-		src/event.c				\
-		src/init.c				\
-		src/init_ennemie.c 		\
-		src/init_inventory.c	\
-		src/inventory_gestion.c	\
-		src/init_menu.c			\
-		src/init_pause.c		\
-		src/game.c				\
-		src/main.c				\
-		src/menu.c				\
-		src/mouse.c				\
-		src/move_ennemie.c 		\
-		src/move.c				\
-		src/pause.c				\
-		src/select.c 			\
-		src/set_str.c			\
-		src/tools.c				\
+SRC =	src/anime_ennemie.c						\
+		src/close.c								\
+		src/disp.c								\
+		src/event.c								\
+		src/game.c								\
+		src/initialisation/init.c				\
+		src/initialisation/init_ennemie.c		\
+		src/initialisation/init_inventory.c		\
+		src/initialisation/init_menu.c			\
+		src/initialisation/init_pause.c			\
+		src/inventory_gestion.c					\
+		src/main.c								\
+		src/menu.c								\
+		src/mouse.c								\
+		src/moves/move.c						\
+		src/moves/move_ennemie.c				\
+		src/pause.c								\
+		src/select.c							\
+		src/set_str.c							\
+		src/tools.c								\
 
 OBJ =	$(SRC:.c=.o)
 
