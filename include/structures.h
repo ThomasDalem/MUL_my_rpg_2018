@@ -8,14 +8,16 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-typedef struct map_obj_s {
+typedef struct map_obj_s
+{
     sfTexture *texture;
     sfSprite *sprite;
     int has_collider;
     struct map_obj_s *next;
 } map_obj_t;
 
-typedef struct map_s {
+typedef struct map_s
+{
     sfTexture *background_texture;
     sfSprite *background_sprite;
     map_obj_t *objects;
@@ -27,11 +29,7 @@ typedef struct map_s {
 
 typedef struct musics
 {
-    sfMusic *music;
-    sfMusic *damage;
-    sfMusic *damage2;
-    sfMusic *damage3;
-    sfClock *music_cl;
+    sfMusic *main;
     sfTime time_cl;
 } musics;
 
@@ -74,7 +72,7 @@ typedef struct pnj
     struct object *object;
 } pnj;
 
-typedef struct button_s 
+typedef struct button_s
 {
     sfRectangleShape *but;
     sfTexture *texture;
@@ -144,7 +142,7 @@ typedef struct inventory
     sfSprite *sprite;
     sfText *attack;
     sfText *life;
-    sfText *max_life; 
+    sfText *max_life;
     sfText *defense;
     sfText *magic;
     struct button_s **button;
@@ -171,4 +169,4 @@ typedef struct structure
     vartxt score;
 } strct;
 
-#endif /* ! STRUCT_H */
+#endif
