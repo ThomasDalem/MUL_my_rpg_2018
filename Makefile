@@ -15,6 +15,7 @@ SRC =	src/anime_ennemie.c						\
 		src/initialisation/init_inventory.c		\
 		src/initialisation/init_menu.c			\
 		src/initialisation/init_pause.c			\
+		src/initialisation/init_pnj.c 			\
 		src/initialisation/init_sound.c			\
 		src/inventory_gestion.c					\
 		src/main.c								\

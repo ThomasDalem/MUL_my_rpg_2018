@@ -7,21 +7,21 @@
 
 #include "prototype.h"
 
-void create_zone_enn(obj_t *ennemie)
+void create_zone_enn(obj_t *ennemie, int zone)
 {
     sfFloatRect size_sp = sfSprite_getGlobalBounds(ennemie->sprite_perso);
     sfVector2f size;
     sfVector2f pos;
 
-    pos.x = size_sp.left + size_sp.width;
-    pos.y = size_sp.top + size_sp.height;
-    size.x = 200;
-    size.y = 200;
+    pos.x = size_sp.left + size_sp.width / 2;
+    pos.y = size_sp.top + size_sp.height / 2;
+    size.x = zone;
+    size.y = zone;
     ennemie->detect_zone = sfCircleShape_create();
     sfCircleShape_setOutlineColor(ennemie->detect_zone, sfRed);
     sfCircleShape_setOutlineThickness(ennemie->detect_zone, 2);
     sfCircleShape_setFillColor(ennemie->detect_zone, sfTransparent);
-    sfCircleShape_setRadius(ennemie->detect_zone, 200);
+    sfCircleShape_setRadius(ennemie->detect_zone, zone);
     sfCircleShape_setOrigin(ennemie->detect_zone, size);
     sfCircleShape_setPosition(ennemie->detect_zone, pos);
 }
@@ -54,7 +54,7 @@ int init_ennemie(scene_t *scene)
     pos.y = 500;
     create_ennemie(ennemi);
     sfSprite_setPosition(ennemi->sprite_perso, pos);
-    create_zone_enn(ennemi);
+    create_zone_enn(ennemi, 150);
     ennemi->timer.clock = sfClock_create();
     ennemi->next = scene->ennemi;
     scene->ennemi = ennemi;

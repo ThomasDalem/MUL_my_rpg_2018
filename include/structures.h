@@ -88,11 +88,15 @@ typedef struct button_s
 
 typedef struct textes_variables
 {
+    sfTexture *texture;
+    sfSprite *sprite_bubble;
     int var;
-    sfText *descrip;
-    sfText *txt;
+    char **hi_phrase;
+    char **sell_phrase;
+    char **by_phrase;
+    sfText *phrase;
     sfFont *font;
-    char *str;
+    int nb_dialog;
 } vartxt;
 
 typedef struct horloge
@@ -122,10 +126,13 @@ typedef struct obj_s
     sfIntRect char_left;
     sfCircleShape *detect_zone;
     int nb_perso;
+    int discuss;
+    struct textes_variables text;
     struct horloge timer;
     struct stats stat;
     struct obj_s *next;
 } obj_t;
+
 
 typedef struct pause_t
 {

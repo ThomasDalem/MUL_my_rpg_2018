@@ -44,6 +44,7 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent);
 
 //initialisation/init_ennemie.c
 int init_ennemie(scene_t *scene);
+void create_zone_enn(obj_t *ennemie, int zone);
 
 //initialisation/init_inventory.c
 int init_inventory(inv_t *invent, scene_t *scene);
@@ -56,8 +57,10 @@ int init_start_button(but_s *button);
 //initialisation/init_pause.c
 int init_pause(pause_s *pause);
 
+//initialisation/init_pnj.c
+int init_pnj(scene_t *scene);
 //initialisation/init_sound.c
-int init_music(scene_t *scene)
+int init_music(scene_t *scene);
 
 //inventory_gestion.c
 int inventory_gestion(inv_t *invent, scene_t *scene);
