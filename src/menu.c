@@ -72,6 +72,7 @@ int mainscreen(int *gamemode, scene_t *scene)
     int a = 0;
 
     init_music(scene);
+    sfMusic_play(scene->music->main);
     *gamemode = init_menu_scene(scene);
     if (*gamemode == 84)
         return (84);

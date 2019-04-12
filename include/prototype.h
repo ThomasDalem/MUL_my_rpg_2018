@@ -39,22 +39,25 @@ sfRenderWindow *createmywindow(unsigned int width, unsigned int height);
 void game(int *gamemode, scene_t *scene);
 void anime(scene_t *scene, sfVector2f move);
 
-//init.c
+//initialisation/init.c
 int init_all(scene_t *scene, pause_s *pause, inv_t *invent);
 
-//init_ennemie.c
+//initialisation/init_ennemie.c
 int init_ennemie(scene_t *scene);
 
-//init_inventory.c
+//initialisation/init_inventory.c
 int init_inventory(inv_t *invent, scene_t *scene);
 
-//init_menu.c
+//initialisation/init_menu.c
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
 int init_end_button(but_s *button);
 int init_start_button(but_s *button);
 
-//init_pause.c
+//initialisation/init_pause.c
 int init_pause(pause_s *pause);
+
+//initialisation/init_sound.c
+int init_music(scene_t *scene)
 
 //inventory_gestion.c
 int inventory_gestion(inv_t *invent, scene_t *scene);
