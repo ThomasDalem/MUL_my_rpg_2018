@@ -10,6 +10,7 @@
 void move_random(scene_t *scene)
 {
     int r = 0;
+
     srand(time(NULL));
     r = rand() % 4;
     if (r == 0)
@@ -20,6 +21,26 @@ void move_random(scene_t *scene)
         move_enn_right(scene, 10, 0);
     if (r == 3)
         move_enn_down(scene, 0, 10);
+}
+
+void set_good_rect(scene_t *scene, sfVector2f move, sfIntRect *rect_perso)
+{
+    int i = 0;
+    sfIntRect rect = *rect_perso;
+
+    if (fabs(move.x) > fabs(move.y))
+        i = 1;
+    else 
+        i = 0;
+    if (i == 1 && move.x < 0)
+        *rect_perso = scene->ennemi->char_left;
+    if (i == 1 && move.x > 0)
+        *rect_perso = scene->ennemi->char_right;
+    if (i == 0 && move.y < 0)
+        *rect_perso = scene->ennemi->char_up;
+    if (i == 0 && move.y > 0)
+        *rect_perso = scene->ennemi->char_down;
+    rect_perso->top = rect_perso->top + rect.top;
 }
 
 void follow(scene_t *scene, sfFloatRect pos_enn, sfFloatRect pos_perso)
@@ -33,6 +54,7 @@ void follow(scene_t *scene, sfFloatRect pos_enn, sfFloatRect pos_perso)
     y = (pos_perso.top + pos_perso.height) - (pos_enn.top + pos_enn.height);
     move.x = x / 15;
     move.y = y / 15;
+    set_good_rect(scene, move, &rect_perso);
     scene->ennemi->timer.time = sfClock_getElapsedTime(scene->ennemi->timer.clock);
     scene->ennemi->timer.second = sfTime_asMilliseconds(scene->ennemi->timer.time);
     if (scene->ennemi->timer.second > 200) {

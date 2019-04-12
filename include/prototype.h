@@ -20,6 +20,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <math.h>
 #include "structures.h"
 #include "my.h"
 
@@ -27,6 +28,9 @@
 
 //close.c
 void close_window(scene_t *scene, pause_s *pause, int *gamemode);
+
+//discuss.c
+void start_discuss(scene_t *scene);
 
 //disp
 void disp_scene(scene_t *scene);

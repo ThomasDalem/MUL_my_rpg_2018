@@ -35,6 +35,8 @@ int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
             break;
         case sfKeyZ : move_up(scene);
             break;
+        case sfKeyT : start_discuss(scene);
+            break;
         }
     }
     if (event->key.code == sfKeyEscape)
