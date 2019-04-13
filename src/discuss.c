@@ -21,6 +21,12 @@ void discuss(scene_t *scene)
     if (scene->pnj->text.nb_dialog == 0) {
         sfText_setString(scene->pnj->text.phrase, scene->pnj->text.hi_phrase[i]);
     }
+    if (scene->pnj->text.nb_dialog == 1) {
+        sfText_setString(scene->pnj->text.phrase, scene->pnj->text.sell_phrase[i]);
+    }
+    if (scene->pnj->text.nb_dialog == 2) {
+        sfText_setString(scene->pnj->text.phrase, scene->pnj->text.by_phrase[i]);
+    }
     sfText_setFont(scene->pnj->text.phrase, scene->pnj->text.font);
     sfText_setColor(scene->pnj->text.phrase, sfBlack);
     sfText_setCharacterSize(scene->pnj->text.phrase, 40);
@@ -62,7 +68,11 @@ void start_discuss(scene_t *scene)
         rect_pnj = sfSprite_getTextureRect(scene->pnj->sprite_perso);
         pos_pnj = sfCircleShape_getGlobalBounds(scene->pnj->detect_zone);
         if (scene->pnj->discuss == 1)
+            scene->pnj->text.nb_dialog++;
+        if (scene->pnj->text.nb_dialog == 3) {
+            scene->pnj->text.nb_dialog = 0;
             scene->pnj->discuss = 0;
+        }
         else if (sfFloatRect_intersects(&pos_perso, &pos_pnj, NULL) == sfTrue) {
             discuss(scene);
             orient_pnj(scene, &rect_pnj);

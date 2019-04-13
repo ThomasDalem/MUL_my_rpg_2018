@@ -40,6 +40,7 @@ static int invent_event(sfEvent *event, scene_t *scene, inv_t *invent)
 static void disp_invent(scene_t *scene, inv_t *invent)
 {
     int i = 0;
+    int j = 0;
 
     sfRenderWindow_drawSprite(scene->window, invent->sprite, NULL);
     sfRenderWindow_drawText(scene->window, invent->life, NULL);
@@ -49,6 +50,11 @@ static void disp_invent(scene_t *scene, inv_t *invent)
     while (invent->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window, invent->button[i]->but, NULL);
         i++;
+    }
+    while (invent->equipement[j] != NULL) {
+        sfRenderWindow_drawRectangleShape(scene->window, invent->equipement[j]->but, NULL);
+        sfRenderWindow_drawText(scene->window, invent->equipement[j]->txt, NULL);
+        j++;
     }
 }
 

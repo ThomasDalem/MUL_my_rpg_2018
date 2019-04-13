@@ -7,27 +7,6 @@
 
 #include "prototype.h"
 
-int copy_into_hi(obj_t *pnj)
-{
-    FILE *fd = fopen("source/hello", "r");
-    size_t n = 0;
-    int i = 0;
-
-    pnj->text.hi_phrase = malloc(sizeof(char *) * 6);
-    if (pnj->text.hi_phrase == NULL)
-        return (84);
-    pnj->text.hi_phrase[i] = malloc(sizeof(char) * 4096);
-    if (pnj->text.hi_phrase[i] == NULL)
-        return (84);
-    while (getline(&pnj->text.hi_phrase[i], &n, fd) != -1) {
-        i++;
-        pnj->text.hi_phrase[i] = malloc(sizeof(char) * 4096);
-        if (pnj->text.hi_phrase[i] == NULL)
-            return (84);
-    }
-    return (0);
-}
-
 int init_pnj_phrase(obj_t *pnj)
 {
     sfVector2f scale;
@@ -41,6 +20,10 @@ int init_pnj_phrase(obj_t *pnj)
     sfSprite_setScale(pnj->text.sprite_bubble, scale);
     pnj->text.nb_dialog = 0;
     if (copy_into_hi(pnj) == 84)
+        return (84);
+    if (copy_into_sell(pnj) == 84)
+        return (84);
+    if (copy_into_by(pnj) == 84)
         return (84);
     pnj->text.font = sfFont_createFromFile("assets/texts/Timeless.ttf");
     pnj->text.phrase = sfText_create();

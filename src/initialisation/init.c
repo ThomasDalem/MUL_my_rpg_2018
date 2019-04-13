@@ -18,7 +18,7 @@ sfIntRect create_char_perso(int top, int left, int width, int height)
     return (rect);
 }
 
-static stats create_stat_perso(int life, int attack, int defense, int magic)
+stats create_stat_perso(int life, int attack, int defense, int magic)
 {
     stats stat;
 

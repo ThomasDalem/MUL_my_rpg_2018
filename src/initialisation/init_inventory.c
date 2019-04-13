@@ -101,11 +101,7 @@ int init_inventory(inv_t *invent, scene_t *scene)
         return (84);
     set_pos_text(invent, pos_text);
     set_sprite_inventory(invent, scene, pos_sprite);
-    /*
-    sfSprite_setTexture(invent->sprite, scene->perso.texture, sfTrue);
-    sfSprite_setTextureRect(invent->sprite, scene->perso.char_down);
-    sfSprite_setPosition(invent->sprite, pos_sprite);
-    sfSprite_setScale(invent->sprite, scene->perso.move,);
-    */
+    set_stats_equipement(invent);
+    set_equipement(invent, scene);
     return (0);
 }

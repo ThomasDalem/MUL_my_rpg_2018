@@ -45,6 +45,7 @@ void anime(scene_t *scene, sfVector2f move);
 
 //initialisation/init.c
 int init_all(scene_t *scene, pause_s *pause, inv_t *invent);
+stats create_stat_perso(int life, int attack, int defense, int magic);
 
 //initialisation/init_ennemie.c
 int init_ennemie(scene_t *scene);
@@ -52,11 +53,18 @@ void create_zone_enn(obj_t *ennemie, int zone);
 
 //initialisation/init_inventory.c
 int init_inventory(inv_t *invent, scene_t *scene);
+int set_stats_equipement(inv_t *invent);
+int set_equipement(inv_t *invent, scene_t *scene);
 
 //initialisation/init_menu.c
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
 int init_end_button(but_s *button);
 int init_start_button(but_s *button);
+
+//inititalisation/init_phrase.c
+int copy_into_by(obj_t *pnj);
+int copy_into_sell(obj_t *pnj);
+int copy_into_hi(obj_t *pnj);
 
 //initialisation/init_pause.c
 int init_pause(pause_s *pause);

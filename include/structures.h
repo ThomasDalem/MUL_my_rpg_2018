@@ -82,6 +82,7 @@ typedef struct button_s
     int is_clicked;
     int is_placed;
     info_t info;
+    sfFont *font;
     sfText *txt;
     struct button_s *next;
 } but_s;
@@ -152,7 +153,9 @@ typedef struct inventory
     sfText *max_life;
     sfText *defense;
     sfText *magic;
+    struct stats *stat_equip;
     struct button_s **button;
+    struct button_s **equipement;
 } inv_t;
 
 typedef struct scene_s

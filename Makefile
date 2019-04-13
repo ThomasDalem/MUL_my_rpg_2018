@@ -12,12 +12,15 @@ SRC =	src/anime_ennemie.c						\
 		src/event.c								\
 		src/game.c								\
 		src/initialisation/init.c				\
+		src/initialisation/init_equipement.c 	\
 		src/initialisation/init_ennemie.c		\
 		src/initialisation/init_inventory.c		\
 		src/initialisation/init_menu.c			\
 		src/initialisation/init_pause.c			\
+		src/initialisation/init_phrase.c 		\
 		src/initialisation/init_pnj.c 			\
 		src/initialisation/init_sound.c			\
+		src/initialisation/set_stats_equipement.c	\
 		src/inventory_gestion.c					\
 		src/main.c								\
 		src/menu.c								\
