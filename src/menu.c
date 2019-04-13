@@ -29,6 +29,7 @@ void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
         if (button_is_clicked(scene->button[0]->but, mouse) == 0) {
             sfRectangleShape_setOutlineColor(scene->button[0]->but, sfBlue);
             (*gamemode) = 1;
+            sfMusic_stop(scene->music->main);
         }
         if (button_is_clicked(scene->button[1]->but, mouse) == 0)
             (*gamemode) = 3;
