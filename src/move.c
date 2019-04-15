@@ -26,9 +26,8 @@ void move_down(scene_t *scene)
 
     move.x = 0;
     move.y = 10;
-    if (rect.left != 0) {
+    if (rect.left != 0)
         sfSprite_setTextureRect(scene->perso.sprite_perso, scene->perso.char_down);
-    }
     anime(scene, move);
 }
 

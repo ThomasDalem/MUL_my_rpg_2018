@@ -5,8 +5,8 @@
 ** game
 */
 
+#include "collisions.h"
 #include "prototype.h"
-
 sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
 {
     sfRenderWindow *window;
@@ -32,7 +32,6 @@ void anime(scene_t *scene, sfVector2f move)
         else
             rect_perso.top = 0;
         sfSprite_setTextureRect(scene->perso.sprite_perso, rect_perso);
-        sfSprite_move(scene->perso.sprite_perso, move);
         sfClock_restart(scene->perso.timer.clock);
     }
 }
@@ -55,6 +54,8 @@ void game(int *gamemode, scene_t *scene)
         while (sfRenderWindow_pollEvent(scene->window, &event)) {
             *gamemode = allevent(scene, &event, &pause, &invent);
         }
+        check_collision(scene);
+        move_player();
     }
     close_window(scene, &pause, gamemode);
 }

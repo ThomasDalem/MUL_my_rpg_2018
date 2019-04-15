@@ -1,0 +1,7 @@
+my_rpg
+*.o
+libmy.a
+*~
+unit_tests
+vgcore*
+.vscode/
