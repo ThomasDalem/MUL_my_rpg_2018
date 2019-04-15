@@ -57,21 +57,6 @@ int select_event(sfEvent *event, scene_t *scene, but_s **button)
     return (-1);
 }
 
-void cond_select(scene_t *scene, but_s **button)
-{
-    int i = 0;
-
-    while (button[i] != NULL) {
-        if (button_is_clicked(button[i]->but,
-                              sfMouse_getPositionRenderWindow
-                              (scene->window)) == 0 
-            && button[i]->is_clicked == 0)
-            sfRectangleShape_setOutlineColor(button[i]->but, sfWhite);
-        else if (button[i]->is_clicked == 0)
-            sfRectangleShape_setOutlineColor(button[i]->but, sfRed);
-        i ++;
-    }
-}
 int select_perso(scene_t *scene, int *gamemode)
 {
     sfEvent event;
@@ -91,7 +76,7 @@ int select_perso(scene_t *scene, int *gamemode)
     create_button(button[2], 240, 900);
     while (sfRenderWindow_isOpen(scene->window) && chose == -1) {
         disp_select(scene, button);
-        cond_select(scene, button);
+        cond_mouse(button, scene);
         while (sfRenderWindow_pollEvent(scene->window, &event))
             chose = select_event(&event, scene, button);
     }

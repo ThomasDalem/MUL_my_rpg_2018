@@ -7,18 +7,18 @@
 
 #include "prototype.h"
 
-void cond_mouse(scene_t *scene)
+void cond_mouse(but_s **button, scene_t *scene)
 {
     int i = 0;
 
-    while (scene->button[i] != NULL) {
-        if (button_is_clicked(scene->button[i]->but,
+    while (button[i] != NULL) {
+        if (button_is_clicked(button[i]->but,
                               sfMouse_getPositionRenderWindow
                               (scene->window)) == 0 &&
-            scene->button[i]->is_clicked == 0)
-            sfRectangleShape_setOutlineColor(scene->button[i]->but, sfWhite);
-        else if (scene->button[i]->is_clicked == 0)
-            sfRectangleShape_setOutlineColor(scene->button[i]->but, sfRed);
+            button[i]->is_clicked == 0)
+            sfRectangleShape_setOutlineColor(button[i]->but, sfWhite);
+        else if (button[i]->is_clicked == 0)
+            sfRectangleShape_setOutlineColor(button[i]->but, sfRed);
         i++;
     }
 }

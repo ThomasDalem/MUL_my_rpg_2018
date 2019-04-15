@@ -80,7 +80,7 @@ int mainscreen(int *gamemode, scene_t *scene)
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 0) {
         disp_menu(scene);
         sfMusic_setLoop(scene->music->main, sfTrue);
-        cond_mouse(scene);
+        cond_mouse(scene->button, scene);
         while (sfRenderWindow_pollEvent(scene->window, &click))
             screenevent(&click, scene, gamemode);
     }

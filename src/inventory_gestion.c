@@ -66,6 +66,7 @@ int inventory_gestion(inv_t *invent, scene_t *scene)
     while (p == 0) {
         sfRenderWindow_clear(scene->window, sfBlack);
         disp_invent(scene, invent);
+        cond_mouse(invent->button, scene);
         sfRenderWindow_display(scene->window);
         while (sfRenderWindow_pollEvent(scene->window, &event))
             p = invent_event(&event, scene, invent);

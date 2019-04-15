@@ -87,7 +87,7 @@ void destroy_menu(scene_t *scene, int *gamemode);
 int mainscreen(int *gamemode, scene_t *scene);
 
 //mouse.c
-void cond_mouse(scene_t *scene);
+void cond_mouse(but_s **button, scene_t *scene);
 
 //move.c
 void move_right(scene_t *scene);
