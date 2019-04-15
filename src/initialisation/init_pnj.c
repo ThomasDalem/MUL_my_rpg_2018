@@ -36,12 +36,12 @@ void create_pnj(obj_t *pnj)
     pnj->char_up = create_char_perso(0, 0 + 61, 16, 16);
     pnj->char_left = create_char_perso(0, 0 + 30, 16, 16);
     pnj->char_right = create_char_perso(0, 0 + 90, 16, 16);
-    pnj->sprite_perso = sfSprite_create();
-    sfSprite_setTexture(pnj->sprite_perso, pnj->texture, sfFalse);
+    pnj->sprite = sfSprite_create();
+    sfSprite_setTexture(pnj->sprite, pnj->texture, sfFalse);
     pnj->move.y = 3;
     pnj->move.x = 3;
-    sfSprite_setTextureRect(pnj->sprite_perso, pnj->char_down);
-    sfSprite_setScale(pnj->sprite_perso, pnj->move);
+    sfSprite_setTextureRect(pnj->sprite, pnj->char_down);
+    sfSprite_setScale(pnj->sprite, pnj->move);
 }
 
 int init_pnj(scene_t *scene)
@@ -57,9 +57,9 @@ int init_pnj(scene_t *scene)
     create_pnj(pnj);
     if (init_pnj_phrase(pnj) == 84)
         return (84);
-    sfSprite_setPosition(pnj->sprite_perso, pos);
+    sfSprite_setPosition(pnj->sprite, pos);
     create_zone_enn(pnj, 50);
-    pnj->timer.clock = sfClock_create();
+    pnj->anim_clock = sfClock_create();
     pnj->next = scene->pnj;
     scene->pnj = pnj;
     return (0);

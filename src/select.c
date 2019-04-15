@@ -9,14 +9,10 @@
 
 void create_button(but_s *but, int x, int pos_x)
 {
-    sfVector2f pos;
-    sfVector2f size;
+    sfVector2f pos = {pos_x, 500};
+    sfVector2f size = {200, 200};
     sfTexture *texture = sfTexture_createFromFile("assets/textures/link.png", NULL);
 
-    pos.x = pos_x;
-    pos.y = 500;
-    size.x = 200;
-    size.y = 200;
     but->char_rect = create_char_perso(0, x, 16, 16);
     but->but = sfRectangleShape_create();
     sfRectangleShape_setOutlineColor(but->but, sfRed);
@@ -60,7 +56,7 @@ int select_event(sfEvent *event, scene_t *scene, but_s **button)
 int select_perso(scene_t *scene, int *gamemode)
 {
     sfEvent event;
-    but_s **button = malloc(sizeof(but_s) * 4);
+    but_s **button = malloc(sizeof(but_s *) * 4);
     int chose = -1;
 
     if (button == NULL) {
@@ -81,6 +77,6 @@ int select_perso(scene_t *scene, int *gamemode)
             chose = select_event(&event, scene, button);
     }
     if (chose == 0 || chose == 1 || chose == 2)
-        scene->perso.nb_perso = chose;
+        scene->perso->nb_perso = chose;
     return (chose);
 }

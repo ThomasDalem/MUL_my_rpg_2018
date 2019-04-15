@@ -10,8 +10,8 @@
 void discuss(scene_t *scene)
 {
     int i = 0;
-    sfVector2f pos = sfSprite_getPosition(scene->pnj->sprite_perso);
-    sfFloatRect rect = sfSprite_getGlobalBounds(scene->pnj->sprite_perso);
+    sfVector2f pos = sfSprite_getPosition(scene->pnj->sprite);
+    sfFloatRect rect = sfSprite_getGlobalBounds(scene->pnj->sprite);
 
     scene->pnj->discuss = 1;
     pos.x = pos.x - rect.width * 1.5;
@@ -37,8 +37,8 @@ void discuss(scene_t *scene)
 
 void orient_pnj(scene_t *scene, sfIntRect *rect_perso)
 {
-    sfVector2f pos_perso = sfSprite_getPosition(scene->perso.sprite_perso);
-    sfVector2f pos_pnj = sfSprite_getPosition(scene->pnj->sprite_perso);
+    sfVector2f pos_perso = sfSprite_getPosition(scene->perso->sprite);
+    sfVector2f pos_pnj = sfSprite_getPosition(scene->pnj->sprite);
     sfIntRect rect = *rect_perso;
     float x = fabs(pos_perso.x) - fabs(pos_pnj.x);
     float y = fabs(pos_perso.y) - fabs(pos_pnj.y);
@@ -60,12 +60,12 @@ void orient_pnj(scene_t *scene, sfIntRect *rect_perso)
 void start_discuss(scene_t *scene)
 {
     obj_t *pnj = scene->pnj;
-    sfFloatRect pos_perso = sfSprite_getGlobalBounds(scene->perso.sprite_perso);
-    sfIntRect rect_pnj = sfSprite_getTextureRect(scene->pnj->sprite_perso);
+    sfFloatRect pos_perso = sfSprite_getGlobalBounds(scene->perso->sprite);
+    sfIntRect rect_pnj = sfSprite_getTextureRect(scene->pnj->sprite);
     sfFloatRect pos_pnj;
 
     while (scene->pnj != NULL) {
-        rect_pnj = sfSprite_getTextureRect(scene->pnj->sprite_perso);
+        rect_pnj = sfSprite_getTextureRect(scene->pnj->sprite);
         pos_pnj = sfCircleShape_getGlobalBounds(scene->pnj->detect_zone);
         if (scene->pnj->discuss == 1)
             scene->pnj->text.nb_dialog++;
@@ -76,7 +76,7 @@ void start_discuss(scene_t *scene)
         else if (sfFloatRect_intersects(&pos_perso, &pos_pnj, NULL) == sfTrue) {
             discuss(scene);
             orient_pnj(scene, &rect_pnj);
-            sfSprite_setTextureRect(scene->pnj->sprite_perso, rect_pnj);
+            sfSprite_setTextureRect(scene->pnj->sprite, rect_pnj);
         }
         scene->pnj = scene->pnj->next;
     }

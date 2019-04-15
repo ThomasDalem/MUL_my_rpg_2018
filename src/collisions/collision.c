@@ -6,6 +6,7 @@
 */
 
 #include <SFML/Graphics/Sprite.h>
+#include <unistd.h>
 
 int is_colliding(sfFloatRect rect1, sfFloatRect rect2)
 {

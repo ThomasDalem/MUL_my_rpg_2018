@@ -118,8 +118,7 @@ typedef struct stats
 typedef struct obj_s
 {
     sfTexture *texture;
-    sfSprite *sprite_perso;
-    sfVector2f initialisation;
+    sfSprite *sprite;
     sfVector2f move;
     sfIntRect char_up;
     sfIntRect char_down;
@@ -129,11 +128,11 @@ typedef struct obj_s
     int nb_perso;
     int discuss;
     struct textes_variables text;
-    struct horloge timer;
+    sfClock *move_clock;
+    sfClock *anim_clock;
     struct stats stat;
     struct obj_s *next;
 } obj_t;
-
 
 typedef struct pause_t
 {
@@ -163,7 +162,7 @@ typedef struct scene_s
     sfRenderWindow *window;
     musics *music;
     struct button_s **button;
-    struct  obj_s perso;
+    struct  obj_s *perso;
     struct obj_s *ennemi;
     struct obj_s *pnj;
     struct object *object;

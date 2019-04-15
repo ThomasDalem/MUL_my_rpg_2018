@@ -9,12 +9,12 @@
 
 void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite)
 {
-    scene->perso.move.x = 10;
-    scene->perso.move.y = 10;
-    sfSprite_setTexture(invent->sprite, scene->perso.texture, sfTrue);
-    sfSprite_setTextureRect(invent->sprite, scene->perso.char_down);
+    scene->perso->move.x = 10;
+    scene->perso->move.y = 10;
+    sfSprite_setTexture(invent->sprite, scene->perso->texture, sfTrue);
+    sfSprite_setTextureRect(invent->sprite, scene->perso->char_down);
     sfSprite_setPosition(invent->sprite, pos_sprite);
-    sfSprite_setScale(invent->sprite, scene->perso.move);
+    sfSprite_setScale(invent->sprite, scene->perso->move);
 }
 
 static int invent_event(sfEvent *event, scene_t *scene, inv_t *invent)
@@ -24,13 +24,13 @@ static int invent_event(sfEvent *event, scene_t *scene, inv_t *invent)
     }
      if (event->type == sfEvtKeyPressed) { 
         if (event->key.code == sfKeyS)
-            sfSprite_setTextureRect(invent->sprite, scene->perso.char_down);
+            sfSprite_setTextureRect(invent->sprite, scene->perso->char_down);
         if (event->key.code == sfKeyZ)
-            sfSprite_setTextureRect(invent->sprite, scene->perso.char_up);
+            sfSprite_setTextureRect(invent->sprite, scene->perso->char_up);
         if (event->key.code == sfKeyQ)
-            sfSprite_setTextureRect(invent->sprite, scene->perso.char_left);
+            sfSprite_setTextureRect(invent->sprite, scene->perso->char_left);
         if (event->key.code == sfKeyD)
-            sfSprite_setTextureRect(invent->sprite, scene->perso.char_right);
+            sfSprite_setTextureRect(invent->sprite, scene->perso->char_right);
     }
     if (event->type == sfEvtClosed)
         return (3);

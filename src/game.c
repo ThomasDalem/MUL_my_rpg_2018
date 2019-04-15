@@ -7,6 +7,7 @@
 
 #include "collisions.h"
 #include "prototype.h"
+
 sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
 {
     sfRenderWindow *window;
@@ -20,19 +21,19 @@ sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
     return (window);
 }
 
-void anime(scene_t *scene, sfVector2f move)
+void anim(obj_t *player)
 {
-    sfIntRect rect_perso = sfSprite_getTextureRect(scene->perso.sprite_perso);
+    sfIntRect rect_perso = sfSprite_getTextureRect(player->sprite);
+    sfTime elapsed_time = sfClock_getElapsedTime(player->anim_clock);
+    float time = sfTime_asSeconds(elapsed_time);
 
-    scene->perso.timer.time = sfClock_getElapsedTime(scene->perso.timer.clock);
-    scene->perso.timer.second = sfTime_asMilliseconds(scene->perso.timer.time);
-    if (scene->perso.timer.second > 50) {
+    if (time > 0.1) {
         if (rect_perso.top <= 0)
             rect_perso.top = rect_perso.top + 30;
         else
             rect_perso.top = 0;
-        sfSprite_setTextureRect(scene->perso.sprite_perso, rect_perso);
-        sfClock_restart(scene->perso.timer.clock);
+        sfSprite_setTextureRect(player->sprite, rect_perso);
+        sfClock_restart(player->anim_clock);
     }
 }
 
@@ -41,13 +42,14 @@ void game(int *gamemode, scene_t *scene)
     sfEvent event;
     pause_s pause;
     inv_t invent;
-    int nb_perso = select_perso(scene, gamemode);
+    int nb_perso;
 
+    *gamemode = init_all(scene, &pause, &invent);
+    nb_perso = select_perso(scene, gamemode);
     if (nb_perso == 84 || nb_perso == 3) {
         *gamemode = 3;
         return;
     }
-    *gamemode = init_all(scene, &pause, &invent);
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 1) {
         disp_scene(scene);
         move_ennemie(scene);
@@ -55,7 +57,6 @@ void game(int *gamemode, scene_t *scene)
             *gamemode = allevent(scene, &event, &pause, &invent);
         }
         check_collision(scene);
-        move_player();
     }
     close_window(scene, &pause, gamemode);
 }

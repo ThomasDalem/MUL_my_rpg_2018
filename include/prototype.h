@@ -24,10 +24,12 @@
 #include "structures.h"
 #include "my.h"
 
-#define UP = 1;
-#define DOWN = 2;
-#define LEFT = 3;
-#define RIGHT = 4;
+#define UP 1
+#define DOWN 2
+#define LEFT 3
+#define RIGHT 4
+
+void move_player(obj_t *scene, int direction);
 
 //anime_ennemie.c
 
@@ -46,7 +48,7 @@ int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
 //game.c
 sfRenderWindow *createmywindow(unsigned int width, unsigned int height);
 void game(int *gamemode, scene_t *scene);
-void anime(scene_t *scene, sfVector2f move);
+void anim(obj_t *player);
 
 //initialisation/init.c
 int init_all(scene_t *scene, pause_s *pause, inv_t *invent);

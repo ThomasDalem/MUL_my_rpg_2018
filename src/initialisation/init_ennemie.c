@@ -9,7 +9,7 @@
 
 void create_zone_enn(obj_t *ennemie, int zone)
 {
-    sfFloatRect size_sp = sfSprite_getGlobalBounds(ennemie->sprite_perso);
+    sfFloatRect size_sp = sfSprite_getGlobalBounds(ennemie->sprite);
     sfVector2f size;
     sfVector2f pos;
 
@@ -33,13 +33,12 @@ void create_ennemie(obj_t *ennemie)
     ennemie->char_up = create_char_perso(0, 120 + 61, 16, 16);
     ennemie->char_left = create_char_perso(0, 120 + 30, 16, 16);
     ennemie->char_right = create_char_perso(0, 120 + 90, 16, 16);
-    ennemie->sprite_perso = sfSprite_create();
-    sfSprite_setTexture(ennemie->sprite_perso, ennemie->texture, sfFalse);
+    ennemie->sprite = sfSprite_create();
+    sfSprite_setTexture(ennemie->sprite, ennemie->texture, sfFalse);
     ennemie->move.y = 3;
     ennemie->move.x = 3;
-    //ennemie->stat = create_stat_perso(50, 10, 30, 5);
-    sfSprite_setTextureRect(ennemie->sprite_perso, ennemie->char_down);
-    sfSprite_setScale(ennemie->sprite_perso, ennemie->move);
+    sfSprite_setTextureRect(ennemie->sprite, ennemie->char_down);
+    sfSprite_setScale(ennemie->sprite, ennemie->move);
 }
 
 int init_ennemie(scene_t *scene)
@@ -53,9 +52,9 @@ int init_ennemie(scene_t *scene)
     pos.x = 1000;
     pos.y = 500;
     create_ennemie(ennemi);
-    sfSprite_setPosition(ennemi->sprite_perso, pos);
+    sfSprite_setPosition(ennemi->sprite, pos);
     create_zone_enn(ennemi, 150);
-    ennemi->timer.clock = sfClock_create();
+    ennemi->anim_clock = sfClock_create();
     ennemi->next = scene->ennemi;
     scene->ennemi = ennemi;
     return (0);

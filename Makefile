@@ -31,6 +31,7 @@ SRC =	src/anime_ennemie.c						\
 		src/select.c							\
 		src/set_str.c							\
 		src/tools.c								\
+		src/moves/move_player.c					\
 		src/collisions/check_collisions.c		\
 		src/collisions/collision.c				\
 
