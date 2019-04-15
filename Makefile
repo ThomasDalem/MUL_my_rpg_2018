@@ -31,6 +31,8 @@ SRC =	src/anime_ennemie.c						\
 		src/select.c							\
 		src/set_str.c							\
 		src/tools.c								\
+		src/collisions/check_collisions.c		\
+		src/collisions/collision.c				\
 
 OBJ =	$(SRC:.c=.o)
 
