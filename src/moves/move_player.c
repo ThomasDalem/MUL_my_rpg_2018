@@ -5,21 +5,26 @@
 ** move_player
 */
 
+#include <stdio.h>
 #include "prototype.h"
 #include "structures.h"
 
 static sfIntRect change_animation(obj_t *player, int direction)
 {
     sfIntRect sprite_rect = sfSprite_getTextureRect(player->sprite);
+    int up = 61 + player->nb_perso * 120;
+    int down = 0 + player->nb_perso * 120;
+    int left = 30 + player->nb_perso * 120;
+    int right = 90 + player->nb_perso * 120;
 
-    sprite_rect.left = (direction == UP) ? 61 + player->nb_perso * 120: sprite_rect.left;
-    sprite_rect.left = (direction == DOWN) ? 0 + player->nb_perso * 120: sprite_rect.left;
-    sprite_rect.left = (direction == LEFT) ? 30 + player->nb_perso * 120: sprite_rect.left;
-    sprite_rect.left = (direction == RIGHT) ? 90 + player->nb_perso * 120: sprite_rect.left;
+    sprite_rect.left = (direction == UP) ? up : sprite_rect.left;
+    sprite_rect.left = (direction == DOWN) ? down : sprite_rect.left;
+    sprite_rect.left = (direction == LEFT) ? left : sprite_rect.left;
+    sprite_rect.left = (direction == RIGHT) ? right : sprite_rect.left;
     return (sprite_rect);
 }
 
-void move_player(obj_t *player, int direction)
+void move_player(scene_t *scene, obj_t *player, int direction)
 {
     sfVector2f offset = {0, 0};
     sfIntRect sprite_rect;
@@ -31,5 +36,6 @@ void move_player(obj_t *player, int direction)
     sprite_rect = change_animation(player, direction);
     sfSprite_setTextureRect(player->sprite, sprite_rect);
     anim(player);
-    sfSprite_move(player->sprite, offset);
+    if (!will_collide(player->sprite, scene->ennemi->sprite, offset))
+        sfSprite_move(player->sprite, offset);
 }
