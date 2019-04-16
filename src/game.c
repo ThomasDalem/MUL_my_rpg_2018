@@ -44,8 +44,8 @@ void game(int *gamemode, scene_t *scene)
     inv_t invent;
     int nb_perso;
 
-    *gamemode = init_all(scene, &pause, &invent);
     nb_perso = select_perso(scene, gamemode);
+    *gamemode = init_all(scene, &pause, &invent);
     if (nb_perso == 84 || nb_perso == 3) {
         *gamemode = 3;
         return;

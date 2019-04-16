@@ -59,6 +59,7 @@ int select_perso(scene_t *scene, int *gamemode)
     but_s **button = malloc(sizeof(but_s *) * 4);
     int chose = -1;
 
+    scene->perso = malloc(sizeof(obj_t));
     if (button == NULL) {
         *gamemode = 3;
         return (84);

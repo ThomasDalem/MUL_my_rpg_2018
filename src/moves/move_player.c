@@ -12,10 +12,10 @@ static sfIntRect change_animation(obj_t *player, int direction)
 {
     sfIntRect sprite_rect = sfSprite_getTextureRect(player->sprite);
 
-    sprite_rect.left = (direction == UP) ? 61 : sprite_rect.left;
-    sprite_rect.left = (direction == DOWN) ? 0 : sprite_rect.left;
-    sprite_rect.left = (direction == LEFT) ? 30 : sprite_rect.left;
-    sprite_rect.left = (direction == RIGHT) ? 90 : sprite_rect.left;
+    sprite_rect.left = (direction == UP) ? 61 + player->nb_perso * 120: sprite_rect.left;
+    sprite_rect.left = (direction == DOWN) ? 0 + player->nb_perso * 120: sprite_rect.left;
+    sprite_rect.left = (direction == LEFT) ? 30 + player->nb_perso * 120: sprite_rect.left;
+    sprite_rect.left = (direction == RIGHT) ? 90 + player->nb_perso * 120: sprite_rect.left;
     return (sprite_rect);
 }
 
