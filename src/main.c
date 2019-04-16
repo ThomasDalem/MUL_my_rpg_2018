@@ -23,7 +23,7 @@ int main(int ac, char **argv, char **env)
             break;
         case 2: mainscreen(&gamemode, &scene);
             break;
-        case 3: return (0);
+        case 3: return (free_global(&scene));
             break;
         default: return (84);
         }
