@@ -5,35 +5,38 @@
 ## My_Sokoban
 ##
 
-SRC =	src/anime_ennemie.c						\
-		src/close.c								\
-		src/discuss.c 							\
-		src/disp.c								\
-		src/event.c								\
-		src/game.c								\
-		src/initialisation/init.c				\
-		src/initialisation/init_equipement.c 	\
-		src/initialisation/init_ennemie.c		\
-		src/initialisation/init_inventory.c		\
-		src/initialisation/init_menu.c			\
-		src/initialisation/init_pause.c			\
-		src/initialisation/init_phrase.c 		\
-		src/initialisation/init_pnj.c 			\
-		src/initialisation/init_sound.c			\
+SRC =	src/anime_ennemie.c							\
+		src/close.c									\
+		src/discuss.c 								\
+		src/disp.c									\
+		src/collisions/check_collisions.c			\
+		src/collisions/collision.c					\
+		src/event.c									\
+		src/free/free.c                         	\
+        src/free/music_free.c                   	\
+        src/free/perso_free.c                   	\
+		src/game.c									\
+		src/initialisation/init.c					\
+		src/initialisation/init_equipement.c 		\
+		src/initialisation/init_ennemie.c			\
+		src/initialisation/init_inventory.c			\
+		src/initialisation/init_menu.c				\
+		src/initialisation/init_pause.c				\
+		src/initialisation/init_phrase.c 			\
+		src/initialisation/init_pnj.c 				\
+		src/initialisation/init_sound.c				\
 		src/initialisation/set_stats_equipement.c	\
-		src/inventory_gestion.c					\
-		src/main.c								\
-		src/menu.c								\
-		src/mouse.c								\
-		src/moves/move.c						\
-		src/moves/move_ennemie.c				\
-		src/pause.c								\
-		src/select.c							\
-		src/set_str.c							\
-		src/tools.c								\
-		src/moves/move_player.c					\
-		src/collisions/check_collisions.c		\
-		src/collisions/collision.c				\
+		src/inventory_gestion.c						\
+		src/main.c									\
+		src/menu.c									\
+		src/mouse.c									\
+		src/moves/move.c							\
+		src/moves/move_ennemie.c					\
+		src/moves/move_player.c						\
+		src/pause.c									\
+		src/select.c								\
+		src/set_str.c								\
+		src/tools.c									\
 
 OBJ =	$(SRC:.c=.o)
 
