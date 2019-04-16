@@ -11,11 +11,9 @@ void free_perso(scene_t *scene)
 {
     if (scene->perso == NULL)
         return;
-    if (scene->perso.sprite_perso != NULL)
-        sfSprite_destroy(scene->perso.sprite_perso);
-    if (scene->perso.texture != NULL)
-        sfTexture_destroy(scene->perso.texture);
-    if (scene->perso.detect_zone != NULL)
-        sfCircleShape_destroy(scene->perso.detect_zone);
-    //free(scene->perso);
+    if (scene->perso->sprite != NULL)
+        sfSprite_destroy(scene->perso->sprite);
+    if (scene->perso->texture != NULL)
+        sfTexture_destroy(scene->perso->texture);
+    free(scene->perso);
 }
