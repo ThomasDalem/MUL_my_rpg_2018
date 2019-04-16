@@ -45,6 +45,15 @@ void disp_scene(scene_t *scene);
 //event.c
 int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
 
+//free/free_global.c
+int free_global(scene_t *scene);
+
+//free/music_free.c
+int free_music(scene_t *scene);
+
+//free/music_free.c
+void free_perso(scene_t *scene);
+
 //game.c
 sfRenderWindow *createmywindow(unsigned int width, unsigned int height);
 void game(int *gamemode, scene_t *scene);

@@ -9,6 +9,6 @@
 
 int free_music(scene_t *scene)
 {
-    //sfMusic_destroy(scene->music->main);
+    sfMusic_destroy(scene->music->main);
     return (0);
 }
