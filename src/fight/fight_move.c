@@ -48,7 +48,7 @@ static sfIntRect animation_fight(obj_t *player, int direction)
     return (sprite_rect);
 }
 
-void move_player(obj_t *player, int direction)
+void move_fight(obj_t *player, int direction)
 {
     sfVector2f offset = {0, 0};
     sfIntRect sprite_rect;
@@ -60,6 +60,6 @@ void move_player(obj_t *player, int direction)
     if (direction == LEFT)
         anim_left_fight(player);
     if (direction == RIGHT)
-        anim_left_fight(player);
+        anim_right_fight(player);
     sfSprite_move(player->sprite, offset);
 }

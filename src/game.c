@@ -57,7 +57,7 @@ void game(int *gamemode, scene_t *scene)
             *gamemode = allevent(scene, &event, &pause, &invent);
         }
         check_collision(scene);
-        //*gamemode = is_a_figth(scene, &invent, &pause);
+        *gamemode = is_a_fight(scene, &invent, &pause);
     }
     close_window(scene, &pause, gamemode);
 }

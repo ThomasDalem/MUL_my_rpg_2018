@@ -19,17 +19,15 @@ int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
         while (sfRenderWindow_pollEvent(scene->window, &event)) {
             fight = fight_event(scene, &event, &pause, &invent);
         }
-        check_collision(scene);
-        is_a_figth(scene, &invent, &pause);
     }
-    return (fight)
+    return (fight);
 }
 
-void is_a_fight(scene_t *scene, inv_t *invent, pause_s *pause)
+int is_a_fight(scene_t *scene, inv_t *invent, pause_s *pause)
 {
     obj_t *enn = scene->ennemi;
     sfFloatRect pos_enn;
-    sfFloatRect pos_perso = sfSprite_getGlobalBounds(scene->perso);
+    sfFloatRect pos_perso = sfSprite_getGlobalBounds(scene->perso->sprite);
     int i = 0;
 
     while (scene->ennemi != NULL && i == 0) {
