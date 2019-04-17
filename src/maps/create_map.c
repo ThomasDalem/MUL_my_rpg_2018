@@ -14,9 +14,9 @@ void create_map(map_t *map)
     char *path = "assets/textures/map_1.jpg";
     char *path_object = "assets/textures/objects.png";
 
-    map->background_texture = sfTexture_createFromFile(path, NULL);
-    map->background_sprite = sfSprite_create();
-    sfSprite_setTexture(map->background_sprite, map->background_texture, sfFalse);
+    map->texture = sfTexture_createFromFile(path, NULL);
+    map->sprite = sfSprite_create();
+    sfSprite_setTexture(map->sprite, map->texture, sfFalse);
     map->objects = add_objects(path_object, 500, 500, map->objects);
     map->objects = add_objects(path_object, 1000, 1000, map->objects);
 }

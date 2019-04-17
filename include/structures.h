@@ -18,8 +18,8 @@ typedef struct map_obj_s
 
 typedef struct map_s
 {
-    sfTexture *background_texture;
-    sfSprite *background_sprite;
+    sfTexture *texture;
+    sfSprite *sprite;
     map_obj_t *objects;
     struct map_s *up;
     struct map_s *down;
