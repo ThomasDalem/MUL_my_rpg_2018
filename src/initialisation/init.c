@@ -46,8 +46,8 @@ static int init_perso(obj_t *perso)
     perso->stat = (stats){100, 100, 30, 5};
     sfSprite_setTextureRect(perso->sprite, perso->char_down);
     sfSprite_setScale(perso->sprite, perso->move);
-    //if (init_fight_perso(perso) == 84)
-    //    return (84);
+    if (init_fight_perso(perso) == 84)
+        return (84);
     return (0);
 }
 

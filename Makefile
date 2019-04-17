@@ -16,6 +16,9 @@ SRC =	src/anime_ennemie.c							\
         src/free/music_free.c                   	\
         src/free/perso_free.c                   	\
 		src/game.c									\
+		src/fight/check_fight.c 					\
+		src/fight/fight_event.c 					\
+		src/fight/fight_move.c 						\
 		src/initialisation/init.c					\
 		src/initialisation/init_equipement.c 		\
 		src/initialisation/init_ennemie.c			\
@@ -29,12 +32,12 @@ SRC =	src/anime_ennemie.c							\
 		src/initialisation/set_stats_equipement.c	\
 		src/inventory_gestion.c						\
 		src/main.c									\
-		src/menu.c									\
+		src/menus/menu.c									\
 		src/mouse.c									\
 		src/moves/move.c							\
 		src/moves/move_ennemie.c					\
 		src/moves/move_player.c						\
-		src/pause.c									\
+		src/menus/pause.c									\
 		src/select.c								\
 		src/set_str.c								\
 		src/tools.c									\
