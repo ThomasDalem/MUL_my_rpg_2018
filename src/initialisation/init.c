@@ -57,7 +57,7 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent)
     scene->ennemi = NULL;
     scene->pnj = NULL;
 
-    if (init_pause(pause) == 84 || scene->perso == NULL)
+    if (init_pause(pause) == 84)
         return (84);
     if (init_perso(scene->perso) == 84)
         return (84);
