@@ -59,6 +59,8 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent)
 
     if (init_pause(pause) == 84 || scene->perso == NULL)
         return (84);
+    scene->map = create_graph(1, 1);
+    create_map(scene->map);
     if (init_perso(scene->perso) == 84)
         return (84);
     if (init_inventory(invent, scene) == 84)

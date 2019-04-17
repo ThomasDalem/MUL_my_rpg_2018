@@ -32,12 +32,14 @@ SRC =	src/anime_ennemie.c							\
 		src/initialisation/set_stats_equipement.c	\
 		src/inventory_gestion.c						\
 		src/main.c									\
-		src/menus/menu.c									\
+		src/maps/create_map.c						\
+		src/maps/create_graph.c						\
+		src/menus/menu.c							\
 		src/mouse.c									\
 		src/moves/move.c							\
 		src/moves/move_ennemie.c					\
 		src/moves/move_player.c						\
-		src/menus/pause.c									\
+		src/menus/pause.c							\
 		src/select.c								\
 		src/set_str.c								\
 		src/tools.c									\

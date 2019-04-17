@@ -182,7 +182,7 @@ typedef struct scene_s
     struct obj_s *pnj;
     struct object *object;
     struct fight_scene *fight_scene;
-    map_obj_t *map_objs;
+    struct map_s *map;
 } scene_t;
 
 typedef struct structure

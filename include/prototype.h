@@ -60,6 +60,11 @@ sfRenderWindow *createmywindow(unsigned int width, unsigned int height);
 void game(int *gamemode, scene_t *scene);
 void anim(obj_t *player);
 
+//initialisation/game
+void create_map(map_t *map);
+map_obj_t *add_objects(char *path, int x, int y, map_obj_t *next);
+map_t *create_graph(int x, int y);
+
 //initialisation/init.c
 int init_all(scene_t *scene, pause_s *pause, inv_t *invent);
 stats create_stat_perso(int life, int attack, int defense, int magic);
