@@ -115,6 +115,20 @@ typedef struct stats
     int magic;
 } stats;
 
+typedef struct fight_t
+{
+    sfIntRect char_right;
+    sfIntRect char_left;
+    sfTexture *texture;
+    sfVector2f move;
+} fight_s;
+
+typedef struct fight_scene
+{
+    sfTexture *texture;
+    sfSprite *sprite;
+} fight_scene;
+
 typedef struct obj_s
 {
     sfTexture *texture;
@@ -128,6 +142,7 @@ typedef struct obj_s
     int nb_perso;
     int discuss;
     struct textes_variables text;
+    struct fight_t *fight;
     sfClock *move_clock;
     sfClock *anim_clock;
     struct stats stat;
@@ -166,6 +181,7 @@ typedef struct scene_s
     struct obj_s *ennemi;
     struct obj_s *pnj;
     struct object *object;
+    struct fight_scene *fight_scene;
 } scene_t;
 
 typedef struct structure

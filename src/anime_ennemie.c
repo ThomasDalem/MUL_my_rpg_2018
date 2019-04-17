@@ -14,10 +14,10 @@ void anime_enn(scene_t *scene, sfVector2f move)
     float time = sfTime_asSeconds(elapsed_time);
 
     if (time > 0.2) {
-        if (rect_perso.top <= 0)
-            rect_perso.top = rect_perso.top + 30;
+        if (rect_perso.left <= 0)
+            rect_perso.left = rect_perso.left + 32;
         else
-            rect_perso.top = 0;
+            rect_perso.left = 0;
         sfSprite_setTextureRect(scene->ennemi->sprite, rect_perso);
         sfSprite_move(scene->ennemi->sprite, move);
         sfCircleShape_move(scene->ennemi->detect_zone, move);
@@ -32,7 +32,7 @@ void move_enn_up(scene_t *scene, int x, int y)
 
     move.x = x;
     move.y = y;
-    if (rect.left != 61)
+    if (rect.top != 202)
         sfSprite_setTextureRect(scene->ennemi->sprite, scene->ennemi->char_up);
     anime_enn(scene, move);
 }
@@ -44,7 +44,7 @@ void move_enn_down(scene_t *scene, int x, int y)
 
     move.x = x;
     move.y = y;
-    if (rect.left != 0) {
+    if (rect.top != 8) {
         sfSprite_setTextureRect(scene->ennemi->sprite, scene->ennemi->char_down);
     }
     anime_enn(scene, move);
@@ -57,7 +57,7 @@ void move_enn_left(scene_t *scene, int x, int y)
 
     move.x = x;
     move.y = y;
-    if (rect.left != 30)
+    if (rect.top != 72)
         sfSprite_setTextureRect(scene->ennemi->sprite, scene->ennemi->char_left);
     anime_enn(scene, move);
 }
@@ -69,7 +69,7 @@ void move_enn_right(scene_t *scene, int x, int y)
 
     move.x = x;
     move.y = y;
-    if (rect.left != 90)
+    if (rect.top != 138)
         sfSprite_setTextureRect(scene->ennemi->sprite, scene->ennemi->char_right);
     anime_enn(scene, move);
 }

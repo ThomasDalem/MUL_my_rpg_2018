@@ -32,20 +32,22 @@ stats create_stat_perso(int life, int attack, int defense, int magic)
 static int init_perso(obj_t *perso)
 {
     perso->sprite = sfSprite_create();
-    perso->texture = sfTexture_createFromFile("assets/textures/link.png", NULL);
+    perso->texture = sfTexture_createFromFile("assets/textures/player.png", NULL);
     sfSprite_setTexture(perso->sprite, perso->texture, sfFalse);
-    perso->char_down = create_char_perso(0, perso->nb_perso * 120, 16, 16);
-    perso->char_up = create_char_perso(0, perso->nb_perso * 120 + 61, 16, 16);
-    perso->char_left = create_char_perso(0, perso->nb_perso * 120 + 30, 16, 16);
-    perso->char_right = create_char_perso(0, perso->nb_perso * 120 + 90, 16, 16);
-    perso->move.y = 3;
-    perso->move.x = 3;
+    perso->char_down = create_char_perso(24, 4, 24, 40);
+    perso->char_up = create_char_perso(214, 6, 24, 40);
+    perso->char_left = create_char_perso(88, 6, 24, 40);
+    perso->char_right = create_char_perso(152, 4, 24, 40);
+    perso->move.y = 1.5;
+    perso->move.x = 1.5;
     perso->move_clock = sfClock_create();
     perso->anim_clock = sfClock_create();
     perso->stat = create_stat_perso(100, 10, 30, 5);
     perso->stat = (stats){100, 100, 30, 5};
     sfSprite_setTextureRect(perso->sprite, perso->char_down);
     sfSprite_setScale(perso->sprite, perso->move);
+    //if (init_fight_perso(perso) == 84)
+    //    return (84);
     return (0);
 }
 

@@ -46,7 +46,7 @@ char *set_magic_str(scene_t *scene)
 
     if (str == NULL)
         return (NULL);
-    my_strcpy(str, "magic = ");
+    my_strcpy(str, "speed = ");
     my_strcat(str, int_to_char(scene->perso->stat.magic));
     return (str);
 }

@@ -28,15 +28,16 @@ void create_zone_enn(obj_t *ennemie, int zone)
 
 void create_ennemie(obj_t *ennemie)
 {
-    ennemie->texture = sfTexture_createFromFile("assets/textures/link.png", NULL);
-    ennemie->char_down = create_char_perso(0, 120, 16, 16);
-    ennemie->char_up = create_char_perso(0, 120 + 61, 16, 16);
-    ennemie->char_left = create_char_perso(0, 120 + 30, 16, 16);
-    ennemie->char_right = create_char_perso(0, 120 + 90, 16, 16);
+    ennemie->texture = sfTexture_createFromFile("assets/textures/player_3.png", NULL);
+    ennemie->char_down = create_char_perso(8, 4, 24, 44);
+    ennemie->char_up = create_char_perso(202, 6, 24, 44);
+    ennemie->char_left = create_char_perso(72, 6, 24, 44);
+    ennemie->char_right = create_char_perso(138, 4, 24, 44);
+    ennemie->stat = (stats){100, 100, 30, 5};
     ennemie->sprite = sfSprite_create();
     sfSprite_setTexture(ennemie->sprite, ennemie->texture, sfFalse);
-    ennemie->move.y = 3;
-    ennemie->move.x = 3;
+    ennemie->move.y = 1.5;
+    ennemie->move.x = 1.5;
     sfSprite_setTextureRect(ennemie->sprite, ennemie->char_down);
     sfSprite_setScale(ennemie->sprite, ennemie->move);
 }
@@ -53,6 +54,7 @@ int init_ennemie(scene_t *scene)
     pos.y = 500;
     create_ennemie(ennemi);
     sfSprite_setPosition(ennemi->sprite, pos);
+    //init_fight_ennemie(scene->ennemi);
     create_zone_enn(ennemi, 150);
     ennemi->anim_clock = sfClock_create();
     ennemi->next = scene->ennemi;

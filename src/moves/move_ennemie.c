@@ -40,7 +40,7 @@ void set_good_rect(scene_t *scene, sfVector2f move, sfIntRect *rect_perso)
         *rect_perso = scene->ennemi->char_up;
     if (i == 0 && move.y > 0)
         *rect_perso = scene->ennemi->char_down;
-    rect_perso->top = rect_perso->top + rect.top;
+    rect_perso->left = rect_perso->left + rect.left;
 }
 
 void follow(scene_t *scene, sfFloatRect pos_enn, sfFloatRect pos_perso)
@@ -58,10 +58,10 @@ void follow(scene_t *scene, sfFloatRect pos_enn, sfFloatRect pos_perso)
     move.y = y / 15;
     set_good_rect(scene, move, &rect_perso);
     if (time > 0.2) {
-        if (rect_perso.top <= 0)
-            rect_perso.top = rect_perso.top + 30;
+        if (rect_perso.left <= 0)
+            rect_perso.left = rect_perso.left + 32;
         else
-            rect_perso.top = 0;
+            rect_perso.left = 0;
         sfSprite_setTextureRect(scene->ennemi->sprite, rect_perso);
         sfSprite_move(scene->ennemi->sprite, move);
         sfCircleShape_move(scene->ennemi->detect_zone, move);

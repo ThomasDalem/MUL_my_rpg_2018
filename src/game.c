@@ -28,10 +28,10 @@ void anim(obj_t *player)
     float time = sfTime_asSeconds(elapsed_time);
 
     if (time > 0.1) {
-        if (rect_perso.top <= 0)
-            rect_perso.top = rect_perso.top + 30;
+        if (rect_perso.left <= 0)
+            rect_perso.left = rect_perso.left + 32;
         else
-            rect_perso.top = 0;
+            rect_perso.left = 0;
         sfSprite_setTextureRect(player->sprite, rect_perso);
         sfClock_restart(player->anim_clock);
     }
@@ -57,6 +57,7 @@ void game(int *gamemode, scene_t *scene)
             *gamemode = allevent(scene, &event, &pause, &invent);
         }
         check_collision(scene);
+        //*gamemode = is_a_figth(scene, &invent, &pause);
     }
     close_window(scene, &pause, gamemode);
 }
