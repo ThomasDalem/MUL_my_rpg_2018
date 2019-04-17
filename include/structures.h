@@ -166,6 +166,7 @@ typedef struct scene_s
     struct obj_s *ennemi;
     struct obj_s *pnj;
     struct object *object;
+    map_obj_t *map_objs;
 } scene_t;
 
 typedef struct structure

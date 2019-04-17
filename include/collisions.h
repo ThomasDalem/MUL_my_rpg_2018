@@ -15,6 +15,6 @@
 
 int will_intersect(sfSprite *sprite1, sfSprite *sprite2, sfVector2f direction);
 int is_colliding(sfFloatRect rect1, sfFloatRect rect2);
-int check_collision(scene_t *scene);
+int check_collision(scene_t *scene, sfVector2f direction);
 
 #endif /* !COLLISIONS_H_ */

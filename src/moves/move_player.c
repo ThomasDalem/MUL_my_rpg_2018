@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include "prototype.h"
 #include "structures.h"
+#include "collisions.h"
 
 static sfIntRect change_animation(obj_t *player, int direction)
 {
@@ -36,6 +37,6 @@ void move_player(scene_t *scene, obj_t *player, int direction)
     sprite_rect = change_animation(player, direction);
     sfSprite_setTextureRect(player->sprite, sprite_rect);
     anim(player);
-    if (!will_collide(player->sprite, scene->ennemi->sprite, offset))
+    if (!check_collision(scene, offset))
         sfSprite_move(player->sprite, offset);
 }
