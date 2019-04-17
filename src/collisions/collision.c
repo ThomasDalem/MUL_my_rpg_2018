@@ -24,7 +24,6 @@ int will_collide(sfSprite *sprite1, sfSprite *sprite2, sfVector2f direction)
     sfFloatRect rect1 = sfSprite_getGlobalBounds(sprite1);
     sfFloatRect rect2 = sfSprite_getGlobalBounds(sprite2);
 
-    direction = direction;
     rect1.top += direction.y;
     rect1.left += direction.x;
     if (is_colliding(rect1, rect2))

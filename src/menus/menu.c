@@ -40,6 +40,7 @@ void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
 
 int init_menu_scene(scene_t *scene)
 {
+    scene->perso = NULL;
     scene->button = malloc(sizeof(but_s) * 3);
     if (scene->button == NULL)
         return (84);
