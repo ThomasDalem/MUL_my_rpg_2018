@@ -56,7 +56,6 @@ void game(int *gamemode, scene_t *scene)
         while (sfRenderWindow_pollEvent(scene->window, &event)) {
             *gamemode = allevent(scene, &event, &pause, &invent);
         }
-        check_collision(scene);
         //*gamemode = is_a_figth(scene, &invent, &pause);
     }
     close_window(scene, &pause, gamemode);

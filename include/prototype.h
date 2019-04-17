@@ -29,7 +29,8 @@
 #define LEFT 3
 #define RIGHT 4
 
-void move_player(obj_t *scene, int direction);
+void move_player(scene_t *scene, obj_t *player, int direction);
+int will_collide(sfSprite *sprite1, sfSprite *sprite2, sfVector2f direction);
 
 //anime_ennemie.c
 

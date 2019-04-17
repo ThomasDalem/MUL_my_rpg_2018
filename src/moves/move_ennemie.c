@@ -63,8 +63,10 @@ void follow(scene_t *scene, sfFloatRect pos_enn, sfFloatRect pos_perso)
         else
             rect_perso.left = 0;
         sfSprite_setTextureRect(scene->ennemi->sprite, rect_perso);
-        sfSprite_move(scene->ennemi->sprite, move);
-        sfCircleShape_move(scene->ennemi->detect_zone, move);
+        if (!will_collide(scene->ennemi->sprite, scene->perso->sprite, move)) {
+            sfSprite_move(scene->ennemi->sprite, move);
+            sfCircleShape_move(scene->ennemi->detect_zone, move);
+        }
         sfClock_restart(scene->ennemi->anim_clock);
     }
 }

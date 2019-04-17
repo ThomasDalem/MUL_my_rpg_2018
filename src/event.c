@@ -24,16 +24,16 @@ int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
 
     if (event->type == sfEvtKeyPressed) {
         switch (event->key.code) {
-        case sfKeyA : move_player(scene->perso, LEFT);
+        case sfKeyA : move_player(scene, scene->perso, LEFT);
             break;
-        case sfKeyD : move_player(scene->perso, RIGHT);
+        case sfKeyD : move_player(scene, scene->perso, RIGHT);
             break;
         case sfKeyE : return (inventory_gestion(invent, scene));
-        case sfKeyQ : move_player(scene->perso, LEFT);
+        case sfKeyQ : move_player(scene, scene->perso, LEFT);
             break;
-        case sfKeyS : move_player(scene->perso, DOWN);
+        case sfKeyS : move_player(scene, scene->perso, DOWN);
             break;
-        case sfKeyZ : move_player(scene->perso, UP);
+        case sfKeyZ : move_player(scene, scene->perso, UP);
             break;
         case sfKeyT : start_discuss(scene);
             break;

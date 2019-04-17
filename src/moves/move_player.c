@@ -5,21 +5,23 @@
 ** move_player
 */
 
+#include <stdio.h>
 #include "prototype.h"
 #include "structures.h"
+#include "collisions.h"
 
 static sfIntRect change_animation(obj_t *player, int direction)
 {
     sfIntRect sprite_rect = sfSprite_getTextureRect(player->sprite);
 
-    sprite_rect.top = (direction == UP) ? 214: sprite_rect.top;
-    sprite_rect.top = (direction == DOWN) ? 24: sprite_rect.top;
-    sprite_rect.top = (direction == LEFT) ? 88: sprite_rect.top;
-    sprite_rect.top = (direction == RIGHT) ? 152: sprite_rect.top;
+    sprite_rect.top = (direction == UP) ? 214 : sprite_rect.top;
+    sprite_rect.top = (direction == DOWN) ? 24 : sprite_rect.top;
+    sprite_rect.top = (direction == LEFT) ? 88 : sprite_rect.top;
+    sprite_rect.top = (direction == RIGHT) ? 152 : sprite_rect.top;
     return (sprite_rect);
 }
 
-void move_player(obj_t *player, int direction)
+void move_player(scene_t *scene, obj_t *player, int direction)
 {
     sfVector2f offset = {0, 0};
     sfIntRect sprite_rect;
@@ -31,5 +33,6 @@ void move_player(obj_t *player, int direction)
     sprite_rect = change_animation(player, direction);
     sfSprite_setTextureRect(player->sprite, sprite_rect);
     anim(player);
-    sfSprite_move(player->sprite, offset);
+    if (!check_collision(scene, offset))
+        sfSprite_move(player->sprite, offset);
 }
