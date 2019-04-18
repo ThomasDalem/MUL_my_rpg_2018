@@ -43,9 +43,9 @@ static int init_perso(obj_t *perso)
     perso->move_clock = sfClock_create();
     perso->anim_clock = sfClock_create();
     perso->stat = create_stat_perso(100, 10, 30, 5);
-    perso->stat = (stats){100, 100, 30, 5};
     sfSprite_setTextureRect(perso->sprite, perso->char_down);
     sfSprite_setScale(perso->sprite, perso->move);
+    sfSprite_setPosition(perso->sprite, (sfVector2f){600, 600});
     if (init_fight_perso(perso) == 84)
         return (84);
     return (0);
