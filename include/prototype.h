@@ -24,13 +24,12 @@
 #include "structures.h"
 #include "my.h"
 
-#define UP 1
-#define DOWN 2
-#define LEFT 3
-#define RIGHT 4
+static const int UP = 1;
+static const int DOWN = 2;
+static const int LEFT = 3;
+static const int RIGHT = 4;
 
 void move_player(scene_t *scene, obj_t *player, int direction);
-int will_collide(sfSprite *sprite1, sfSprite *sprite2, sfVector2f direction);
 
 //anime_ennemie.c
 

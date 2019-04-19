@@ -25,6 +25,7 @@ typedef struct map_s
     struct map_s *down;
     struct map_s *left;
     struct map_s *right;
+    struct map_s (*load_map) ();
 } map_t;
 
 typedef struct musics
@@ -172,16 +173,10 @@ typedef struct inventory
     struct button_s **equipement;
 } inv_t;
 
-/*typedef struct options
-{
-    bool musics;
-    } option;*/
-
 typedef struct scene_s
 {
     sfRenderWindow *window;
     musics *music;
-    option *option;
     struct button_s **button;
     struct obj_s *perso;
     struct obj_s *ennemi;
