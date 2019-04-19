@@ -181,7 +181,7 @@ typedef struct scene_s
 {
     sfRenderWindow *window;
     musics *music;
-    option *option;
+    //option *option;
     struct button_s **button;
     struct obj_s *perso;
     struct obj_s *ennemi;

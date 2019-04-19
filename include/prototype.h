@@ -37,6 +37,9 @@ int will_collide(sfSprite *sprite1, sfSprite *sprite2, sfVector2f direction);
 //close.c
 void close_window(scene_t *scene, pause_s *pause, int *gamemode);
 
+//collisions/collision.c
+int is_colliding(sfFloatRect rect1, sfFloatRect rect2);
+
 //discuss.c
 void start_discuss(scene_t *scene);
 
@@ -45,6 +48,12 @@ void disp_scene(scene_t *scene);
 
 //event.c
 int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
+
+//fight/fight_event.c
+int fight_event(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
+
+//fight/fight_move.c
+void move_fight(obj_t *player, int direction);
 
 //free/free_global.c
 int free_global(scene_t *scene);
@@ -72,6 +81,9 @@ stats create_stat_perso(int life, int attack, int defense, int magic);
 //initialisation/init_ennemie.c
 int init_ennemie(scene_t *scene);
 void create_zone_enn(obj_t *ennemie, int zone);
+
+//initialisation/init_fight_perso.c
+int init_fight_perso(obj_t *perso);
 
 //initialisation/init_inventory.c
 int init_inventory(inv_t *invent, scene_t *scene);
