@@ -172,10 +172,10 @@ typedef struct inventory
     struct button_s **equipement;
 } inv_t;
 
-typedef struct options
+/*typedef struct options
 {
     bool musics;
-} option;
+    } option;*/
 
 typedef struct scene_s
 {
