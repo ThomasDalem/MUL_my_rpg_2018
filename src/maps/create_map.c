@@ -12,13 +12,14 @@
 void create_map(map_t *map)
 {
     char *path = "assets/textures/map_1.jpg";
-    char *path_object = "assets/textures/objects.png";
+    char *path_shower = "assets/textures/objects/wall_map_1.png";
+    char *path_dispenser = "assets/textures/objects/desk.png";
 
     map->texture = sfTexture_createFromFile(path, NULL);
     map->sprite = sfSprite_create();
     sfSprite_setTexture(map->sprite, map->texture, sfFalse);
-    map->objects = add_objects(path_object, 500, 500, map->objects);
-    map->objects = add_objects(path_object, 1000, 1000, map->objects);
+    map->objects = add_objects(path_shower, 0, 0, map->objects);
+    map->objects = add_objects(path_dispenser, 500, 600, map->objects);
 }
 
 map_obj_t *add_objects(char *path, int x, int y, map_obj_t *next)

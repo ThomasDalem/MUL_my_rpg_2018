@@ -14,6 +14,8 @@ void disp_scene(scene_t *scene)
 
     sfRenderWindow_clear(scene->window, sfBlack);
     sfRenderWindow_drawSprite(scene->window, scene->map->sprite, NULL);
+    sfRenderWindow_drawSprite(scene->window, scene->map->objects->sprite, NULL);
+    sfRenderWindow_drawSprite(scene->window, scene->map->objects->next->sprite, NULL);
     sfRenderWindow_drawSprite(scene->window, scene->perso->sprite, NULL);
     while (ennemie) {
         sfRenderWindow_drawSprite(scene->window, ennemie->sprite, NULL);

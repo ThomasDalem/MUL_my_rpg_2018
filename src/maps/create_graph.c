@@ -15,6 +15,7 @@ map_t *create_node(map_t *prev_node)
 
     if (!node)
         return (NULL);
+    node->objects = NULL;
     return (node);
 }
 
