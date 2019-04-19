@@ -172,12 +172,18 @@ typedef struct inventory
     struct button_s **equipement;
 } inv_t;
 
+typedef struct options
+{
+    bool musics;
+} option;
+
 typedef struct scene_s
 {
     sfRenderWindow *window;
     musics *music;
+    option *option;
     struct button_s **button;
-    struct  obj_s *perso;
+    struct obj_s *perso;
     struct obj_s *ennemi;
     struct obj_s *pnj;
     struct object *object;
