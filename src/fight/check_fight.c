@@ -16,9 +16,8 @@ int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
     while (sfRenderWindow_isOpen(scene->window) && fight == 1) {
         disp_scene(scene);
         move_ennemie(scene);
-        while (sfRenderWindow_pollEvent(scene->window, &event)) {
-            fight = fight_event(scene, &event, &pause, &invent);
-        }
+        while (sfRenderWindow_pollEvent(scene->window, &event))
+            fight = fight_event(scene, &event, pause, invent);
     }
     return (fight);
 }
