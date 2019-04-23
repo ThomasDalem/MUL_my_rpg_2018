@@ -117,10 +117,22 @@ typedef struct stats
 
 typedef struct fight_t
 {
-    sfIntRect char_right;
-    sfIntRect char_left;
+    sfIntRect rect;
+    sfIntRect attack_rect;
+    sfIntRect defense_rect;
+    sfIntRect jump_high_rect;
+    sfIntRect jump_down_rect;
     sfTexture *texture;
     sfVector2f move;
+    int is_attacking;
+    int is_jumping;
+    int is_blocking;
+    struct horloge attack_time;
+    sfClock *jump_clock;
+    sfClock *block_time;
+    sfVector2f jump_vec;
+    int max_char;
+    int beg_char;
 } fight_s;
 
 typedef struct fight_scene

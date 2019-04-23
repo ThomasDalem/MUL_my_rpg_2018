@@ -56,7 +56,5 @@ char **my_str_to_array(char *str);
 int my_lf_char(char *str, char c);
 char *my_cut_str(char *str, int s);
 char *int_to_char(int nb);
-void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite);
-sfIntRect create_char_perso(int top, int left, int width, int height);
-int select_perso(scene_t *scene, int *gamemode);
+
 #endif /* ! MY_H */

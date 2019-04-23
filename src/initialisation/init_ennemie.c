@@ -54,7 +54,8 @@ int init_ennemie(scene_t *scene)
     pos.y = 500;
     create_ennemie(ennemi);
     sfSprite_setPosition(ennemi->sprite, pos);
-    //init_fight_ennemie(scene->ennemi);
+    if (init_fight_perso(ennemi) == 84)
+        return (84);
     create_zone_enn(ennemi, 150);
     ennemi->anim_clock = sfClock_create();
     ennemi->next = scene->ennemi;
