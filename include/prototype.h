@@ -24,13 +24,12 @@
 #include "structures.h"
 #include "my.h"
 
-#define UP 1
-#define DOWN 2
-#define LEFT 3
-#define RIGHT 4
+static const int UP = 1;
+static const int DOWN = 2;
+static const int LEFT = 3;
+static const int RIGHT = 4;
 
 void move_player(scene_t *scene, obj_t *player, int direction);
-int will_collide(sfSprite *sprite1, sfSprite *sprite2, sfVector2f direction);
 
 //anime_ennemie.c
 
@@ -39,6 +38,8 @@ void close_window(scene_t *scene, pause_s *pause, int *gamemode);
 
 //collision
 int check_collision(scene_t *scene, sfVector2f direction);
+//collisions/collision.c
+int is_colliding(sfFloatRect rect1, sfFloatRect rect2);
 
 //discuss.c
 void start_discuss(scene_t *scene);
@@ -48,6 +49,12 @@ void disp_scene(scene_t *scene);
 
 //event.c
 int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
+
+//fight/fight_event.c
+int fight_event(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
+
+//fight/fight_move.c
+void move_fight(obj_t *player, int direction);
 
 //free/free_global.c
 int free_global(scene_t *scene);
@@ -63,6 +70,11 @@ sfRenderWindow *createmywindow(unsigned int width, unsigned int height);
 void game(int *gamemode, scene_t *scene);
 void anim(obj_t *player);
 
+//initialisation/game
+void create_map(map_t *map);
+map_obj_t *add_objects(char *path, int x, int y, map_obj_t *next);
+map_t *create_graph(int x, int y);
+
 //initialisation/init.c
 int init_all(scene_t *scene, pause_s *pause, inv_t *invent);
 stats create_stat_perso(int life, int attack, int defense, int magic);
@@ -70,6 +82,9 @@ stats create_stat_perso(int life, int attack, int defense, int magic);
 //initialisation/init_ennemie.c
 int init_ennemie(scene_t *scene);
 void create_zone_enn(obj_t *ennemie, int zone);
+
+//initialisation/init_fight_perso.c
+int init_fight_perso(obj_t *perso);
 
 //initialisation/init_inventory.c
 int init_inventory(inv_t *invent, scene_t *scene);

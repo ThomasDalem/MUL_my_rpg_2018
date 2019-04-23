@@ -18,13 +18,14 @@ typedef struct map_obj_s
 
 typedef struct map_s
 {
-    sfTexture *background_texture;
-    sfSprite *background_sprite;
+    sfTexture *texture;
+    sfSprite *sprite;
     map_obj_t *objects;
     struct map_s *up;
     struct map_s *down;
     struct map_s *left;
     struct map_s *right;
+    struct map_s (*load_map) ();
 } map_t;
 
 typedef struct musics
@@ -188,13 +189,14 @@ typedef struct scene_s
 {
     sfRenderWindow *window;
     musics *music;
+    //option *option;
     struct button_s **button;
-    struct  obj_s *perso;
+    struct obj_s *perso;
     struct obj_s *ennemi;
     struct obj_s *pnj;
     struct object *object;
     struct fight_scene *fight_scene;
-    map_obj_t *map_objs;
+    struct map_s *map;
 } scene_t;
 
 typedef struct structure

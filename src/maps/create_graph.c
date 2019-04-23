@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "prototype.h"
 #include "structures.h"
 
 map_t *create_node(map_t *prev_node)
@@ -14,6 +15,7 @@ map_t *create_node(map_t *prev_node)
 
     if (!node)
         return (NULL);
+    node->objects = NULL;
     return (node);
 }
 
@@ -57,5 +59,6 @@ map_t *create_graph(int x, int y)
         link_lines(prev_line, line);
         prev_line = line;
     }
+    create_map(line);
     return (line);
 }
