@@ -7,6 +7,7 @@
 
 #include "collisions.h"
 #include "prototype.h"
+#include "map.h"
 
 sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
 {
@@ -50,14 +51,14 @@ void game(int *gamemode, scene_t *scene)
         *gamemode = 3;
         return;
     }
-    *gamemode = is_a_fight(scene, &invent, &pause);
+    //*gamemode = is_a_fight(scene, &invent, &pause);
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 1) {
         disp_scene(scene);
         move_ennemie(scene);
-        //*gamemode = is_a_fight(scene, &invent, &pause);
         while (sfRenderWindow_pollEvent(scene->window, &event)) {
             *gamemode = allevent(scene, &event, &pause, &invent);
         }
+        check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
     }
     close_window(scene, &pause, gamemode);
 }

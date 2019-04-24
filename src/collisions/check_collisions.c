@@ -15,10 +15,8 @@ int check_collision_objs(sfSprite *player, map_obj_t *objects, sfVector2f dir)
     sfFloatRect player_rect = sfSprite_getGlobalBounds(player);
 
     while (objects) {
-        if (will_rect_collide(player_rect, objects->collision_rect, dir)) {
-            printf("%f\n", objects->collision_rect.width);
+        if (will_rect_collide(player_rect, objects->collision_rect, dir))
             return (1);
-        }
         objects = objects->next;
     }
     return (0);

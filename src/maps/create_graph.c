@@ -11,11 +11,18 @@
 
 map_t *create_node(map_t *prev_node)
 {
+    static int nb = 0;
     map_t *node = malloc(sizeof(map_t));
 
     if (!node)
         return (NULL);
     node->objects = NULL;
+    node->up = NULL;
+    node->down = NULL;
+    node->left = prev_node;
+    node->right = NULL;
+    node->nbr = nb;
+    nb++;
     return (node);
 }
 
@@ -59,6 +66,5 @@ map_t *create_graph(int x, int y)
         link_lines(prev_line, line);
         prev_line = line;
     }
-    create_map(line);
     return (line);
 }
