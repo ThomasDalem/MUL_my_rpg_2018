@@ -6,6 +6,7 @@
 */
 
 #include "prototype.h"
+#include "collisions.h"
 
 void move_random(scene_t *scene)
 {
@@ -43,19 +44,28 @@ void set_good_rect(scene_t *scene, sfVector2f move, sfIntRect *rect_perso)
     rect_perso->left = rect_perso->left + rect.left;
 }
 
+sfVector2f move_pos(sfFloatRect player_pos, sfFloatRect enemy_pos)
+{
+    sfVector2f offset = {0, 0};
+
+    if (enemy_pos.left - player_pos.left < 0)
+        offset.x = 10;
+    else if (enemy_pos.left - player_pos.left > 0)
+        offset.x = -10;
+    if (enemy_pos.top - player_pos.top < 0)
+        offset.y = 10;
+    else if (enemy_pos.top - player_pos.top > 0)
+        offset.y = -10;
+    return (offset);
+}
+
 void follow(scene_t *scene, sfFloatRect pos_enn, sfFloatRect pos_perso)
 {
-    sfVector2f move;
-    int x;
-    int y;
+    sfVector2f move = move_pos(pos_perso, pos_enn);
     sfIntRect rect_perso = sfSprite_getTextureRect(scene->ennemi->sprite);
     sfTime elapsed_time = sfClock_getElapsedTime(scene->ennemi->anim_clock);
     float time = sfTime_asSeconds(elapsed_time);
 
-    x = (pos_perso.left + pos_perso.width) - (pos_enn.left + pos_enn.width);
-    y = (pos_perso.top + pos_perso.height) - (pos_enn.top + pos_enn.height);
-    move.x = x / 15;
-    move.y = y / 15;
     set_good_rect(scene, move, &rect_perso);
     if (time > 0.2) {
         if (rect_perso.left <= 0)

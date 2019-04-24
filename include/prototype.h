@@ -71,7 +71,6 @@ void anim(obj_t *player);
 
 //initialisation/game
 void create_map(map_t *map);
-map_obj_t *add_objects(char *path, int x, int y, map_obj_t *next);
 map_t *create_graph(int x, int y);
 
 //initialisation/init.c

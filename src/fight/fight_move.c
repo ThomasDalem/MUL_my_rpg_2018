@@ -6,6 +6,7 @@
 */
 
 #include "prototype.h"
+#include "collisions.h"
 
 void anim_rigth_fight(obj_t *player, int move)
 {
