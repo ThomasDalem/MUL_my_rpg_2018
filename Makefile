@@ -7,6 +7,7 @@
 
 SRC =	src/anime_ennemie.c							\
 		src/close.c									\
+		src/create_sprite.c 						\
 		src/discuss.c 								\
 		src/disp.c									\
 		src/collisions/check_collisions.c			\
