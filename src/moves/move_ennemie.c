@@ -6,6 +6,7 @@
 */
 
 #include "prototype.h"
+#include "collisions.h"
 
 void move_random(scene_t *scene)
 {
