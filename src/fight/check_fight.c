@@ -7,9 +7,10 @@
 
 #include "prototype.h"
 
-void disp_fight(scene_t *scene)
+void disp_fight(scene_t *scene, sfSprite *sprite)
 {
     sfRenderWindow_clear(scene->window, sfBlack);
+    sfRenderWindow_drawSprite(scene->window, sprite, NULL);
     sfRenderWindow_drawSprite(scene->window, scene->perso->sprite, NULL);
     sfRenderWindow_drawSprite(scene->window, scene->ennemi->sprite, NULL);
     sfRenderWindow_display(scene->window);
@@ -56,12 +57,15 @@ void attack_condition(scene_t *scene)
 int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
 {
     sfEvent event;
+    sfSprite *fond = create_sprite("assets/textures/fight.png");
+    sfVector2f pos = {0, 0};
     int fight = 1;
 
+    sfSprite_setPosition(fond, pos);
     finish_init_fight_perso(scene->perso, 100, 800);
     finish_init_fight_perso(scene->ennemi, 800, 800);
     while (sfRenderWindow_isOpen(scene->window) && fight == 1) {
-        disp_fight(scene);
+        disp_fight(scene, fond);
         attack_condition(scene);
         jump_condition(scene);
         defense_condition(scene);

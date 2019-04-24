@@ -54,7 +54,6 @@ int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
 int fight_event(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
 
 //fight/fight_move.c
-void move_fight(obj_t *player, int direction);
 
 //free/free_global.c
 int free_global(scene_t *scene);
