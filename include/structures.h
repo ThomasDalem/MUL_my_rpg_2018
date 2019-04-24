@@ -71,6 +71,7 @@ typedef struct pnj
     sfVector2f pos;
     info_t info;
     struct object *object;
+    musics *talk;
 } pnj;
 
 typedef struct button_s
