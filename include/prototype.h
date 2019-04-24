@@ -36,6 +36,8 @@ void move_player(scene_t *scene, obj_t *player, int direction);
 //close.c
 void close_window(scene_t *scene, pause_s *pause, int *gamemode);
 
+//collision
+int check_collision(scene_t *scene, sfVector2f direction);
 //collisions/collision.c
 int is_colliding(sfFloatRect rect1, sfFloatRect rect2);
 
@@ -88,6 +90,7 @@ int init_fight_perso(obj_t *perso);
 int init_inventory(inv_t *invent, scene_t *scene);
 int set_stats_equipement(inv_t *invent);
 int set_equipement(inv_t *invent, scene_t *scene);
+void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite);
 
 //initialisation/init_menu.c
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
@@ -149,5 +152,28 @@ char *set_magic_str(scene_t *scene);
 //tools.c
 int lf_stat(char *str, char **env);
 int my_argvlen(char **argv);
+
+//fight
+void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite);
+sfIntRect create_char_perso(int top, int left, int width, int height);
+int select_perso(scene_t *scene, int *gamemode);
+void finish_init_fight_perso(obj_t *perso, int x, int y);
+int fight_event(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
+void move_fight(scene_t *scene, int direction);
+int is_a_fight(scene_t *scene, inv_t *invent, pause_s *pause);
+
+//action
+void attack(scene_t *scene);
+void jump(scene_t *scene);
+void defense_condition(scene_t *scene);
+void defense(scene_t *scene);
+
+//init_fight
+int init_fight_perso(obj_t *perso);
+void init_right_perso(obj_t *perso);
+void init_left_perso(obj_t *perso);
+
+//orient
+void check_orient(scene_t *scene);
 
 #endif
