@@ -13,6 +13,7 @@ typedef struct map_obj_s
     sfTexture *texture;
     sfSprite *sprite;
     int has_collider;
+    sfFloatRect collision_rect;
     struct map_obj_s *next;
 } map_obj_t;
 

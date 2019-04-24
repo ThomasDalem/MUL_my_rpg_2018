@@ -7,13 +7,18 @@
 
 #include <stdlib.h>
 #include <SFML/Graphics/Sprite.h>
+#include <stdio.h>
 #include "collisions.h"
 
 int check_collision_objs(sfSprite *player, map_obj_t *objects, sfVector2f dir)
 {
+    sfFloatRect player_rect = sfSprite_getGlobalBounds(player);
+
     while (objects) {
-        if (will_collide(player, objects->sprite, dir))
+        if (will_rect_collide(player_rect, objects->collision_rect, dir)) {
+            printf("%f\n", objects->collision_rect.width);
             return (1);
+        }
         objects = objects->next;
     }
     return (0);
