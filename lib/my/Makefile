@@ -13,7 +13,9 @@ SRC =	my_putint_in_str.c	\
 		my_str.c			\
 		my_strlen.c 		\
 		my_strcat.c 		\
-		my_strcmp.c	\
+		my_strmcat.c		\
+		my_getnbr.c			\
+		my_strcmp.c			\
 
 OBJ =	$(SRC:.c=.o)
 

@@ -16,10 +16,6 @@ map_t *get_top_left_map(map_t *maps);
 map_obj_t *add_objects(char *path, int x, int y, map_obj_t *next);
 int check_maps(sfVector2f player_pos, scene_t *scene);
 
-// Maps creation
-void create_map1(map_t *map);
-void create_map2(map_t *map);
-void create_map3(map_t *map);
-void create_map4(map_t *map);
+int init_map(char const *filepath, map_t *map);
 
 #endif /* !MAP_H_ */

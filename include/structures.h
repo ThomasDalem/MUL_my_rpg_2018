@@ -208,7 +208,7 @@ typedef struct map_s
     struct map_s *down;
     struct map_s *left;
     struct map_s *right;
-    void (*load_map)(struct map_s *scene);
+    char *map_file;
 } map_t;
 
 #endif

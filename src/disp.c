@@ -13,7 +13,7 @@ void disp_scene(scene_t *scene)
     obj_t *pnj = scene->pnj;
 
     sfRenderWindow_clear(scene->window, sfBlack);
-    sfRenderWindow_drawSprite(scene->window, scene->map->sprite, NULL);
+    //sfRenderWindow_drawSprite(scene->window, scene->map->sprite, NULL);
     for (map_obj_t *obj = scene->map->objects; obj != NULL; obj = obj->next)
         sfRenderWindow_drawSprite(scene->window, obj->sprite, NULL);
     sfRenderWindow_drawSprite(scene->window, scene->perso->sprite, NULL);

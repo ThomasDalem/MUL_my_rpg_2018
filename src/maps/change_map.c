@@ -27,11 +27,9 @@ int check_maps(sfVector2f player_pos, scene_t *scene)
     next_map = (player_pos.y > 1100) ? scene->map->down : next_map;
     next_map = (player_pos.y < -50) ? scene->map->up : next_map;
     if (next_map) {
-        printf("Map nbr : %d\n", next_map->nbr);
         player_pos = sfSprite_getPosition(scene->perso->sprite);
         player_pos = change_player_pos(next_map, scene->map, player_pos);
         scene->map = next_map;
-        next_map->load_map(next_map);
         sfSprite_setPosition(scene->perso->sprite, player_pos);
     }
     return (0);
