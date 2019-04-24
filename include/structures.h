@@ -161,6 +161,7 @@ typedef struct obj_s
     sfClock *anim_clock;
     struct stats stat;
     struct obj_s *next;
+    musics *talk;
 } obj_t;
 
 typedef struct pause_t
