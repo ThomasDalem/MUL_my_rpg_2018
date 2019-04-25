@@ -22,12 +22,12 @@ char *my_putint_in_str(char *str, int z)
     str = malloc(sizeof(char) * 12);
     while (r != 0) {
         r = r/10;
-        s ++;
+        s++;
     }
     while (str[n] != '\0' && s != 0) {
         str[n] = (z % 10 + '0');
-        n ++;
-        s --;
+        n++;
+        s--;
         z = z / 10;
     }
     str[n] = '\0';

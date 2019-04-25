@@ -167,6 +167,8 @@ typedef struct obj_s
 
 typedef struct pause_t
 {
+    sfTexture *text_back;
+    sfSprite *spr_back;
     sfFont *font;
     sfRectangleShape *filter;
     sfText **txt;
@@ -193,6 +195,8 @@ typedef struct scene_s
     sfRenderWindow *window;
     musics *music;
     //option *option;
+    sfTexture *text_back;
+    sfSprite *spr_back;
     struct button_s **button;
     struct obj_s *perso;
     struct obj_s *ennemi;

@@ -22,7 +22,7 @@ int init_start_button(but_s *button)
     sfTexture *start = sfTexture_createFromFile("assets/textures/start.png", NULL);
 
     pos.x = 773;
-    pos.y = 200;
+    pos.y = 400;
     size.x = 375;
     size.y = 55;
     button->is_clicked = 0;
@@ -43,7 +43,7 @@ int init_end_button(but_s *button)
     sfTexture *start = sfTexture_createFromFile("assets/textures/quit.png", NULL);
 
     pos.x = 860;
-    pos.y = 400;
+    pos.y = 600;
     size.x = 200;
     size.y = 37;
     button->is_clicked = 0;

@@ -84,7 +84,7 @@ int is_a_fight(scene_t *scene, inv_t *invent, pause_s *pause)
     sfFloatRect pos_perso = sfSprite_getGlobalBounds(scene->perso->sprite);
     int i = 1;
 
-    i = start_fight(scene, invent, pause);
+    //i = start_fight(scene, invent, pause);
     /*
     while (scene->ennemi != NULL && i == 1) {
         pos_enn = sfSprite_getGlobalBounds(scene->ennemi->sprite);
@@ -93,6 +93,6 @@ int is_a_fight(scene_t *scene, inv_t *invent, pause_s *pause)
         scene->ennemi = scene->ennemi->next;
     }
     */
-    scene->ennemi = enn;
+    //scene->ennemi = enn;
     return (i);
 }
