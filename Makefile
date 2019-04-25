@@ -7,6 +7,7 @@
 
 SRC =	src/anime_ennemie.c							\
 		src/close.c									\
+		src/create_sprite.c 						\
 		src/discuss.c 								\
 		src/disp.c									\
 		src/collisions/check_collisions.c			\
@@ -16,9 +17,13 @@ SRC =	src/anime_ennemie.c							\
         src/free/music_free.c                   	\
         src/free/perso_free.c                   	\
 		src/game.c									\
+		src/fight/attack.c 							\
 		src/fight/check_fight.c 					\
+		src/fight/defense.c 						\
 		src/fight/fight_event.c 					\
 		src/fight/fight_move.c 						\
+		src/fight/jump.c 							\
+		src/fight/orient.c 							\
 		src/initialisation/init.c					\
 		src/initialisation/init_equipement.c 		\
 		src/initialisation/init_ennemie.c			\

@@ -13,6 +13,7 @@ typedef struct map_obj_s
     sfTexture *texture;
     sfSprite *sprite;
     int has_collider;
+    sfFloatRect collision_rect;
     struct map_obj_s *next;
 } map_obj_t;
 
@@ -25,6 +26,7 @@ typedef struct map_s
     struct map_s *down;
     struct map_s *left;
     struct map_s *right;
+    struct map_s (*load_map) ();
 } map_t;
 
 typedef struct musics
@@ -70,6 +72,7 @@ typedef struct pnj
     sfVector2f pos;
     info_t info;
     struct object *object;
+    musics *talk;
 } pnj;
 
 typedef struct button_s
@@ -117,10 +120,22 @@ typedef struct stats
 
 typedef struct fight_t
 {
-    sfIntRect char_right;
-    sfIntRect char_left;
+    sfIntRect rect;
+    sfIntRect attack_rect;
+    sfIntRect defense_rect;
+    sfIntRect jump_high_rect;
+    sfIntRect jump_down_rect;
     sfTexture *texture;
     sfVector2f move;
+    int is_attacking;
+    int is_jumping;
+    int is_blocking;
+    struct horloge attack_time;
+    sfClock *jump_clock;
+    sfClock *block_time;
+    sfVector2f jump_vec;
+    int max_char;
+    int beg_char;
 } fight_s;
 
 typedef struct fight_scene
@@ -147,6 +162,7 @@ typedef struct obj_s
     sfClock *anim_clock;
     struct stats stat;
     struct obj_s *next;
+    musics *talk;
 } obj_t;
 
 typedef struct pause_t
@@ -171,11 +187,6 @@ typedef struct inventory
     struct button_s **button;
     struct button_s **equipement;
 } inv_t;
-
-/*typedef struct options
-{
-    bool musics;
-    } option;*/
 
 typedef struct scene_s
 {

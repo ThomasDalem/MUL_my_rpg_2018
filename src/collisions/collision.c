@@ -6,6 +6,7 @@
 */
 
 #include <SFML/Graphics/Sprite.h>
+#include <SFML/Graphics/Texture.h>
 #include <unistd.h>
 
 int is_colliding(sfFloatRect rect1, sfFloatRect rect2)
@@ -16,6 +17,15 @@ int is_colliding(sfFloatRect rect1, sfFloatRect rect2)
         rect1.top + rect1.height > rect2.top) {
         return (1);
     }
+    return (0);
+}
+
+int will_rect_collide(sfFloatRect rect1, sfFloatRect rect2, sfVector2f direction)
+{
+    rect1.top += direction.y;
+    rect1.left += direction.x;
+    if (is_colliding(rect1, rect2))
+        return (1);
     return (0);
 }
 
