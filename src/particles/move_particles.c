@@ -10,24 +10,36 @@
 #include <math.h>
 #include "structures.h"
 
-static void move_particle(particle_t *particles)
+static void change_y_pos(particle_t *particle, float beginning_y)
 {
-    sfTime time = sfClock_getElapsedTime(particles->y_clock);
-    float elapsed_time = sfTime_asSeconds(time);
-    sfVector2f pos = sfCircleShape_getPosition(particles->circle);
+    sfVector2f pos = sfCircleShape_getPosition(particle->circle);
+    sfVector2f new_pos;
 
-    particles->velocity.y += 0.1;
-    particles->velocity.x /= 1.01;
-    if (pos.y + particles->velocity.y > 800)
-        particles->velocity.y = 800 - pos.y;
-    if (abs(particles->velocity.x) < 0)
-        particles->velocity.x = 0;
-    if (pos.y >= 800) {
-        sfCircleShape_move(particles->circle, (sfVector2f){0, pos.y - 800});
-        particles->velocity.y = particles->bounce_vel;
-        particles->bounce_vel *= 0.4;
+    if (pos.y + particle->velocity.y > beginning_y + 200)
+        particle->velocity.y = beginning_y + 200 - pos.y;
+    if (pos.y >= beginning_y + 200) {
+        new_pos = (sfVector2f){0, beginning_y + 200 - pos.y};
+        sfCircleShape_move(particle->circle, new_pos);
+        particle->velocity.y = particle->bounce_vel;
+        particle->bounce_vel *= 0.4;
     }
-    sfCircleShape_move(particles->circle, particles->velocity);
+}
+
+static void move_particle(particle_t *particle)
+{
+    sfTime time = sfClock_getElapsedTime(particle->y_clock);
+    float elapsed_time = sfTime_asSeconds(time);
+    sfColor color = sfCircleShape_getFillColor(particle->circle);
+
+    particle->velocity.y += 0.1;
+    particle->velocity.x /= 1.01;
+    color.a = (color.a == 0) ? 0 : color.a - 1;
+    color.g = (color.g == 140) ? 140 : color.g + 1;
+    sfCircleShape_setFillColor(particle->circle, color);
+    if (abs(particle->velocity.x) < 0)
+        particle->velocity.x = 0;
+    change_y_pos(particle, particle->begin_pos.y);
+    sfCircleShape_move(particle->circle, particle->velocity);
 }
 
 void move_particles(particle_t *particles)

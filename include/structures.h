@@ -21,13 +21,13 @@ typedef struct musics
 } musics;
 
 typedef struct particle_s {
+    sfVector2f begin_pos;
+    sfVector2f velocity;
     sfCircleShape *circle;
     sfColor color;
-    sfVector2f velocity;
     float bounce_vel;
-    struct particle_s *next;
     sfClock *move_clock;
-    sfClock *y_clock;
+    struct particle_s *next;
 } particle_t;
 
 typedef struct back_s

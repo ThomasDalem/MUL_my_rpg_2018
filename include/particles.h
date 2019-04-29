@@ -10,7 +10,7 @@
 
 #include "structures.h"
 
-particle_t *create_particles(int number);
+particle_t *create_particles(int number, int x, int y);
 void move_particles(particle_t *particles);
 void free_particles(particle_t *particles);
 
