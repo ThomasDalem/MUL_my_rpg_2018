@@ -17,5 +17,6 @@ map_obj_t *add_objects(char *path, int x, int y, map_obj_t *next);
 int check_maps(sfVector2f player_pos, scene_t *scene);
 
 int init_map(char const *filepath, map_t *map);
+void remove_endline(char *line);
 
 #endif /* !MAP_H_ */

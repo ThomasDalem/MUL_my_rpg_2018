@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** MUL_my_rpg_2018
 ** File description:
-** parser
+** Get objects from map's files
 */
 
 #include <sys/types.h>
@@ -21,13 +21,6 @@ static sfFloatRect add_collision_rect(sfSprite *sprite)
     if (collision_rect.height > 40)
         collision_rect.height -= 40;
     return (collision_rect);
-}
-
-static void remove_endline(char *line)
-{
-    int i = my_strlen(line);
-
-    line[i - 1] = '\0';
 }
 
 static map_obj_t *create_object(map_obj_t *next_obj, FILE *stream)

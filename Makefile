@@ -42,7 +42,8 @@ SRC =	src/anime_ennemie.c							\
 		src/maps/get_top_left_map.c					\
 		src/maps/create_maps.c						\
 		src/maps/change_map.c						\
-		src/parser/parser.c							\
+		src/maps/get_objects.c						\
+		src/maps/remove_endline.c					\
 		src/menus/menu.c							\
 		src/mouse.c									\
 		src/moves/move.c							\
