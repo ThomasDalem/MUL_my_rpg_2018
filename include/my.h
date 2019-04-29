@@ -37,6 +37,7 @@ int my_showstr(char const *str);
 int my_showmem(char const *str, int size);
 char *my_revstr(char *str);
 char *my_strcat(char *dest, char const *src);
+char *my_strmcat(char const *str1, char const *str2);
 char *my_strncat (char *dest, char const *src, int nb);
 int my_printf(char *str, ...);
 char *my_putint_in_str(char *str, int z);
