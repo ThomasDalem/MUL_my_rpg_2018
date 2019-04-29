@@ -8,27 +8,6 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-typedef struct map_obj_s
-{
-    sfTexture *texture;
-    sfSprite *sprite;
-    int has_collider;
-    sfFloatRect collision_rect;
-    struct map_obj_s *next;
-} map_obj_t;
-
-typedef struct map_s
-{
-    sfTexture *texture;
-    sfSprite *sprite;
-    map_obj_t *objects;
-    struct map_s *up;
-    struct map_s *down;
-    struct map_s *left;
-    struct map_s *right;
-    struct map_s (*load_map) ();
-} map_t;
-
 typedef struct musics
 {
     sfMusic *main;
@@ -175,6 +154,8 @@ typedef struct obj_s
 
 typedef struct pause_t
 {
+    sfTexture *text_back;
+    sfSprite *spr_back;
     sfFont *font;
     sfRectangleShape *filter;
     sfText **txt;
@@ -201,6 +182,8 @@ typedef struct scene_s
     sfRenderWindow *window;
     musics *music;
     //option *option;
+    sfTexture *text_back;
+    sfSprite *spr_back;
     struct button_s **button;
     struct obj_s *perso;
     struct obj_s *ennemi;
@@ -219,5 +202,27 @@ typedef struct structure
     vartxt money;
     vartxt score;
 } strct;
+
+typedef struct map_obj_s
+{
+    sfTexture *texture;
+    sfSprite *sprite;
+    int has_collider;
+    sfFloatRect collision_rect;
+    struct map_obj_s *next;
+} map_obj_t;
+
+typedef struct map_s
+{
+    sfTexture *texture;
+    sfSprite *sprite;
+    map_obj_t *objects;
+    int nbr;
+    struct map_s *up;
+    struct map_s *down;
+    struct map_s *left;
+    struct map_s *right;
+    char *map_file;
+} map_t;
 
 #endif

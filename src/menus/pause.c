@@ -39,7 +39,7 @@ static int pause_event(sfEvent *event, scene_t *scene, pause_s *pause)
 static void disp_pause(scene_t *scene, pause_s *pause)
 {
     int i = 0;
-
+    sfRenderWindow_drawSprite(scene->window, pause->spr_back, NULL);
     sfRenderWindow_drawRectangleShape(scene->window, pause->filter, NULL);
     while (pause->txt[i] != NULL) {
         sfRenderWindow_drawText(scene->window, pause->txt[i], NULL);

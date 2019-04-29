@@ -6,20 +6,32 @@
 */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "prototype.h"
 #include "structures.h"
+#include "map.h"
 
-map_t *create_node(map_t *prev_node)
+static map_t *create_node(map_t *prev_node)
 {
+    static int nb = 0;
     map_t *node = malloc(sizeof(map_t));
 
     if (!node)
         return (NULL);
     node->objects = NULL;
+    node->up = NULL;
+    node->down = NULL;
+    node->left = prev_node;
+    node->right = NULL;
+    node->map_file = my_strmcat("./maps/map", int_to_char(nb));
+    node->map_file = my_strmcat(node->map_file, ".map");
+    if (init_map(node->map_file, node) == 84)
+        return (NULL);
+    nb++;
     return (node);
 }
 
-map_t *create_line(int x)
+static map_t *create_line(int x)
 {
     map_t *line = create_node(NULL);
     map_t *cursor = line;
@@ -35,7 +47,7 @@ map_t *create_line(int x)
     return (line);
 }
 
-void link_lines(map_t *top_line, map_t *bottom_line)
+static void link_lines(map_t *top_line, map_t *bottom_line)
 {
     if (!top_line || !bottom_line)
         return;
@@ -59,6 +71,5 @@ map_t *create_graph(int x, int y)
         link_lines(prev_line, line);
         prev_line = line;
     }
-    create_map(line);
     return (line);
 }

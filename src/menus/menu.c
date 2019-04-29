@@ -12,10 +12,11 @@ void disp_menu(scene_t *scene)
     int i = 0;
 
     sfRenderWindow_clear(scene->window, sfBlack);
+    sfRenderWindow_drawSprite(scene->window, scene->spr_back, NULL);
     while (scene->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window,
                                           scene->button[i]->but, NULL);
-        i ++;
+        i++;
     }
     sfRenderWindow_display(scene->window);
 }
@@ -44,6 +45,8 @@ void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
 
 int init_menu_scene(scene_t *scene)
 {
+    char *path_back = "assets/textures/menu.jpg";
+
     scene->perso = NULL;
     scene->ennemi = NULL; 
     scene->button = malloc(sizeof(but_s) * 3);
@@ -54,6 +57,9 @@ int init_menu_scene(scene_t *scene)
     scene->button[2] = NULL;
     if (scene->button[0] == NULL || scene->button[1] == NULL)
         return (84);
+    scene->text_back = sfTexture_createFromFile(path_back, NULL);
+    scene->spr_back = sfSprite_create();
+    sfSprite_setTexture(scene->spr_back, scene->text_back, sfFalse);
     init_start_button(scene->button[0]);
     init_end_button(scene->button[1]);
     return (0);
@@ -66,7 +72,7 @@ void destroy_menu(scene_t *scene, int *gamemode)
     while (scene->button[i] != NULL) {
         sfRectangleShape_destroy(scene->button[i]->but);
         free(scene->button[i]);
-        i ++;
+        i++;
     }
     free(scene->button);
     if (*gamemode == 3)

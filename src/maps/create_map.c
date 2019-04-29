@@ -19,7 +19,7 @@ static sfFloatRect add_collision_rect(sfSprite *sprite)
     return (collision_rect);
 }
 
-static map_obj_t *add_objects(char *path, int x, int y, map_obj_t *next)
+map_obj_t *add_objects(char *path, int x, int y, map_obj_t *next)
 {
     map_obj_t *object = malloc(sizeof(map_obj_t));
     sfFloatRect col_rect;
@@ -36,15 +36,3 @@ static map_obj_t *add_objects(char *path, int x, int y, map_obj_t *next)
     return (object);
 }
 
-void create_map(map_t *map)
-{
-    char *path = "assets/textures/map_1.jpg";
-    char *path_wall = "assets/textures/objects/wall_map_1.png";
-    char *path_dispenser = "assets/textures/objects/desk.png";
-
-    map->texture = sfTexture_createFromFile(path, NULL);
-    map->sprite = sfSprite_create();
-    sfSprite_setTexture(map->sprite, map->texture, sfFalse);
-    map->objects = add_objects(path_wall, 0, 0, map->objects);
-    map->objects = add_objects(path_dispenser, 500, 600, map->objects);
-}

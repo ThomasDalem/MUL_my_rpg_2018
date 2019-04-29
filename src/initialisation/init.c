@@ -6,6 +6,7 @@
 */
 
 #include "prototype.h"
+#include "map.h"
 
 sfIntRect create_char_perso(int top, int left, int width, int height)
 {
@@ -61,8 +62,7 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent)
 
     if (init_pause(pause) == 84)
         return (84);
-    scene->map = create_graph(1, 1);
-    create_map(scene->map);
+    scene->map = get_top_left_map(create_graph(2, 2));
     if (init_perso(scene->perso) == 84)
         return (84);
     if (init_inventory(invent, scene) == 84)

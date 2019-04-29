@@ -84,15 +84,20 @@ static int init_quitgame(pause_s *pause)
 
 int init_pause(pause_s *pause)
 {
+    char *path_back = "assets/textures/menu.jpg";
+
     init_filter(pause);
     pause->font = sfFont_createFromFile("./assets/texts/pause.ttf");
     pause->txt = malloc(sizeof(sfText *) * 4);
     if (pause->txt == NULL)
         return (84);
     pause->txt[0] = sfText_create();
-    pause->txt[1]= sfText_create();
+    pause->txt[1] = sfText_create();
     pause->txt[2] = sfText_create();
     pause->txt[3] = NULL;
+    pause->text_back = sfTexture_createFromFile(path_back, NULL);
+    pause->spr_back = sfSprite_create();
+    sfSprite_setTexture(pause->spr_back, pause->text_back, sfFalse);
     if (init_resume(pause) == 84 || init_quit(pause) == 84 ||
         init_quitgame(pause) == 84)
         return (84);
