@@ -8,11 +8,27 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
+#include <SFML/Graphics/Color.h>
+#include <SFML/Graphics/Sprite.h>
+#include <SFML/Audio/Sound.h>
+#include <SFML/System/Clock.h>
+#include <SFML/Window/Event.h>
+
 typedef struct musics
 {
     sfMusic *main;
     sfTime time_cl;
 } musics;
+
+typedef struct particle_s {
+    sfCircleShape *circle;
+    sfColor color;
+    sfVector2f velocity;
+    float bounce_vel;
+    struct particle_s *next;
+    sfClock *move_clock;
+    sfClock *y_clock;
+} particle_t;
 
 typedef struct back_s
 {
