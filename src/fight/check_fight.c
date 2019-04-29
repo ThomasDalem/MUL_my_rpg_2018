@@ -91,9 +91,9 @@ int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
         attack_condition(scene->ennemi);
         defense_condition(scene->ennemi);
         ennemi_action(scene);
-        while (sfRenderWindow_pollEvent(scene->window, &event)) 
-            fight = fight_event(scene, &event, pause, invent);
         fight = check_alive(scene);
+        while (sfRenderWindow_pollEvent(scene->window, &event) && fight == 1) 
+            fight = fight_event(scene, &event, pause, invent);
     }
     return (fight);
 }
