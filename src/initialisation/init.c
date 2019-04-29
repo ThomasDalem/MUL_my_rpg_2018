@@ -22,14 +22,14 @@ stats create_stat_perso(int life, int attack, int defense, int magic)
 {
     stats stat;
 
-    stat.max_life = life;
+    stat.life = life;
     stat.attack = attack;
     stat.defense = defense;
     stat.magic = magic;
     return (stat);
 }
 
-static int init_perso(obj_t *perso)
+int init_perso(obj_t *perso)
 {
     perso->sprite = sfSprite_create();
     perso->texture = sfTexture_createFromFile("assets/textures/player.png", NULL);
@@ -46,6 +46,7 @@ static int init_perso(obj_t *perso)
     sfSprite_setTextureRect(perso->sprite, perso->char_down);
     sfSprite_setScale(perso->sprite, perso->move);
     sfSprite_setPosition(perso->sprite, (sfVector2f){600, 600});
+    perso->text.phrase = sfText_create();
     if (init_fight_perso(perso) == 84)
         return (84);
     return (0);
@@ -56,6 +57,7 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent)
     sfRenderWindow_setFramerateLimit(scene->window, 60);
     scene->ennemi = NULL;
     scene->pnj = NULL;
+    scene->perso = malloc(sizeof(obj_t));
 
     if (init_pause(pause) == 84)
         return (84);

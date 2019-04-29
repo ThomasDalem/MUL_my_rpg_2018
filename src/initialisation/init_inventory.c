@@ -13,10 +13,10 @@ int set_text_inventory(inv_t *invent, scene_t *scene)
     invent->defense = sfText_create();
     invent->magic = sfText_create();
     invent->life = sfText_create();
-    sfText_setString(invent->life, set_life_str(scene));
-    sfText_setString(invent->attack, set_attack_str(scene));
-    sfText_setString(invent->defense, set_defense_str(scene));
-    sfText_setString(invent->magic, set_magic_str(scene));
+    sfText_setString(invent->life, set_life_str(scene->perso));
+    sfText_setString(invent->attack, set_attack_str(scene->perso));
+    sfText_setString(invent->defense, set_defense_str(scene->perso));
+    sfText_setString(invent->magic, set_magic_str(scene->perso));
     sfText_setFont(invent->life, invent->font);
     sfText_setFont(invent->attack, invent->font);
     sfText_setFont(invent->defense, invent->font);

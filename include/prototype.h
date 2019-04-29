@@ -23,6 +23,8 @@
 #include <math.h>
 #include "structures.h"
 #include "my.h"
+#include "inventory.h"
+#include "fight.h"
 
 static const int UP = 1;
 static const int DOWN = 2;
@@ -34,10 +36,11 @@ void move_player(scene_t *scene, obj_t *player, int direction);
 //anime_ennemie.c
 
 //close.c
-void close_window(scene_t *scene, pause_s *pause, int *gamemode);
+void close_window(scene_t *scene, pause_s *pause, int *gamemode, inv_t *invent);
 
 //collision
 int check_collision(scene_t *scene, sfVector2f direction);
+int will_collide(sfSprite *sprite1, sfSprite *sprite2, sfVector2f direction);
 //collisions/collision.c
 int is_colliding(sfFloatRect rect1, sfFloatRect rect2);
 
@@ -46,14 +49,9 @@ void start_discuss(scene_t *scene);
 
 //disp
 void disp_scene(scene_t *scene);
-
+void disp_hud(scene_t *scene, obj_t *perso, int x, int y);
 //event.c
 int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
-
-//fight/fight_event.c
-int fight_event(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
-
-//fight/fight_move.c
 
 //free/free_global.c
 int free_global(scene_t *scene);
@@ -142,29 +140,14 @@ int pause_function(scene_t *scene, pause_s *pause);
 //select.c
 
 //set_str.c
-char *set_attack_str(scene_t *scene);
-char *set_life_str(scene_t *scene);
-char *set_defense_str(scene_t *scene);
-char *set_magic_str(scene_t *scene);
+char *set_attack_str(obj_t *perso);
+char *set_life_str(obj_t *perso);
+char *set_defense_str(obj_t *perso);
+char *set_magic_str(obj_t *perso);
 
 //tools.c
 int lf_stat(char *str, char **env);
 int my_argvlen(char **argv);
-
-//fight
-void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite);
-sfIntRect create_char_perso(int top, int left, int width, int height);
-int select_perso(scene_t *scene, int *gamemode);
-void finish_init_fight_perso(obj_t *perso, int x, int y);
-int fight_event(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
-void move_fight(scene_t *scene, int direction);
-int is_a_fight(scene_t *scene, inv_t *invent, pause_s *pause);
-
-//action
-void attack(scene_t *scene);
-void jump(scene_t *scene);
-void defense_condition(scene_t *scene);
-void defense(scene_t *scene);
 
 //init_fight
 int init_fight_perso(obj_t *perso);
@@ -174,4 +157,5 @@ void init_left_perso(obj_t *perso);
 //orient
 void check_orient(scene_t *scene);
 
+sfSprite *create_sprite(char *str);
 #endif

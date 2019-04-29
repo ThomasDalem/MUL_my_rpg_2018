@@ -5,12 +5,18 @@
 ** check_fight
 */
 
-#include "prototype.h"
+#include "fight.h"
 
-void disp_fight(scene_t *scene, sfSprite *sprite)
+void disp_fight(scene_t *scene, sfSprite *sprite, inv_t *invent)
 {
     sfRenderWindow_clear(scene->window, sfBlack);
     sfRenderWindow_drawSprite(scene->window, sprite, NULL);
+    set_text(scene->perso->text.phrase, "PERSO", invent->font, (sfVector2f){10, 10});
+    sfRenderWindow_drawText(scene->window, scene->perso->text.phrase, NULL);
+    disp_hud(scene, scene->perso, 10, 10);
+    set_text(scene->ennemi->text.phrase, "ENNEMIE", invent->font, (sfVector2f){1700, 10});
+    disp_hud(scene, scene->ennemi, 1700, 10);
+    sfRenderWindow_drawText(scene->window, scene->ennemi->text.phrase, NULL);
     sfRenderWindow_drawSprite(scene->window, scene->perso->sprite, NULL);
     sfRenderWindow_drawSprite(scene->window, scene->ennemi->sprite, NULL);
     sfRenderWindow_display(scene->window);
@@ -38,19 +44,30 @@ void jump_condition(scene_t *scene)
     }
 }
 
-void attack_condition(scene_t *scene)
+void chose_ennemi_action(scene_t *scene)
 {
-    sfTime time = sfClock_getElapsedTime(scene->perso->anim_clock);
-    float second = 0;
+    sfVector2f pos_perso = sfSprite_getPosition(scene->perso->sprite);
+    sfVector2f pos_enn = sfSprite_getPosition(scene->ennemi->sprite);
+    int diff = pos_perso.x - pos_enn.x;
 
-    if (scene->perso->fight->is_attacking == 1) {
-        time = sfClock_getElapsedTime(scene->perso->fight->attack_time.clock);
-        second = sfTime_asSeconds(time);
-        if (second > 0.5) {
-            scene->perso->fight->is_attacking = 0;
-            sfClock_restart(scene->perso->fight->attack_time.clock);
-            sfSprite_setTextureRect(scene->perso->sprite, scene->perso->fight->rect);
+    if (scene->ennemi->action.act != 0)
+        return;
+    if ((diff > 0 && diff < 60) || (diff < 0 && diff >= -70)) {
+        if (scene->ennemi->fight->is_attacking != 1) {
+            scene->ennemi->action.act = 1;
+            scene->ennemi->action.prev_act = 0;
         }
+        return;
+    }
+    if (scene->perso->fight->is_blocking == 1) {
+        scene->ennemi->action.act = 4;
+        scene->ennemi->action.prev_act = 4;
+        return;
+    }
+    if (scene->perso->fight->is_attacking == 1) {
+        scene->ennemi->action.act = 0;
+        scene->ennemi->action.prev_act = 3;
+        return;
     }
 }
 
@@ -58,23 +75,45 @@ int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
 {
     sfEvent event;
     sfSprite *fond = create_sprite("assets/textures/fight.png");
-    sfVector2f pos = {0, 0};
     int fight = 1;
 
-    sfSprite_setPosition(fond, pos);
+    sfSprite_setPosition(fond, (sfVector2f){0, 0});
     finish_init_fight_perso(scene->perso, 100, 800);
     finish_init_fight_perso(scene->ennemi, 800, 800);
     while (sfRenderWindow_isOpen(scene->window) && fight == 1) {
-        disp_fight(scene, fond);
-        attack_condition(scene);
+        disp_fight(scene, fond, invent);
+        attack_condition(scene->perso);
         jump_condition(scene);
-        defense_condition(scene);
+        defense_condition(scene->perso);
         check_orient(scene);
-        while (sfRenderWindow_pollEvent(scene->window, &event)) {
+        check_repulse(scene, fond, invent);
+        chose_ennemi_action(scene);
+        attack_condition(scene->ennemi);
+        defense_condition(scene->ennemi);
+        ennemi_action(scene);
+        while (sfRenderWindow_pollEvent(scene->window, &event)) 
             fight = fight_event(scene, &event, pause, invent);
-        }
+        fight = check_alive(scene);
     }
     return (fight);
+}
+
+int check_fight(sfSprite *sprite1, sfSprite *sprite2)
+{
+    sfVector2f up = {0, -5};
+    sfVector2f down = {0, 5};
+    sfVector2f left = {-5, 0};
+    sfVector2f right = {5, 0};
+
+    if (will_collide(sprite1, sprite2, up) == 1)
+        return (1);
+    if (will_collide(sprite1, sprite2, down) == 1)
+        return (1);
+    if (will_collide(sprite1, sprite2, right) == 1)
+        return (1);
+    if (will_collide(sprite1, sprite2, left) == 1)
+        return (1);
+    return (0);
 }
 
 int is_a_fight(scene_t *scene, inv_t *invent, pause_s *pause)
@@ -84,15 +123,12 @@ int is_a_fight(scene_t *scene, inv_t *invent, pause_s *pause)
     sfFloatRect pos_perso = sfSprite_getGlobalBounds(scene->perso->sprite);
     int i = 1;
 
-    i = start_fight(scene, invent, pause);
-    /*
     while (scene->ennemi != NULL && i == 1) {
         pos_enn = sfSprite_getGlobalBounds(scene->ennemi->sprite);
-        if (is_colliding(pos_enn, pos_perso) == 1)
+        if (check_fight(scene->perso->sprite, scene->ennemi->sprite) == 1)
             i = start_fight(scene, invent, pause);
         scene->ennemi = scene->ennemi->next;
     }
-    */
     scene->ennemi = enn;
     return (i);
 }

@@ -31,16 +31,21 @@ void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
             (*gamemode) = 1;
             sfMusic_stop(scene->music->main);
         }
-        if (button_is_clicked(scene->button[1]->but, mouse) == 0)
+        if (button_is_clicked(scene->button[1]->but, mouse) == 0) {
             (*gamemode) = 3;
+            sfMusic_stop(scene->music->main);
+        }
     }
-    if (event->type == sfEvtClosed)
+    if (event->type == sfEvtClosed) {
+        sfMusic_stop(scene->music->main);
         *gamemode = 3;
+    }
 }
 
 int init_menu_scene(scene_t *scene)
 {
     scene->perso = NULL;
+    scene->ennemi = NULL; 
     scene->button = malloc(sizeof(but_s) * 3);
     if (scene->button == NULL)
         return (84);

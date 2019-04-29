@@ -5,7 +5,7 @@
 ** inventory_gestion
 */
 
-#include "prototype.h"
+#include "inventory.h"
 
 void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite)
 {
@@ -15,6 +15,18 @@ void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite)
     sfSprite_setTextureRect(invent->sprite, scene->perso->char_down);
     sfSprite_setPosition(invent->sprite, pos_sprite);
     sfSprite_setScale(invent->sprite, scene->perso->move);
+}
+
+void key_event(sfEvent *event, scene_t *scene, inv_t *invent)
+{
+    sfVector2i mouse;
+
+    if (event->type == sfEvtMouseButtonPressed) {
+        mouse = sfMouse_getPositionRenderWindow(scene->window);
+        check_all_button(invent, scene);
+    }
+    if (event->type == sfEvtMouseButtonReleased)
+        reboot(invent->button);
 }
 
 static int invent_event(sfEvent *event, scene_t *scene, inv_t *invent)
@@ -66,7 +78,7 @@ int inventory_gestion(inv_t *invent, scene_t *scene)
     while (p == 0) {
         sfRenderWindow_clear(scene->window, sfBlack);
         disp_invent(scene, invent);
-        cond_mouse(invent->button, scene);
+        button_disp(invent->button, scene);
         sfRenderWindow_display(scene->window);
         while (sfRenderWindow_pollEvent(scene->window, &event))
             p = invent_event(&event, scene, invent);

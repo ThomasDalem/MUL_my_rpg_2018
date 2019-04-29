@@ -7,13 +7,13 @@
 
 #include "prototype.h"
 
-void reboot(scene_t *scene)
+void reboot(but_s **button)
 {
     int i = 0;
 
-    while (scene->button[i] != NULL) {
-        scene->button[i]->is_clicked = 0;
-        i ++;
+    while (button[i] != NULL) {
+        button[i]->is_clicked = 0;
+        i++;
     }
 }
 

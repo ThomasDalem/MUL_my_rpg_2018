@@ -112,11 +112,18 @@ typedef struct horloge
 
 typedef struct stats
 {
-    int max_life;
+    int life;
     int attack;
     int defense;
     int magic;
 } stats;
+
+typedef struct ai
+{
+    sfVector2f move;
+    int prev_act;
+    int act;
+} ai_t;
 
 typedef struct fight_t
 {
@@ -162,6 +169,7 @@ typedef struct obj_s
     sfClock *anim_clock;
     struct stats stat;
     struct obj_s *next;
+    struct ai action;
     musics *talk;
 } obj_t;
 

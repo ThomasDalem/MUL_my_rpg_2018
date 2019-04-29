@@ -40,7 +40,7 @@ void anim_left_fight(obj_t *player, int move)
     }
 }
 
-static int animation_fight(obj_t *player, int direction)
+int animation_fight(obj_t *player, int direction)
 {
     sfIntRect sprite_rect = sfSprite_getTextureRect(player->sprite);
 
@@ -65,6 +65,7 @@ void move_fight(scene_t *scene, int direction)
         anim_left_fight(scene->perso, move);
     if (direction == RIGHT && scene->perso->fight->is_jumping != 1)
         anim_rigth_fight(scene->perso, move);
+    scene->ennemi->action.move = offset;
     if (second > 0.05) {
         if (!will_collide(scene->perso->sprite, scene->ennemi->sprite, offset))
             sfSprite_move(scene->perso->sprite, offset);

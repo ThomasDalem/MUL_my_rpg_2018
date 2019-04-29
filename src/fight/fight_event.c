@@ -18,9 +18,9 @@ int fight_event(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
             break;
         case sfKeyZ : jump(scene);
             break;
-        case sfKeyK : attack(scene);
+        case sfKeyK : attack(scene->perso, scene->ennemi);
             break;
-        case sfKeyM : defense(scene);
+        case sfKeyM : defense(scene->perso);
             break;
         }
     }

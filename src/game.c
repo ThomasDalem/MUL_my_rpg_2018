@@ -44,22 +44,17 @@ void game(int *gamemode, scene_t *scene)
     inv_t invent;
     int nb_perso;
 
-    nb_perso = select_perso(scene, gamemode);
     *gamemode = init_all(scene, &pause, &invent);
-    if (nb_perso == 84 || nb_perso == 3) {
-        *gamemode = 3;
-        return;
-    }
-    *gamemode = is_a_fight(scene, &invent, &pause);
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 1) {
         disp_scene(scene);
         move_ennemie(scene);
-        //*gamemode = is_a_fight(scene, &invent, &pause);
-        while (sfRenderWindow_pollEvent(scene->window, &event)) {
+        *gamemode = is_a_fight(scene, &invent, &pause);
+        while (sfRenderWindow_pollEvent(scene->window, &event) 
+                && *gamemode == 1) {
             *gamemode = allevent(scene, &event, &pause, &invent);
         }
     }
-    close_window(scene, &pause, gamemode);
+    close_window(scene, &pause, gamemode, &invent);
 }
 
 

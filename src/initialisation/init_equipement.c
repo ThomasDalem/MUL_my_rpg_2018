@@ -15,7 +15,7 @@ int create_string_equip(but_s *button, struct stats equip)
     if (str == NULL)
         return (84);
     my_strcpy(str, "life = ");
-    my_strcat(str, int_to_char(equip.max_life));
+    my_strcat(str, int_to_char(equip.life));
     my_strcat(str, ", attack = ");
     my_strcat(str, int_to_char(equip.attack));
     my_strcat(str, ", defense = ");

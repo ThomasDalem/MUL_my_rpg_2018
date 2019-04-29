@@ -33,13 +33,14 @@ void create_ennemie(obj_t *ennemie)
     ennemie->char_up = create_char_perso(202, 6, 24, 44);
     ennemie->char_left = create_char_perso(72, 6, 24, 44);
     ennemie->char_right = create_char_perso(138, 4, 24, 44);
-    ennemie->stat = (stats){100, 100, 30, 5};
+    ennemie->stat = (stats){100, 30, 30, 5};
     ennemie->sprite = sfSprite_create();
     sfSprite_setTexture(ennemie->sprite, ennemie->texture, sfFalse);
     ennemie->move.y = 1.5;
     ennemie->move.x = 1.5;
     sfSprite_setTextureRect(ennemie->sprite, ennemie->char_down);
     sfSprite_setScale(ennemie->sprite, ennemie->move);
+    ennemie->text.phrase = sfText_create();
 }
 
 int init_ennemie(scene_t *scene)
@@ -58,6 +59,7 @@ int init_ennemie(scene_t *scene)
         return (84);
     create_zone_enn(ennemi, 150);
     ennemi->anim_clock = sfClock_create();
+    ennemi->move_clock = sfClock_create();
     ennemi->next = scene->ennemi;
     scene->ennemi = ennemi;
     return (0);
