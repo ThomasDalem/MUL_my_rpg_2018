@@ -23,6 +23,7 @@ static sfFloatRect add_collision_rect(sfSprite *sprite)
     return (collision_rect);
 }
 
+
 static map_obj_t *create_object(map_obj_t *next_obj, FILE *stream)
 {
     map_obj_t *object = malloc(sizeof(map_obj_t));
@@ -72,6 +73,7 @@ int init_map(char const *filepath, map_t *map)
 
     if (stream == NULL) {
         write(2, "Error open\n", 11);
+        fclose(stream);
         return (84);
     }
     add_objects_to_map(map, stream);

@@ -6,14 +6,13 @@
 */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include "prototype.h"
 #include "structures.h"
 #include "map.h"
 
-static map_t *create_node(map_t *prev_node)
+static map_t *create_node(map_t *prev_node, int nbr)
 {
-    static int nb = 0;
+    char *save = NULL;
     map_t *node = malloc(sizeof(map_t));
 
     if (!node)
@@ -23,23 +22,26 @@ static map_t *create_node(map_t *prev_node)
     node->down = NULL;
     node->left = prev_node;
     node->right = NULL;
-    node->map_file = my_strmcat("./maps/map", int_to_char(nb));
+    node->particles = NULL;
+    node->map_file = my_strmcat("./maps/map", int_to_char(nbr));
+    save = node->map_file;
     node->map_file = my_strmcat(node->map_file, ".map");
+    free(save);
     if (init_map(node->map_file, node) == 84)
         return (NULL);
-    nb++;
     return (node);
 }
 
-static map_t *create_line(int x)
+static map_t *create_line(int x, int nbr)
 {
-    map_t *line = create_node(NULL);
+    map_t *line = create_node(NULL, nbr);
     map_t *cursor = line;
 
     if (!line)
         return (NULL);
     for (int i = 0; i < x; i++) {
-        cursor->right = create_node(cursor);
+        cursor->right = create_node(cursor, nbr);
+        nbr++;
         if (!cursor->right)
             return (NULL);
         cursor = cursor->right;
@@ -63,9 +65,11 @@ map_t *create_graph(int x, int y)
 {
     map_t *line = NULL;
     map_t *prev_line = NULL;
+    int nbr = 0;
 
     for (int i = 0; i < y; i++) {
-        line = create_line(x);
+        line = create_line(x, nbr);
+        nbr += x;
         if (!line)
             return (NULL);
         link_lines(prev_line, line);
