@@ -15,28 +15,30 @@ void disp_menu(scene_t *scene)
     sfRenderWindow_drawSprite(scene->window, scene->spr_back, NULL);
     while (scene->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window,
-                                            scene->button[i]->but, NULL);
-        sfRenderWindow_drawText(scene->window, scene->button[i]->txt, NULL);
-        i++;
+                                          scene->button[i]->but, NULL);
+        i ++;
     }
     sfRenderWindow_display(scene->window);
 }
 
 void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
 {
-    sfVector2i mouse = sfMouse_getPositionRenderWindow(scene->window);
+    sfVector2i mouse;
 
-    if (event->type == sfEvtMouseButtonPressed)
-        check_all_button(scene->button, scene);
-    if (event->type == sfEvtMouseButtonReleased) {
-        if (button_is_clicked(scene->button[0]->but, mouse) == 0)
+    if (event->type == sfEvtMouseButtonPressed) {
+        mouse = sfMouse_getPositionRenderWindow(scene->window);
+        if (button_is_clicked(scene->button[0]->but, mouse) == 0) {
+            sfRectangleShape_setOutlineColor(scene->button[0]->but, sfBlue);
             (*gamemode) = 1;
-        if (button_is_clicked(scene->button[1]->but, mouse) == 0)
+            sfMusic_stop(scene->music->sound);
+        }
+        if (button_is_clicked(scene->button[1]->but, mouse) == 0) {
             (*gamemode) = 3;
-        reboot(scene->button);
+            sfMusic_stop(scene->music->sound);
+        }
     }
     if (event->type == sfEvtClosed) {
-        sfMusic_stop(scene->music->main);
+        sfMusic_stop(scene->music->sound);
         *gamemode = 3;
     }
 }
@@ -70,7 +72,7 @@ void destroy_menu(scene_t *scene, int *gamemode)
     while (scene->button[i] != NULL) {
         sfRectangleShape_destroy(scene->button[i]->but);
         free(scene->button[i]);
-        i++;
+        i ++;
     }
     free(scene->button);
     if (*gamemode == 3)
@@ -83,18 +85,17 @@ int mainscreen(int *gamemode, scene_t *scene)
     int a = 0;
 
     init_music(scene);
-    sfMusic_play(scene->music->main);
+    sfMusic_play(scene->music->sound);
     *gamemode = init_menu_scene(scene);
     if (*gamemode == 84)
         return (84);
-    sfMusic_setLoop(scene->music->main, sfTrue);
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 0) {
         disp_menu(scene);
-        button_disp(scene->button, scene);
+        sfMusic_setLoop(scene->music->sound, sfTrue);
+        cond_mouse(scene->button, scene);
         while (sfRenderWindow_pollEvent(scene->window, &click))
             screenevent(&click, scene, gamemode);
     }
-    sfMusic_stop(scene->music->main);
     destroy_menu(scene, gamemode);
     return (0);
 }

@@ -19,7 +19,7 @@ sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
     video_mode.height = height;
     video_mode.bitsPerPixel = 32;
     window = sfRenderWindow_create(video_mode,
-                                   "My_RPG/v0.4.2", sfDefaultStyle, NULL);
+                                   "My_RPG/v1.0.1", sfDefaultStyle, NULL);
     return (window);
 }
 

@@ -28,8 +28,7 @@ int init_pnj_phrase(obj_t *pnj)
     pnj->text.font = sfFont_createFromFile("assets/texts/Timeless.ttf");
     pnj->text.phrase = sfText_create();
     pnj->talk = malloc(sizeof(musics));
-    pnj->talk = sfMusic_createFromFile("assets/sound/talk_pnj.ogg"); //animal crossing
-
+    pnj->talk->sound = sfMusic_createFromFile("assets/sound/talk_pnj.ogg"); //animal crossing
 }
 
 void create_pnj(obj_t *pnj)
