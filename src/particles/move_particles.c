@@ -27,14 +27,12 @@ static void change_y_pos(particle_t *particle, float beginning_y)
 
 static void move_particle(particle_t *particle)
 {
-    sfTime time = sfClock_getElapsedTime(particle->y_clock);
-    float elapsed_time = sfTime_asSeconds(time);
     sfColor color = sfCircleShape_getFillColor(particle->circle);
 
     particle->velocity.y += 0.1;
     particle->velocity.x /= 1.01;
     color.a = (color.a == 0) ? 0 : color.a - 1;
-    color.g = (color.g == 140) ? 140 : color.g + 1;
+    color.g = (color.g == 0) ? 140 : color.g - 1;
     sfCircleShape_setFillColor(particle->circle, color);
     if (abs(particle->velocity.x) < 0)
         particle->velocity.x = 0;

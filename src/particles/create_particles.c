@@ -17,14 +17,13 @@ static void init_particle(particle_t *particle, int x, int y)
 
     particle->begin_pos = (sfVector2f){x + rand() % 5, y + rand() % 5};
     particle->velocity = velocity;
-    particle->color = sfRed;
+    particle->color = sfYellow;
     particle->circle = sfCircleShape_create();
     sfCircleShape_setFillColor(particle->circle, particle->color);
     sfCircleShape_setPosition(particle->circle, particle->begin_pos);
-    sfCircleShape_setRadius(particle->circle, 2);
+    sfCircleShape_setRadius(particle->circle, rand() % 3);
     particle->move_clock = sfClock_create();
-    particle->bounce_vel = -5.0;
-    particle->y_clock = sfClock_create();
+    particle->bounce_vel = -2.0;
 }
 
 static particle_t *create_particle(particle_t *next, int x,  int y)

@@ -18,7 +18,6 @@ void free_particles(particle_t *particles)
         particles = particles->next;
         sfCircleShape_destroy(save->circle);
         sfClock_destroy(save->move_clock);
-        sfClock_destroy(save->y_clock);
         free(save);
     }
 }
