@@ -168,6 +168,8 @@ typedef struct obj_s
     struct obj_s *next;
     struct ai action;
     musics *talk;
+    musics *talk2;
+    musics *talk3;
 } obj_t;
 
 typedef struct pause_t

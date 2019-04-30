@@ -86,16 +86,17 @@ int mainscreen(int *gamemode, scene_t *scene)
 
     init_music(scene);
     sfMusic_play(scene->music->sound);
+    sfMusic_setLoop(scene->music->sound, sfTrue);
     *gamemode = init_menu_scene(scene);
     if (*gamemode == 84)
         return (84);
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 0) {
         disp_menu(scene);
-        sfMusic_setLoop(scene->music->sound, sfTrue);
         cond_mouse(scene->button, scene);
         while (sfRenderWindow_pollEvent(scene->window, &click))
             screenevent(&click, scene, gamemode);
     }
+    sfMusic_stop(scene->music->sound);
     destroy_menu(scene, gamemode);
     return (0);
 }
