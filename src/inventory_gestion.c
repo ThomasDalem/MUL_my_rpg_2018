@@ -23,7 +23,7 @@ void key_event(sfEvent *event, scene_t *scene, inv_t *invent)
 
     if (event->type == sfEvtMouseButtonPressed) {
         mouse = sfMouse_getPositionRenderWindow(scene->window);
-        check_all_button(invent, scene);
+        check_all_button(invent->button, scene);
     }
     if (event->type == sfEvtMouseButtonReleased)
         reboot(invent->button);

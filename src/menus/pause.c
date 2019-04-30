@@ -10,14 +10,10 @@
 static int check_click(scene_t *scene, pause_s *pause)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(scene->window);
-    sfFloatRect text;
     int i = 0;
 
-    while (pause->txt[i] != NULL) {
-        text = sfText_getGlobalBounds(pause->txt[i]);
-        if (mouse.x > text.left && mouse.x < text.left + text.width &&
-            mouse.y > text.top && mouse.y < text.top + text.height) {
-            sfText_setFillColor(pause->txt[i], sfRed);
+    while (pause->button[i] != NULL) {
+        if (button_is_clicked(pause->button[i]->but, mouse) == 0) {
             return (i + 1);
         }
         i++;
@@ -25,9 +21,13 @@ static int check_click(scene_t *scene, pause_s *pause)
     return (0);
 }
 
+
 static int pause_event(sfEvent *event, scene_t *scene, pause_s *pause)
 {
-    if (event->type == sfEvtMouseButtonPressed) {
+
+    if (event->type == sfEvtMouseButtonPressed)
+        check_all_button(pause->button, scene);
+    if (event->type == sfEvtMouseButtonReleased) {
         return (check_click(scene, pause));
     }
     if (event->type == sfEvtClosed) {
@@ -39,28 +39,12 @@ static int pause_event(sfEvent *event, scene_t *scene, pause_s *pause)
 static void disp_pause(scene_t *scene, pause_s *pause)
 {
     int i = 0;
+
     sfRenderWindow_drawSprite(scene->window, pause->spr_back, NULL);
     sfRenderWindow_drawRectangleShape(scene->window, pause->filter, NULL);
-    while (pause->txt[i] != NULL) {
-        sfRenderWindow_drawText(scene->window, pause->txt[i], NULL);
-        i++;
-    }
-}
-
-static void check_pos(scene_t *scene, pause_s *pause)
-{
-    sfVector2i mouse = sfMouse_getPositionRenderWindow(scene->window);
-    sfFloatRect text;
-    int i = 0;
-
-    while (pause->txt[i] != NULL) {
-        text = sfText_getGlobalBounds(pause->txt[i]);
-        if (mouse.x > text.left && mouse.x < text.left + text.width &&
-            mouse.y > text.top && mouse.y < text.top + text.height) {
-            sfText_setFillColor(pause->txt[i], sfBlue);
-            return;
-        }
-        sfText_setFillColor(pause->txt[i], sfWhite);
+    while (pause->button[i] != NULL) {
+        sfRenderWindow_drawRectangleShape(scene->window, pause->button[i]->but, NULL);
+        sfRenderWindow_drawText(scene->window, pause->button[i]->txt, NULL);
         i++;
     }
 }
@@ -74,7 +58,7 @@ int pause_function(scene_t *scene, pause_s *pause)
         sfRenderWindow_clear(scene->window, sfBlack);
         disp_pause(scene, pause);
         sfRenderWindow_display(scene->window);
-        check_pos(scene, pause);
+        button_disp(pause->button, scene);
         while (sfRenderWindow_pollEvent(scene->window, &event))
             p = pause_event(&event, scene, pause);
     }

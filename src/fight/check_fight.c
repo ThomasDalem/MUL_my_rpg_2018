@@ -44,33 +44,6 @@ void jump_condition(scene_t *scene)
     }
 }
 
-void chose_ennemi_action(scene_t *scene)
-{
-    sfVector2f pos_perso = sfSprite_getPosition(scene->perso->sprite);
-    sfVector2f pos_enn = sfSprite_getPosition(scene->ennemi->sprite);
-    int diff = pos_perso.x - pos_enn.x;
-
-    if (scene->ennemi->action.act != 0)
-        return;
-    if ((diff > 0 && diff < 60) || (diff < 0 && diff >= -70)) {
-        if (scene->ennemi->fight->is_attacking != 1) {
-            scene->ennemi->action.act = 1;
-            scene->ennemi->action.prev_act = 0;
-        }
-        return;
-    }
-    if (scene->perso->fight->is_blocking == 1) {
-        scene->ennemi->action.act = 4;
-        scene->ennemi->action.prev_act = 4;
-        return;
-    }
-    if (scene->perso->fight->is_attacking == 1) {
-        scene->ennemi->action.act = 0;
-        scene->ennemi->action.prev_act = 3;
-        return;
-    }
-}
-
 int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
 {
     sfEvent event;
@@ -80,6 +53,7 @@ int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
     sfSprite_setPosition(fond, (sfVector2f){0, 0});
     finish_init_fight_perso(scene->perso, 100, 800);
     finish_init_fight_perso(scene->ennemi, 800, 800);
+    sfClock_restart(scene->ennemi->action.clock);
     while (sfRenderWindow_isOpen(scene->window) && fight == 1) {
         disp_fight(scene, fond, invent);
         attack_condition(scene->perso);

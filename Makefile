@@ -25,6 +25,7 @@ SRC =	src/anime_ennemie.c							\
 		src/fight/check_fight.c 					\
 		src/fight/defense.c 						\
 		src/fight/ennemi_action.c 					\
+		src/fight/ennemi_ai.c 						\
 		src/fight/fight_event.c 					\
 		src/fight/fight_move.c 						\
 		src/fight/jump.c 							\
@@ -41,6 +42,8 @@ SRC =	src/anime_ennemie.c							\
 		src/initialisation/init_pnj.c 				\
 		src/initialisation/init_sound.c				\
 		src/initialisation/set_stats_equipement.c	\
+		src/loose/loose.c 							\
+		src/loose/loose_button.c 					\
 		src/inventory_gestion.c						\
 		src/main.c									\
 		src/maps/create_map.c						\

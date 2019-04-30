@@ -37,4 +37,5 @@ void disp_hud(scene_t *scene, obj_t *perso, int x, int y)
     pos = (sfVector2f){x, y + 160};
     set_text(speed, set_magic_str(perso), font, pos);
     sfRenderWindow_drawText(scene->window, speed, NULL);
+    sfFont_destroy(font);
 }

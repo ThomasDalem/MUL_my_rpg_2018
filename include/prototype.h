@@ -158,4 +158,8 @@ void init_left_perso(obj_t *perso);
 void check_orient(scene_t *scene);
 
 sfSprite *create_sprite(char *str);
+//loose
+int loosescreen(int *gamemode, scene_t *scene);
+int init_loose_scene(scene_t *scene);
+int init_button_loose(but_s *button, char *str, int x, int y);
 #endif

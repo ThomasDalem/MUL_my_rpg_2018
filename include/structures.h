@@ -102,6 +102,7 @@ typedef struct ai
     sfVector2f move;
     int prev_act;
     int act;
+    sfClock *clock;
 } ai_t;
 
 typedef struct fight_t
@@ -155,6 +156,7 @@ typedef struct obj_s
 typedef struct pause_t
 {
     sfTexture *text_back;
+    struct button_s **button;
     sfSprite *spr_back;
     sfFont *font;
     sfRectangleShape *filter;

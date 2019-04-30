@@ -41,6 +41,7 @@ void create_ennemie(obj_t *ennemie)
     sfSprite_setTextureRect(ennemie->sprite, ennemie->char_down);
     sfSprite_setScale(ennemie->sprite, ennemie->move);
     ennemie->text.phrase = sfText_create();
+    ennemie->action.clock = sfClock_create();
 }
 
 int init_ennemie(scene_t *scene)

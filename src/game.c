@@ -50,11 +50,15 @@ void game(int *gamemode, scene_t *scene)
         disp_scene(scene);
         move_ennemie(scene);
         *gamemode = is_a_fight(scene, &invent, &pause);
+        check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
         while (sfRenderWindow_pollEvent(scene->window, &event) 
                 && *gamemode == 1) {
             *gamemode = allevent(scene, &event, &pause, &invent);
         }
-        check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
+    }
+    printf("%d\n", *gamemode);
+    if (scene->perso->stat.life <= 0) {
+        loosescreen(gamemode, scene);
     }
     close_window(scene, &pause, gamemode, &invent);
 }

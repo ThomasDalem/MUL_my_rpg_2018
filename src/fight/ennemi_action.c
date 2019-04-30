@@ -35,6 +35,9 @@ void ennemi_action(scene_t *scene)
     float enn_x = sfSprite_getPosition(scene->ennemi->sprite).x;
     float diff = per_x - enn_x;
 
+    if (scene->ennemi->fight->is_attacking == 1 ||
+        scene->ennemi->fight->is_blocking == 1)
+        return;
     if (scene->ennemi->action.act == 1)
         attack(scene->ennemi, scene->perso);
     if (scene->ennemi->action.act == 2)

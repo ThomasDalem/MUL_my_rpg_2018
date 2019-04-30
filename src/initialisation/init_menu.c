@@ -19,20 +19,23 @@ int init_start_button(but_s *button)
 {
     sfVector2f pos;
     sfVector2f size;
-    sfTexture *start = sfTexture_createFromFile("assets/textures/start.png", NULL);
+    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
 
     pos.x = 773;
     pos.y = 400;
-    size.x = 375;
-    size.y = 55;
+    size.x = 300;
+    size.y = 100;
     button->is_clicked = 0;
     button->but = sfRectangleShape_create();
-    sfRectangleShape_setOutlineColor(button->but, sfRed);
-    sfRectangleShape_setOutlineThickness(button->but, 5);
+    sfRectangleShape_setOutlineColor(button->but, sfTransparent);
+    sfRectangleShape_setOutlineThickness(button->but, 2);
     sfRectangleShape_setFillColor(button->but, sfWhite);
     sfRectangleShape_setSize(button->but, size);
     sfRectangleShape_setPosition(button->but, pos);
     sfRectangleShape_setTexture(button->but, start, sfFalse);
+    button->txt = sfText_create();
+    button->font = sfFont_createFromFile("assets/texts/menu.otf");
+    set_text(button->txt, "play", button->font, (sfVector2f){853, 420});
     return (1);
 }
 
@@ -40,25 +43,28 @@ int init_end_button(but_s *button)
 {
     sfVector2f pos;
     sfVector2f size;
-    sfTexture *start = sfTexture_createFromFile("assets/textures/quit.png", NULL);
+    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
 
-    pos.x = 860;
+    pos.x = 773;
     pos.y = 600;
-    size.x = 200;
-    size.y = 37;
+    size.x = 300;
+    size.y = 100;
     button->is_clicked = 0;
     button->but = sfRectangleShape_create();
-    sfRectangleShape_setOutlineColor(button->but, sfRed);
-    sfRectangleShape_setOutlineThickness(button->but, 5);
+    sfRectangleShape_setOutlineColor(button->but, sfTransparent);
+    sfRectangleShape_setOutlineThickness(button->but, 2);
     sfRectangleShape_setFillColor(button->but, sfWhite);
     sfRectangleShape_setSize(button->but, size);
     sfRectangleShape_setPosition(button->but, pos);
     sfRectangleShape_setTexture(button->but, start, sfFalse);
+    button->txt = sfText_create();
+    button->font = sfFont_createFromFile("assets/texts/menu.otf");
+    set_text(button->txt, "quit", button->font, (sfVector2f){853, 620});
     return (1);
 }
 
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position)
-{
+{   
     sfVector2f button_pos = sfRectangleShape_getPosition(button);
     sfVector2f size = sfRectangleShape_getSize(button);
 

@@ -15,7 +15,7 @@
 #include "structures.h"
 
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
-void check_all_button(inv_t *invent, scene_t *scene);
+void check_all_button(but_s **button, scene_t *scene);
 void button_disp(but_s **button, scene_t *scene);
 void reboot(but_s **button);
 

@@ -1,18 +1,18 @@
 /*
 ** EPITECH PROJECT, 2019
-** Tower Defense
+** MUL_my_rpg_2018
 ** File description:
-** Menu file
+** loose_button
 */
 
 #include "prototype.h"
 
-void disp_menu(scene_t *scene)
+void disp_loose(scene_t *scene)
 {
     int i = 0;
 
     sfRenderWindow_clear(scene->window, sfBlack);
-    sfRenderWindow_drawSprite(scene->window, scene->spr_back, NULL);
+    //sfRenderWindow_drawSprite(scene->window, scene->spr_back, NULL);
     while (scene->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window,
                                             scene->button[i]->but, NULL);
@@ -22,7 +22,7 @@ void disp_menu(scene_t *scene)
     sfRenderWindow_display(scene->window);
 }
 
-void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
+void looseevent(sfEvent *event, scene_t *scene, int *gamemode)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(scene->window);
 
@@ -31,6 +31,8 @@ void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
     if (event->type == sfEvtMouseButtonReleased) {
         if (button_is_clicked(scene->button[0]->but, mouse) == 0)
             (*gamemode) = 1;
+        if (button_is_clicked(scene->button[1]->but, mouse) == 0)
+            (*gamemode) = 2;
         if (button_is_clicked(scene->button[1]->but, mouse) == 0)
             (*gamemode) = 3;
         reboot(scene->button);
@@ -41,29 +43,7 @@ void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
     }
 }
 
-int init_menu_scene(scene_t *scene)
-{
-    char *path_back = "assets/textures/menu.jpg";
-
-    scene->perso = NULL;
-    scene->ennemi = NULL; 
-    scene->button = malloc(sizeof(but_s) * 3);
-    if (scene->button == NULL)
-        return (84);
-    scene->button[0] = malloc(sizeof(but_s));
-    scene->button[1] = malloc(sizeof(but_s));
-    scene->button[2] = NULL;
-    if (scene->button[0] == NULL || scene->button[1] == NULL)
-        return (84);
-    scene->text_back = sfTexture_createFromFile(path_back, NULL);
-    scene->spr_back = sfSprite_create();
-    sfSprite_setTexture(scene->spr_back, scene->text_back, sfFalse);
-    init_start_button(scene->button[0]);
-    init_end_button(scene->button[1]);
-    return (0);
-}
-
-void destroy_menu(scene_t *scene, int *gamemode)
+void destroy_loose(scene_t *scene, int *gamemode)
 {
     int i = 0;
 
@@ -73,28 +53,26 @@ void destroy_menu(scene_t *scene, int *gamemode)
         i++;
     }
     free(scene->button);
-    if (*gamemode == 3)
-        sfRenderWindow_close(scene->window);
 }
 
-int mainscreen(int *gamemode, scene_t *scene)
+int loosescreen(int *gamemode, scene_t *scene)
 {
     sfEvent click;
     int a = 0;
 
-    init_music(scene);
-    sfMusic_play(scene->music->main);
-    *gamemode = init_menu_scene(scene);
+    *gamemode = init_loose_scene(scene);
     if (*gamemode == 84)
         return (84);
-    sfMusic_setLoop(scene->music->main, sfTrue);
+    *gamemode = 0;
+    printf("coucou\n");
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 0) {
-        disp_menu(scene);
+        disp_loose(scene);
         button_disp(scene->button, scene);
         while (sfRenderWindow_pollEvent(scene->window, &click))
-            screenevent(&click, scene, gamemode);
+            looseevent(&click, scene, gamemode);
     }
-    sfMusic_stop(scene->music->main);
-    destroy_menu(scene, gamemode);
+    if (*gamemode == 1)
+        *gamemode = 0;
+    destroy_loose(scene, gamemode);
     return (0);
 }

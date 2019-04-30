@@ -28,58 +28,74 @@ static void init_filter(pause_s *pause)
     sfRectangleShape_setPosition(pause->filter, pos);
 }
 
-static int init_resume(pause_s *pause)
+static int init_resume(but_s *button)
 {
-    char *str = malloc(sizeof(char) * 7);
     sfVector2f pos;
+    sfVector2f size;
+    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
 
-    if (str == NULL)
-        return (84);
-    pos.x = 850;
-    pos.y = 300;
-    my_strcpy(str, "RESUME");
-    sfText_setString(pause->txt[0], str);
-    sfText_setFont(pause->txt[0], pause->font);
-    sfText_setColor(pause->txt[0], sfWhite);
-    sfText_setPosition(pause->txt[0], pos);
-    sfText_setCharacterSize(pause->txt[0], 30);
-    free(str);
-}
-
-static int init_quit(pause_s *pause)
-{
-    char *str = malloc(sizeof(char) * 5);
-    sfVector2f pos;
-
-    if (str == NULL)
-        return (84);
-    pos.x = 850;
+    pos.x = 773;
     pos.y = 400;
-    my_strcpy(str, "QUIT");
-    sfText_setString(pause->txt[1], str);
-    sfText_setFont(pause->txt[1], pause->font);
-    sfText_setColor(pause->txt[1], sfWhite);
-    sfText_setPosition(pause->txt[1], pos);
-    sfText_setCharacterSize(pause->txt[1], 30);
-    free(str);
+    size.x = 300;
+    size.y = 100;
+    button->is_clicked = 0;
+    button->but = sfRectangleShape_create();
+    sfRectangleShape_setOutlineColor(button->but, sfTransparent);
+    sfRectangleShape_setOutlineThickness(button->but, 2);
+    sfRectangleShape_setFillColor(button->but, sfWhite);
+    sfRectangleShape_setSize(button->but, size);
+    sfRectangleShape_setPosition(button->but, pos);
+    sfRectangleShape_setTexture(button->but, start, sfFalse);
+    button->txt = sfText_create();
+    button->font = sfFont_createFromFile("assets/texts/menu.otf");
+    set_text(button->txt, "resume", button->font, (sfVector2f){853, 420});
+    return (1);
 }
 
-static int init_quitgame(pause_s *pause)
+static int init_quit(but_s *button)
 {
-    char *str = malloc(sizeof(char) * 10);
     sfVector2f pos;
+    sfVector2f size;
+    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
 
-    if (str == NULL)
-        return (84);
-    pos.x = 850;
-    pos.y = 500;
-    my_strcpy(str, "QUIT GAME");
-    sfText_setString(pause->txt[2], str);
-    sfText_setFont(pause->txt[2], pause->font);
-    sfText_setColor(pause->txt[2], sfWhite);
-    sfText_setPosition(pause->txt[2], pos);
-    sfText_setCharacterSize(pause->txt[2], 30);
-    free(str);
+    pos.x = 773;
+    pos.y = 600;
+    size.x = 300;
+    size.y = 100;
+    button->is_clicked = 0;
+    button->but = sfRectangleShape_create();
+    sfRectangleShape_setOutlineColor(button->but, sfTransparent);
+    sfRectangleShape_setOutlineThickness(button->but, 2);
+    sfRectangleShape_setFillColor(button->but, sfWhite);
+    sfRectangleShape_setSize(button->but, size);
+    sfRectangleShape_setPosition(button->but, pos);
+    sfRectangleShape_setTexture(button->but, start, sfFalse);
+    button->txt = sfText_create();
+    button->font = sfFont_createFromFile("assets/texts/menu.otf");
+    set_text(button->txt, "quit", button->font, (sfVector2f){853, 620});
+}
+
+static int init_quitgame(but_s *button)
+{
+    sfVector2f pos;
+    sfVector2f size;
+    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
+
+    pos.x = 773;
+    pos.y = 800;
+    size.x = 300;
+    size.y = 100;
+    button->is_clicked = 0;
+    button->but = sfRectangleShape_create();
+    sfRectangleShape_setOutlineColor(button->but, sfTransparent);
+    sfRectangleShape_setOutlineThickness(button->but, 2);
+    sfRectangleShape_setFillColor(button->but, sfWhite);
+    sfRectangleShape_setSize(button->but, size);
+    sfRectangleShape_setPosition(button->but, pos);
+    sfRectangleShape_setTexture(button->but, start, sfFalse);
+    button->txt = sfText_create();
+    button->font = sfFont_createFromFile("assets/texts/menu.otf");
+    set_text(button->txt, "quit game", button->font, (sfVector2f){853, 820});
 }
 
 int init_pause(pause_s *pause)
@@ -87,19 +103,20 @@ int init_pause(pause_s *pause)
     char *path_back = "assets/textures/menu.jpg";
 
     init_filter(pause);
-    pause->font = sfFont_createFromFile("./assets/texts/pause.ttf");
-    pause->txt = malloc(sizeof(sfText *) * 4);
-    if (pause->txt == NULL)
+    pause->button = malloc(sizeof(but_s) * 4);
+    if (pause->button == NULL)
         return (84);
-    pause->txt[0] = sfText_create();
-    pause->txt[1] = sfText_create();
-    pause->txt[2] = sfText_create();
-    pause->txt[3] = NULL;
+    for (int i = 0; i != 4; i++)
+        pause->button[i] = malloc(sizeof(struct button_s));
+    if (pause->button[0] == NULL || pause->button[1] == NULL ||
+        pause->button[2] == NULL)
+        return (84);
+    init_resume(pause->button[0]);
+    init_quit(pause->button[1]);
+    init_quitgame(pause->button[2]);
+    pause->button[3] = NULL;
     pause->text_back = sfTexture_createFromFile(path_back, NULL);
     pause->spr_back = sfSprite_create();
     sfSprite_setTexture(pause->spr_back, pause->text_back, sfFalse);
-    if (init_resume(pause) == 84 || init_quit(pause) == 84 ||
-        init_quitgame(pause) == 84)
-        return (84);
     return (0);
 }

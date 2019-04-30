@@ -25,17 +25,17 @@ void button_disp(but_s **button, scene_t *scene)
     }
 }
 
-void check_all_button(inv_t *invent, scene_t *scene)
+void check_all_button(but_s **button, scene_t *scene)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(scene->window);
     int i = 0;
 
-    while (invent->button[i] != NULL) {
-        if (button_is_clicked(invent->button[i]->but, mouse) == 0) {
-            invent->button[i]->is_clicked = 1;
+    while (button[i] != NULL) {
+        if (button_is_clicked(button[i]->but, mouse) == 0) {
+            button[i]->is_clicked = 1;
             return;
         }
-        invent->button[i]->is_clicked = 0;
+        button[i]->is_clicked = 0;
         i++;
     }
 }
