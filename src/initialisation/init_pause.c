@@ -48,7 +48,7 @@ static int init_resume(but_s *button)
     sfRectangleShape_setTexture(button->but, start, sfFalse);
     button->txt = sfText_create();
     button->font = sfFont_createFromFile("assets/texts/menu.otf");
-    set_text(button->txt, "resume", button->font, (sfVector2f){853, 420});
+    set_text(button->txt, "resume", button->font, (sfVector2f){860, 420});
     return (1);
 }
 
@@ -72,7 +72,7 @@ static int init_quit(but_s *button)
     sfRectangleShape_setTexture(button->but, start, sfFalse);
     button->txt = sfText_create();
     button->font = sfFont_createFromFile("assets/texts/menu.otf");
-    set_text(button->txt, "quit", button->font, (sfVector2f){853, 620});
+    set_text(button->txt, "back to menu", button->font, (sfVector2f){800, 620});
 }
 
 static int init_quitgame(but_s *button)
@@ -95,7 +95,7 @@ static int init_quitgame(but_s *button)
     sfRectangleShape_setTexture(button->but, start, sfFalse);
     button->txt = sfText_create();
     button->font = sfFont_createFromFile("assets/texts/menu.otf");
-    set_text(button->txt, "quit game", button->font, (sfVector2f){853, 820});
+    set_text(button->txt, "quit game", button->font, (sfVector2f){833, 820});
 }
 
 int init_pause(pause_s *pause)

@@ -35,7 +35,7 @@ int init_start_button(but_s *button)
     sfRectangleShape_setTexture(button->but, start, sfFalse);
     button->txt = sfText_create();
     button->font = sfFont_createFromFile("assets/texts/menu.otf");
-    set_text(button->txt, "play", button->font, (sfVector2f){853, 420});
+    set_text(button->txt, "play", button->font, (sfVector2f){885, 423});
     return (1);
 }
 
@@ -59,7 +59,7 @@ int init_end_button(but_s *button)
     sfRectangleShape_setTexture(button->but, start, sfFalse);
     button->txt = sfText_create();
     button->font = sfFont_createFromFile("assets/texts/menu.otf");
-    set_text(button->txt, "quit", button->font, (sfVector2f){853, 620});
+    set_text(button->txt, "quit", button->font, (sfVector2f){885, 625});
     return (1);
 }
 
