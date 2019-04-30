@@ -30,11 +30,11 @@ void free_inventory(inv_t *invent)
     sfFont_destroy(invent->font);
     while (invent->button[i] != NULL) {
         sfRectangleShape_destroy(invent->button[i]->but);
-        i++;
+        i ++;
     }
     while (invent->equipement[j] != NULL) {
         sfRectangleShape_destroy(invent->equipement[j]->but);
-        j++;
+        j ++;
     }
 }
 
