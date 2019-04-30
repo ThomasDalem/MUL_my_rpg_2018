@@ -8,6 +8,7 @@
 #include "collisions.h"
 #include "prototype.h"
 #include "map.h"
+#include "particles.h"
 
 sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
 {
@@ -44,18 +45,23 @@ void game(int *gamemode, scene_t *scene)
     pause_s pause;
     inv_t invent;
     int nb_perso;
+    particle_t *particles = NULL;
 
     *gamemode = init_all(scene, &pause, &invent);
+    if (*gamemode == 84)
+        return;
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 1) {
-        disp_scene(scene);
+        disp_scene(scene, particles);
         move_ennemie(scene);
         *gamemode = is_a_fight(scene, &invent, &pause);
         while (sfRenderWindow_pollEvent(scene->window, &event) 
                 && *gamemode == 1) {
             *gamemode = allevent(scene, &event, &pause, &invent);
         }
+        move_particles(scene->map->particles);
         check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
     }
+    free_particles(scene->map->particles);
     close_window(scene, &pause, gamemode, &invent);
 }
 

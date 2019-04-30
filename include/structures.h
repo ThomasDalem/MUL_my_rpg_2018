@@ -24,7 +24,6 @@ typedef struct particle_s {
     sfVector2f begin_pos;
     sfVector2f velocity;
     sfCircleShape *circle;
-    sfColor color;
     float bounce_vel;
     sfClock *move_clock;
     struct particle_s *next;
@@ -233,6 +232,7 @@ typedef struct map_s
     sfTexture *texture;
     sfSprite *sprite;
     map_obj_t *objects;
+    particle_t *particles;
     int nbr;
     struct map_s *up;
     struct map_s *down;
