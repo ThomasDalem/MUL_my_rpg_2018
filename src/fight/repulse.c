@@ -13,11 +13,11 @@ int cond_repulse(sfFloatRect per_rect, sfFloatRect enn_rect)
     int right = per_rect.left + per_rect.width;
     int right_enn = enn_rect.left + enn_rect.width;
 
-    if (down > enn_rect.top && right > enn_rect.left &&
-        right < enn_rect.left + enn_rect.width)
+    if (down > enn_rect.top && right >= enn_rect.left &&
+        right <= enn_rect.left + enn_rect.width)
         return (1);
-    if (down > enn_rect.top && per_rect.left < right_enn &&
-        per_rect.left > enn_rect.left)
+    if (down > enn_rect.top && per_rect.left <= right_enn &&
+        per_rect.left >= enn_rect.left)
         return (1);
     return (0);
 }
@@ -28,7 +28,7 @@ void calc_repulse_vector(scene_t *scene, sfVector2f *perso,
     float pos_perso = fabs(sfSprite_getPosition(scene->perso->sprite).x);
     float pos_ennemie = fabs(sfSprite_getPosition(scene->ennemi->sprite).x);
 
-    if (pos_perso - pos_ennemie > 0) {
+    if (pos_perso - pos_ennemie >= 0) {
         *perso = (sfVector2f){10, 0};
         if (sfSprite_getPosition(scene->perso->sprite).y < 800)
             *perso = (sfVector2f){10, 2};
@@ -37,7 +37,7 @@ void calc_repulse_vector(scene_t *scene, sfVector2f *perso,
             *enn = (sfVector2f){-10, 2};
         *end = (sfVector2f){1700, 20};
     }
-    if (pos_perso - pos_ennemie < 0) {
+    if (pos_perso - pos_ennemie <= 0) {
         *perso = (sfVector2f){-10, 0};
         if (sfSprite_getPosition(scene->perso->sprite).y < 800)
             *perso = (sfVector2f){-10, 2};

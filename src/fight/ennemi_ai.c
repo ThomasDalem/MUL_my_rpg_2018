@@ -16,11 +16,11 @@ void ennemie_ai_part1(scene_t *scene)
         scene->ennemi->action.prev_act = 4;
     }
     if (r == 1) {
-        scene->ennemi->action.act = 2;
+        scene->ennemi->action.act = 3;
         scene->ennemi->action.prev_act = 1;
     }
     if (r == 2) {
-        scene->ennemi->action.act = 4;
+        scene->ennemi->action.act = 2;
         scene->ennemi->action.prev_act = 0;
     }
     if (r == 3) {
@@ -38,7 +38,7 @@ void ennemie_ai_part2(scene_t *scene)
         scene->ennemi->action.prev_act = 1;
     }
     if (r == 1) {
-        scene->ennemi->action.act = 2;
+        scene->ennemi->action.act = 3;
         scene->ennemi->action.prev_act = 2;
     }
     if (r == 2) {
@@ -46,8 +46,8 @@ void ennemie_ai_part2(scene_t *scene)
         scene->ennemi->action.prev_act = 4;
     }
     if (r == 3) {
-        scene->ennemi->action.act = 3;
-        scene->ennemi->action.prev_act = 2;
+        scene->ennemi->action.act = 4;
+        scene->ennemi->action.prev_act = 0;
     }
 }
 
@@ -64,7 +64,7 @@ void ennemie_ai_part3(scene_t *scene)
         scene->ennemi->action.prev_act = 1;
     }
     if (r == 2) {
-        scene->ennemi->action.act = 2;
+        scene->ennemi->action.act = 4;
         scene->ennemi->action.prev_act = 2;
     }
     if (r == 3) {
@@ -88,7 +88,7 @@ void chose_ennemi_action(scene_t *scene)
         scene->ennemi->fight->is_blocking != 1)
         return;
     sfClock_restart(scene->ennemi->action.clock);
-    if ((diff > 0 && diff < 60) || (diff < 0 && diff >= -70)) {
+    if ((diff > 0 && diff < 70) || (diff < 0 && diff >= -70)) {
         ennemie_ai_part1(scene);
         return;
     }

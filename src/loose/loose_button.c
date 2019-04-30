@@ -33,7 +33,7 @@ void looseevent(sfEvent *event, scene_t *scene, int *gamemode)
             (*gamemode) = 1;
         if (button_is_clicked(scene->button[1]->but, mouse) == 0)
             (*gamemode) = 2;
-        if (button_is_clicked(scene->button[1]->but, mouse) == 0)
+        if (button_is_clicked(scene->button[2]->but, mouse) == 0)
             (*gamemode) = 3;
         reboot(scene->button);
     }
@@ -64,15 +64,12 @@ int loosescreen(int *gamemode, scene_t *scene)
     if (*gamemode == 84)
         return (84);
     *gamemode = 0;
-    printf("coucou\n");
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 0) {
         disp_loose(scene);
         button_disp(scene->button, scene);
         while (sfRenderWindow_pollEvent(scene->window, &click))
             looseevent(&click, scene, gamemode);
     }
-    if (*gamemode == 1)
-        *gamemode = 0;
     destroy_loose(scene, gamemode);
     return (0);
 }
