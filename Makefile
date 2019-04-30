@@ -53,9 +53,12 @@ SRC =	src/anime_ennemie.c							\
 		src/maps/change_map.c						\
 		src/maps/get_objects.c						\
 		src/maps/remove_endline.c					\
+		src/maps/get_object_stats.c					\
+		src/maps/add_particles.c					\
 		src/particles/create_particles.c			\
 		src/particles/move_particles.c				\
 		src/particles/free_particles.c				\
+		src/particles/reset_particles.c				\
 		src/menus/menu.c							\
 		src/mouse.c									\
 		src/moves/move.c							\

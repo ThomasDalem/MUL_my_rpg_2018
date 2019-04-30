@@ -13,5 +13,6 @@
 particle_t *create_particles(int number, int x, int y);
 void move_particles(particle_t *particles);
 void free_particles(particle_t *particles);
+void reset_particles(particle_t *particles);
 
 #endif /* !PARTICLES_H_ */

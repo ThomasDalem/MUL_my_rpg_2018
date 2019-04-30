@@ -5,8 +5,6 @@
 ** Get objects from map's files
 */
 
-#include <sys/types.h>
-#include <dirent.h>
 #include <stdio.h>
 #include "prototype.h"
 #include "structures.h"
@@ -23,8 +21,7 @@ static sfFloatRect add_collision_rect(sfSprite *sprite)
     return (collision_rect);
 }
 
-
-static map_obj_t *create_object(map_obj_t *next_obj, FILE *stream)
+static map_obj_t *create_object(map_obj_t *next_obj, FILE *stream, char *path)
 {
     map_obj_t *object = malloc(sizeof(map_obj_t));
     char *line = NULL;
@@ -33,37 +30,26 @@ static map_obj_t *create_object(map_obj_t *next_obj, FILE *stream)
 
     if (object == NULL)
         return (NULL);
-    if (getline(&line, &len, stream) == -1)
+    if (get_object_stats(stream, object, path) == 84)
         return (NULL);
-    remove_endline(line);
-    object->texture = sfTexture_createFromFile(line, NULL);
-    object->sprite = sfSprite_create();
-    if (getline(&line, &len, stream) == -1)
-        return (NULL);
-    pos.x = my_getnbr(line);
-    if (getline(&line, &len, stream) == -1)
-        return (NULL);
-    pos.y = my_getnbr(line);
-    sfSprite_setTexture(object->sprite, object->texture, sfFalse);
-    sfSprite_setPosition(object->sprite, pos);
-    object->next = next_obj;
-    if (getline(&line, &len, stream) == -1)
-        return (NULL);
-    object->has_collider = my_getnbr(line);
     object->collision_rect = add_collision_rect(object->sprite);
+    object->next = next_obj;
     return (object);
 }
 
 static int add_objects_to_map(map_t *map, FILE *stream)
 {
     map_obj_t *save = NULL;
+    char *line = NULL;
+    size_t len = 0;
 
-    map->objects = create_object(map->objects, stream);
-    while (map->objects != NULL) {
-        save = map->objects;
-        map->objects = create_object(map->objects, stream);
+    while (getline(&line, &len, stream) != -1) {
+        if (my_strcmp(line, "sparks\n") == 0)
+            add_particles(stream, map);
+        else
+            map->objects = create_object(map->objects, stream, line);
+        line = NULL;
     }
-    map->objects = save;
     return (1);
 }
 

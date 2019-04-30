@@ -17,7 +17,8 @@ static int recreate_particles(particle_t *particles)
         return (1);
     color = sfCircleShape_getFillColor(particles->circle);
     if (color.a == 0) {
-        free_particles(particles);
+        //free_particles(particles);
+        reset_particles(particles);
         return (1);
     }
     return (0);
@@ -31,8 +32,8 @@ static void disp_map(sfRenderWindow *window, map_t *map)
         sfRenderWindow_drawSprite(window, obj->sprite, NULL);
     for (; particles != NULL; particles = particles->next)
         sfRenderWindow_drawCircleShape(window, particles->circle, NULL);
-    if (recreate_particles(map->particles))
-        map->particles = create_particles(10, 510, 90);
+    recreate_particles(map->particles);
+        //map->particles = create_particles(10, 510, 90);
 }
 
 void disp_scene(scene_t *scene, particle_t *particles)
