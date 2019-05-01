@@ -9,6 +9,7 @@
 #include "prototype.h"
 #include "map.h"
 #include "particles.h"
+#include "quest.h"
 
 sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
 {
@@ -46,19 +47,24 @@ void game(int *gamemode, scene_t *scene)
     inv_t invent;
     int nb_perso;
     particle_t *particles = NULL;
-
+    
+    scene->quest = create_quest();
+    set_quest_name(scene->window, scene->quest, "Objective : Try to kill an enemy.");
     *gamemode = init_all(scene, &pause, &invent);
     if (*gamemode == 84)
         return;
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 1) {
-        disp_scene(scene, particles);
+        disp_scene(scene, scene->quest);
         move_ennemie(scene);
         *gamemode = is_a_fight(scene, &invent, &pause);
         check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
-        while (sfRenderWindow_pollEvent(scene->window, &event) 
-               && *gamemode == 1)
+        while (sfRenderWindow_pollEvent(scene->window, &event)
+               && *gamemode == 1) {
             *gamemode = allevent(scene, &event, &pause, &invent);
+        }
+        move_player(scene, scene->perso, scene->perso->move_dir);
         move_particles(scene->map->particles);
+        sfClock_restart(scene->perso->move_clock);
     }
     if (scene->perso->stat.life <= 0)
         loosescreen(gamemode, scene);

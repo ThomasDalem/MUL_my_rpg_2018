@@ -61,6 +61,9 @@ SRC =	src/anime_ennemie.c							\
 		src/particles/move_particles.c				\
 		src/particles/free_particles.c				\
 		src/particles/reset_particles.c				\
+		src/quests/create_quest.c					\
+		src/quests/display_quest.c					\
+		src/quests/set_quest_attributes.c			\
 		src/menus/menu.c							\
 		src/mouse.c									\
 		src/moves/move.c							\

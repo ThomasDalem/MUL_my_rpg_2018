@@ -171,6 +171,7 @@ typedef struct obj_s
     struct stats stat;
     struct obj_s *next;
     struct ai action;
+    int move_dir;
     musics *talk;
     musics *talk2;
     musics *talk3;
@@ -209,6 +210,7 @@ typedef struct scene_s
     //option *option;
     sfTexture *text_back;
     sfSprite *spr_back;
+    struct quest_s *quest;
     struct button_s **button;
     struct obj_s *perso;
     struct obj_s *ennemi;
@@ -247,5 +249,15 @@ typedef struct map_s
     struct map_s *right;
     char *map_file;
 } map_t;
+
+typedef struct quest_s {
+    char *quest_name;
+    char *description;
+    sfFont *font;
+    sfText *text;
+    sfRectangleShape *rect;
+    int status;
+    int reward;
+} quest_t;
 
 #endif

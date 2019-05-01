@@ -40,8 +40,8 @@ int init_perso(obj_t *perso)
     perso->char_up = create_char_perso(214, 6, 24, 40);
     perso->char_left = create_char_perso(88, 6, 24, 40);
     perso->char_right = create_char_perso(152, 4, 24, 40);
-    perso->move.y = 1.5;
-    perso->move.x = 1.5;
+    perso->move = (sfVector2f){1.5, 1.5};
+    perso->move_dir = 0;
     perso->move_clock = sfClock_create();
     perso->anim_clock = sfClock_create();
     perso->stat = create_stat_perso(100, 10, 30, 5);
