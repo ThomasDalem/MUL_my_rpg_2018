@@ -9,14 +9,10 @@
 
 int init_button_loose(but_s *button, char *str, int x, int y)
 {
-    sfVector2f pos;
-    sfVector2f size;
+    sfVector2f pos = {x, y};
+    sfVector2f size = {300, 100};
     sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
 
-    pos.x = x;
-    pos.y = y;
-    size.x = 300;
-    size.y = 100;
     button->is_clicked = 0;
     button->but = sfRectangleShape_create();
     sfRectangleShape_setOutlineColor(button->but, sfTransparent);

@@ -28,7 +28,8 @@ void create_zone_enn(obj_t *ennemie, int zone)
 
 void create_ennemie(obj_t *ennemie)
 {
-    ennemie->texture = sfTexture_createFromFile("assets/textures/player_3.png", NULL);
+    ennemie->texture = sfTexture_createFromFile(
+        "assets/textures/player_3.png", NULL);
     ennemie->char_down = create_char_perso(8, 4, 24, 44);
     ennemie->char_up = create_char_perso(202, 6, 24, 44);
     ennemie->char_left = create_char_perso(72, 6, 24, 44);
@@ -47,13 +48,11 @@ void create_ennemie(obj_t *ennemie)
 int init_ennemie(scene_t *scene)
 {
     obj_t *ennemi = malloc(sizeof(obj_t));
-    sfVector2f pos;
+    sfVector2f pos = {1000, 500};
 
     if (ennemi == NULL)
         return (84);
     memset(ennemi, 0, sizeof(obj_t) * 1);
-    pos.x = 1000;
-    pos.y = 500;
     create_ennemie(ennemi);
     sfSprite_setPosition(ennemi->sprite, pos);
     if (init_fight_perso(ennemi) == 84)

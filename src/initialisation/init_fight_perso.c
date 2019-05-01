@@ -45,7 +45,8 @@ int init_fight_perso(obj_t *perso)
     perso->fight = malloc(sizeof(struct fight_t));
     if (perso->fight == NULL)
         return (84);
-    perso->fight->texture = sfTexture_createFromFile("assets/textures/link_battle.png", NULL);
+    perso->fight->texture = sfTexture_createFromFile(
+        "assets/textures/link_battle.png", NULL);
     init_right_perso(perso);
     perso->fight->attack_time.clock = sfClock_create();
     perso->fight->jump_clock = sfClock_create();

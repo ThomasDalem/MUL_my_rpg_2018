@@ -5,7 +5,7 @@
 ** inventory_gestion
 */
 
-#include "inventory.h"
+#include "prototype.h"
 
 void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite)
 {
@@ -22,18 +22,22 @@ void key_event(sfEvent *event, scene_t *scene, inv_t *invent)
     sfVector2i mouse;
 
     if (event->type == sfEvtMouseButtonPressed) {
+        check_all_use_throw_button(invent->button, scene);
+        if (cond_use_throw(invent->button, scene) == 1)
+            return;
+    }
+    if (event->type == sfEvtMouseButtonPressed) {
         mouse = sfMouse_getPositionRenderWindow(scene->window);
         check_all_button(invent->button, scene);
     }
     if (event->type == sfEvtMouseButtonReleased)
-        reboot(invent->button);
+        reboot_use_throw(invent->button);
 }
 
 static int invent_event(sfEvent *event, scene_t *scene, inv_t *invent)
 {
-    if (event->key.code == sfKeyF) {
+    if (event->key.code == sfKeyF)
         return (1);
-    }
      if (event->type == sfEvtKeyPressed) { 
         if (event->key.code == sfKeyS)
             sfSprite_setTextureRect(invent->sprite, scene->perso->char_down);
@@ -46,28 +50,8 @@ static int invent_event(sfEvent *event, scene_t *scene, inv_t *invent)
     }
     if (event->type == sfEvtClosed)
         return (3);
+    key_event(event, scene, invent);
     return (0);
-}
-
-static void disp_invent(scene_t *scene, inv_t *invent)
-{
-    int i = 0;
-    int j = 0;
-
-    sfRenderWindow_drawSprite(scene->window, invent->sprite, NULL);
-    sfRenderWindow_drawText(scene->window, invent->life, NULL);
-    sfRenderWindow_drawText(scene->window, invent->attack, NULL);
-    sfRenderWindow_drawText(scene->window, invent->defense, NULL);
-    sfRenderWindow_drawText(scene->window, invent->magic, NULL);
-    while (invent->button[i] != NULL) {
-        sfRenderWindow_drawRectangleShape(scene->window, invent->button[i]->but, NULL);
-        i++;
-    }
-    while (invent->equipement[j] != NULL) {
-        sfRenderWindow_drawRectangleShape(scene->window, invent->equipement[j]->but, NULL);
-        sfRenderWindow_drawText(scene->window, invent->equipement[j]->txt, NULL);
-        j++;
-    }
 }
 
 int inventory_gestion(inv_t *invent, scene_t *scene)
@@ -79,6 +63,7 @@ int inventory_gestion(inv_t *invent, scene_t *scene)
         sfRenderWindow_clear(scene->window, sfBlack);
         disp_invent(scene, invent);
         button_disp(invent->button, scene);
+        use_throw_gestion(invent->button, scene);
         sfRenderWindow_display(scene->window);
         while (sfRenderWindow_pollEvent(scene->window, &event))
             p = invent_event(&event, scene, invent);

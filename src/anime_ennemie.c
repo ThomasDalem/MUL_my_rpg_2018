@@ -27,11 +27,9 @@ void anime_enn(scene_t *scene, sfVector2f move)
 
 void move_enn_up(scene_t *scene, int x, int y)
 {
-    sfVector2f move;
+    sfVector2f move = {x, y};
     sfIntRect rect = sfSprite_getTextureRect(scene->ennemi->sprite);
 
-    move.x = x;
-    move.y = y;
     if (rect.top != 202)
         sfSprite_setTextureRect(scene->ennemi->sprite, scene->ennemi->char_up);
     anime_enn(scene, move);
@@ -39,11 +37,9 @@ void move_enn_up(scene_t *scene, int x, int y)
 
 void move_enn_down(scene_t *scene, int x, int y)
 {
-    sfVector2f move;
+    sfVector2f move = {x, y};
     sfFloatRect rect = sfSprite_getGlobalBounds(scene->ennemi->sprite);
 
-    move.x = x;
-    move.y = y;
     if (rect.top != 8) {
         sfSprite_setTextureRect(scene->ennemi->sprite, scene->ennemi->char_down);
     }
@@ -52,11 +48,9 @@ void move_enn_down(scene_t *scene, int x, int y)
 
 void move_enn_left(scene_t *scene, int x, int y)
 {
-    sfVector2f move;
+    sfVector2f move = {x, y};
     sfFloatRect rect = sfSprite_getGlobalBounds(scene->ennemi->sprite);
 
-    move.x = x;
-    move.y = y;
     if (rect.top != 72)
         sfSprite_setTextureRect(scene->ennemi->sprite, scene->ennemi->char_left);
     anime_enn(scene, move);
@@ -64,11 +58,9 @@ void move_enn_left(scene_t *scene, int x, int y)
 
 void move_enn_right(scene_t *scene, int x, int y)
 {
-    sfVector2f move;
+    sfVector2f move = {x, y};
     sfFloatRect rect = sfSprite_getGlobalBounds(scene->ennemi->sprite);
 
-    move.x = x;
-    move.y = y;
     if (rect.top != 138)
         sfSprite_setTextureRect(scene->ennemi->sprite, scene->ennemi->char_right);
     anime_enn(scene, move);

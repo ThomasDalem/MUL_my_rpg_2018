@@ -11,6 +11,7 @@ SRC =	src/anime_ennemie.c							\
 		src/create_sprite.c 						\
 		src/discuss.c 								\
 		src/disp.c									\
+		src/disp_invent.c 							\
 		src/collisions/check_collisions.c			\
 		src/collisions/collision.c					\
 		src/event.c									\
@@ -41,10 +42,12 @@ SRC =	src/anime_ennemie.c							\
 		src/initialisation/init_phrase.c 			\
 		src/initialisation/init_pnj.c 				\
 		src/initialisation/init_sound.c				\
+		src/initialisation/init_use_throw_button.c 	\
 		src/initialisation/set_stats_equipement.c	\
 		src/loose/loose.c 							\
 		src/loose/loose_button.c 					\
 		src/inventory_gestion.c						\
+		src/inventory_use_throw.c 					\
 		src/main.c									\
 		src/maps/create_map.c						\
 		src/maps/create_graph.c						\
@@ -59,6 +62,7 @@ SRC =	src/anime_ennemie.c							\
 		src/moves/move_ennemie.c					\
 		src/moves/move_player.c						\
 		src/menus/pause.c							\
+		src/reboot.c 								\
 		src/select.c								\
 		src/set_str.c								\
 		src/tools.c									\

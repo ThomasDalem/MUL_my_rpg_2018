@@ -45,7 +45,6 @@ void game(int *gamemode, scene_t *scene)
     inv_t invent;
     int nb_perso;
 
-    printf("start game\n");
     *gamemode = init_all(scene, &pause, &invent);
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 1) {
         disp_scene(scene);

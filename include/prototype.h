@@ -108,6 +108,10 @@ int init_music(scene_t *scene);
 
 //inventory_gestion.c
 int inventory_gestion(inv_t *invent, scene_t *scene);
+void use_throw_gestion(but_s **button, scene_t *scene);
+int cond_use_throw(but_s **button, scene_t *scene);
+void check_all_use_throw_button(but_s **button, scene_t *scene);
+void disp_invent(scene_t *scene, inv_t *invent);
 
 //main.c
 
@@ -162,4 +166,7 @@ sfSprite *create_sprite(char *str);
 int loosescreen(int *gamemode, scene_t *scene);
 int init_loose_scene(scene_t *scene);
 int init_button_loose(but_s *button, char *str, int x, int y);
+
+//reboot
+void reboot_use_throw(but_s **button);
 #endif

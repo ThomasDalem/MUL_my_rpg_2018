@@ -52,6 +52,7 @@ void init_button(but_s *button, int x, int y)
 
     pos.x = x;
     pos.y = y;
+    button->next = malloc(sizeof(but_s) * 2);
     size.x = 150;
     size.y = 150;
     button->is_clicked = 0;
@@ -61,6 +62,8 @@ void init_button(but_s *button, int x, int y)
     sfRectangleShape_setFillColor(button->but, sfTransparent);
     sfRectangleShape_setSize(button->but, size);
     sfRectangleShape_setPosition(button->but, pos);
+    create_use_button(&button->next[0], x, y);
+    create_throw_button(&button->next[1], x + 75, y);
 }
 
 int init_inventory_button(inv_t *invent)
@@ -86,12 +89,10 @@ int init_inventory_button(inv_t *invent)
 
 int init_inventory(inv_t *invent, scene_t *scene)
 {
-    sfVector2f pos_sprite;
+    sfVector2f pos_sprite = {50, 50};
     sfVector2f pos_text;
 
-    pos_sprite.x = 100;
-    pos_sprite.y = 50;
-    invent->font = sfFont_createFromFile("./assets/texts/pause.ttf"); 
+    invent->font = sfFont_createFromFile("./assets/texts/pause.ttf");
     invent->button = malloc(sizeof(but_s) * 11);
     if (invent->button == NULL || set_text_inventory(invent, scene) == 84)
         return (84);

@@ -9,18 +9,10 @@
 
 static void init_filter(pause_s *pause)
 {
-    sfVector2f size;
-    sfVector2f pos;
-    sfColor color;
+    sfVector2f size = {1920, 1080};
+    sfVector2f pos = {0, 0};
+    sfColor color = {100, 0, 0, 0};
 
-    color.a = 100;
-    color.b = 0;
-    color.r = 0;
-    color.g = 0;
-    size.x = 1920;
-    size.y = 1080;
-    pos.x = 0;
-    pos.y = 0;
     pause->filter = sfRectangleShape_create();
     sfRectangleShape_setOutlineThickness(pause->filter, 0);
     sfRectangleShape_setFillColor(pause->filter, color);
@@ -30,14 +22,11 @@ static void init_filter(pause_s *pause)
 
 static int init_resume(but_s *button)
 {
-    sfVector2f pos;
-    sfVector2f size;
-    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
+    sfVector2f pos = {773, 400};
+    sfVector2f size = {300, 100};
+    sfTexture *start = sfTexture_createFromFile(
+        "assets/textures/button.jpg", NULL);
 
-    pos.x = 773;
-    pos.y = 400;
-    size.x = 300;
-    size.y = 100;
     button->is_clicked = 0;
     button->but = sfRectangleShape_create();
     sfRectangleShape_setOutlineColor(button->but, sfTransparent);
@@ -54,14 +43,11 @@ static int init_resume(but_s *button)
 
 static int init_quit(but_s *button)
 {
-    sfVector2f pos;
-    sfVector2f size;
-    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
+    sfVector2f pos = {773, 600};
+    sfVector2f size = {300, 100};
+    sfTexture *start = sfTexture_createFromFile(
+        "assets/textures/button.jpg", NULL);
 
-    pos.x = 773;
-    pos.y = 600;
-    size.x = 300;
-    size.y = 100;
     button->is_clicked = 0;
     button->but = sfRectangleShape_create();
     sfRectangleShape_setOutlineColor(button->but, sfTransparent);
@@ -77,14 +63,11 @@ static int init_quit(but_s *button)
 
 static int init_quitgame(but_s *button)
 {
-    sfVector2f pos;
-    sfVector2f size;
-    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
+    sfVector2f pos = {773, 800};
+    sfVector2f size = {300, 100};
+    sfTexture *start = sfTexture_createFromFile(
+        "assets/textures/button.jpg", NULL);
 
-    pos.x = 773;
-    pos.y = 800;
-    size.x = 300;
-    size.y = 100;
     button->is_clicked = 0;
     button->but = sfRectangleShape_create();
     sfRectangleShape_setOutlineColor(button->but, sfTransparent);

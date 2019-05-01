@@ -37,6 +37,9 @@ typedef struct info
 
 typedef struct object
 {
+    sfTexture *texture;
+    sfSprite *sprite;
+    int type;
     int damage;
     int life;
     int defense;
@@ -63,6 +66,7 @@ typedef struct button_s
     sfVector2f pos;
     int is_clicked;
     int is_placed;
+    struct object object;
     info_t info;
     sfFont *font;
     sfText *txt;

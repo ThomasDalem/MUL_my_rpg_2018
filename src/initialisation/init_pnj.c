@@ -9,12 +9,11 @@
 
 int init_pnj_phrase(obj_t *pnj)
 {
-    sfVector2f scale;
+    sfVector2f scale = {0.7, 0.7};
     int i = 0;
 
-    scale.x = 0.7;
-    scale.y = 0.7;
-    pnj->text.texture = sfTexture_createFromFile("assets/textures/bubble.png", NULL);
+    pnj->text.texture = sfTexture_createFromFile(
+        "assets/textures/bubble.png", NULL);
     pnj->text.sprite_bubble = sfSprite_create();
     sfSprite_setTexture(pnj->text.sprite_bubble, pnj->text.texture, sfTrue);
     sfSprite_setScale(pnj->text.sprite_bubble, scale);
@@ -28,8 +27,7 @@ int init_pnj_phrase(obj_t *pnj)
     pnj->text.font = sfFont_createFromFile("assets/texts/Timeless.ttf");
     pnj->text.phrase = sfText_create();
     pnj->talk = malloc(sizeof(musics));
-    pnj->talk = sfMusic_createFromFile("assets/sound/talk_pnj.ogg"); //animal crossing
-
+    //pnj->talk = sfMusic_createFromFile("assets/sound/talk_pnj.ogg"); //animal crossing
 }
 
 void create_pnj(obj_t *pnj)
@@ -50,13 +48,11 @@ void create_pnj(obj_t *pnj)
 int init_pnj(scene_t *scene)
 {
     obj_t *pnj = malloc(sizeof(obj_t));
-    sfVector2f pos;
+    sfVector2f pos = {200, 200};
 
     if (pnj == NULL)
         return (84);
     memset(pnj, 0, sizeof(obj_t) * 1);
-    pos.x = 200;
-    pos.y = 200;
     create_pnj(pnj);
     if (init_pnj_phrase(pnj) == 84)
         return (84);

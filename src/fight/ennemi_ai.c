@@ -73,21 +73,12 @@ void ennemie_ai_part3(scene_t *scene)
     }
 }
 
-void chose_ennemi_action(scene_t *scene)
+void repart_ennemi_action(scene_t *scene, float second, int diff)
 {
-    sfVector2f pos_perso = sfSprite_getPosition(scene->perso->sprite);
-    sfVector2f pos_enn = sfSprite_getPosition(scene->ennemi->sprite);
-    int diff = pos_perso.x - pos_enn.x;
-    sfTime time;
-    float second;
-
-    time = sfClock_getElapsedTime(scene->ennemi->action.clock);
-    second = sfTime_asSeconds(time);
     if (scene->ennemi->action.act != 0 && second < 0.75 &&
         scene->ennemi->fight->is_attacking != 1 && 
         scene->ennemi->fight->is_blocking != 1)
         return;
-    sfClock_restart(scene->ennemi->action.clock);
     if ((diff > 0 && diff < 70) || (diff < 0 && diff >= -70)) {
         ennemie_ai_part1(scene);
         return;
@@ -100,4 +91,18 @@ void chose_ennemi_action(scene_t *scene)
         ennemie_ai_part3(scene);
         return;
     }
+}
+
+void chose_ennemi_action(scene_t *scene)
+{
+    sfVector2f pos_perso = sfSprite_getPosition(scene->perso->sprite);
+    sfVector2f pos_enn = sfSprite_getPosition(scene->ennemi->sprite);
+    int diff = pos_perso.x - pos_enn.x;
+    sfTime time;
+    float second;
+
+    time = sfClock_getElapsedTime(scene->ennemi->action.clock);
+    second = sfTime_asSeconds(time);
+    repart_ennemi_action(scene, second, diff);
+    sfClock_restart(scene->ennemi->action.clock);
 }

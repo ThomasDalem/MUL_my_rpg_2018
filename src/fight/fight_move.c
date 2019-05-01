@@ -66,7 +66,7 @@ void move_fight(scene_t *scene, int direction)
     if (direction == RIGHT && scene->perso->fight->is_jumping != 1)
         anim_rigth_fight(scene->perso, move);
     scene->ennemi->action.move = offset;
-    if (second > 0.05) {
+    if (second > 0.05 - scene->perso->stat.magic / 100) {
         if (!will_collide(scene->perso->sprite, scene->ennemi->sprite, offset))
             sfSprite_move(scene->perso->sprite, offset);
         sfClock_restart(scene->perso->move_clock);

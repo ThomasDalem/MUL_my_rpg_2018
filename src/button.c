@@ -29,13 +29,14 @@ void check_all_button(but_s **button, scene_t *scene)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(scene->window);
     int i = 0;
+    int j = 0;
 
     while (button[i] != NULL) {
         if (button_is_clicked(button[i]->but, mouse) == 0) {
             button[i]->is_clicked = 1;
-            return;
         }
-        button[i]->is_clicked = 0;
+        else 
+            button[i]->is_clicked = 0;
         i++;
     }
 }

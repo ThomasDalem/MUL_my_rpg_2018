@@ -29,12 +29,8 @@ void move_fight_enn(scene_t *scene, int direction)
     }
 }
 
-void ennemi_action(scene_t *scene)
+void repart_action(scene_t *scene)
 {
-    float per_x = sfSprite_getPosition(scene->perso->sprite).x;
-    float enn_x = sfSprite_getPosition(scene->ennemi->sprite).x;
-    float diff = per_x - enn_x;
-
     if (scene->ennemi->fight->is_attacking == 1 ||
         scene->ennemi->fight->is_blocking == 1)
         return;
@@ -54,6 +50,15 @@ void ennemi_action(scene_t *scene)
         if (diff > 0)
             move_fight_enn(scene, LEFT);
     }
+}
+
+void ennemi_action(scene_t *scene)
+{
+    float per_x = sfSprite_getPosition(scene->perso->sprite).x;
+    float enn_x = sfSprite_getPosition(scene->ennemi->sprite).x;
+    float diff = per_x - enn_x;
+
+    repart_action(scene);
     scene->ennemi->action.act = scene->ennemi->action.prev_act;
     scene->ennemi->action.prev_act = 0;
     return;

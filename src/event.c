@@ -17,6 +17,23 @@ void reboot(but_s **button)
     }
 }
 
+int move_case(scene_t *scene, sfEvent *event)
+{
+    switch (event->key.code) {
+        case sfKeyA : move_player(scene, scene->perso, LEFT);
+            break;
+        case sfKeyD : move_player(scene, scene->perso, RIGHT);
+            break;
+        case sfKeyQ : move_player(scene, scene->perso, LEFT);
+            break;
+        case sfKeyS : move_player(scene, scene->perso, DOWN);
+            break;
+        case sfKeyZ : move_player(scene, scene->perso, UP);
+            break;
+    }
+    return (0);
+}
+
 int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
 {
     sfVector2i mouse;
@@ -24,20 +41,11 @@ int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
 
     if (event->type == sfEvtKeyPressed) {
         switch (event->key.code) {
-        case sfKeyA : move_player(scene, scene->perso, LEFT);
-            break;
-        case sfKeyD : move_player(scene, scene->perso, RIGHT);
-            break;
         case sfKeyE : return (inventory_gestion(invent, scene));
-        case sfKeyQ : move_player(scene, scene->perso, LEFT);
-            break;
-        case sfKeyS : move_player(scene, scene->perso, DOWN);
-            break;
-        case sfKeyZ : move_player(scene, scene->perso, UP);
-            break;
         case sfKeyT : start_discuss(scene);
             break;
         }
+        move_case(scene, event);
     }
     if (event->key.code == sfKeyEscape)
         return (pause_function(scene, pause));

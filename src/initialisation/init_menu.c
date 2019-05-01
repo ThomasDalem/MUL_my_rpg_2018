@@ -17,14 +17,11 @@ static int cond_pos(sfVector2f pos1, sfVector2f pos2)
 
 int init_start_button(but_s *button)
 {
-    sfVector2f pos;
-    sfVector2f size;
-    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
+    sfVector2f pos = {773, 400};
+    sfVector2f size = {300, 100};
+    sfTexture *start = sfTexture_createFromFile(
+        "assets/textures/button.jpg", NULL);
 
-    pos.x = 773;
-    pos.y = 400;
-    size.x = 300;
-    size.y = 100;
     button->is_clicked = 0;
     button->but = sfRectangleShape_create();
     sfRectangleShape_setOutlineColor(button->but, sfTransparent);
@@ -41,14 +38,11 @@ int init_start_button(but_s *button)
 
 int init_end_button(but_s *button)
 {
-    sfVector2f pos;
-    sfVector2f size;
-    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
+    sfVector2f pos = {773, 600};
+    sfVector2f size = {300, 100};
+    sfTexture *start = sfTexture_createFromFile(
+        "assets/textures/button.jpg", NULL);
 
-    pos.x = 773;
-    pos.y = 600;
-    size.x = 300;
-    size.y = 100;
     button->is_clicked = 0;
     button->but = sfRectangleShape_create();
     sfRectangleShape_setOutlineColor(button->but, sfTransparent);
@@ -64,7 +58,7 @@ int init_end_button(but_s *button)
 }
 
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position)
-{   
+{
     sfVector2f button_pos = sfRectangleShape_getPosition(button);
     sfVector2f size = sfRectangleShape_getSize(button);
 
