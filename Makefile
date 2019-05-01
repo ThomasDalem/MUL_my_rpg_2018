@@ -67,6 +67,7 @@ SRC =	src/anime_ennemie.c							\
 		src/menus/pause.c							\
 		src/select.c								\
 		src/set_str.c								\
+        src/sound.c                                 \
 		src/tools.c									\
 
 OBJ =	$(SRC:.c=.o)

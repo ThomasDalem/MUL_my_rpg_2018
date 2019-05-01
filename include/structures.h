@@ -16,7 +16,7 @@
 
 typedef struct musics
 {
-    sfMusic *main;
+    sfMusic *sound;
     sfTime time_cl;
 } musics;
 
@@ -67,6 +67,8 @@ typedef struct pnj
     info_t info;
     struct object *object;
     musics *talk;
+    musics *talk2;
+    musics *talk3;
 } pnj;
 
 typedef struct button_s
@@ -166,6 +168,8 @@ typedef struct obj_s
     struct obj_s *next;
     struct ai action;
     musics *talk;
+    musics *talk2;
+    musics *talk3;
 } obj_t;
 
 typedef struct pause_t
