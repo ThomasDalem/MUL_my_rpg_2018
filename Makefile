@@ -49,13 +49,18 @@ SRC =	src/anime_ennemie.c							\
 		src/inventory_gestion.c						\
 		src/inventory_use_throw.c 					\
 		src/main.c									\
-		src/maps/create_map.c						\
 		src/maps/create_graph.c						\
 		src/maps/get_top_left_map.c					\
-		src/maps/create_maps.c						\
 		src/maps/change_map.c						\
 		src/maps/get_objects.c						\
 		src/maps/remove_endline.c					\
+		src/maps/get_object_stats.c					\
+		src/maps/add_particles.c					\
+		src/maps/free_graph.c						\
+		src/particles/create_particles.c			\
+		src/particles/move_particles.c				\
+		src/particles/free_particles.c				\
+		src/particles/reset_particles.c				\
 		src/menus/menu.c							\
 		src/mouse.c									\
 		src/moves/move.c							\
@@ -65,6 +70,7 @@ SRC =	src/anime_ennemie.c							\
 		src/reboot.c 								\
 		src/select.c								\
 		src/set_str.c								\
+        src/sound.c                                 \
 		src/tools.c									\
 
 OBJ =	$(SRC:.c=.o)

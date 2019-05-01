@@ -10,6 +10,8 @@
 
 map_t *get_top_left_map(map_t *maps)
 {
+    if (maps == NULL)
+        return (NULL);
     while (maps->left)
         maps = maps->left;
     while (maps->up)

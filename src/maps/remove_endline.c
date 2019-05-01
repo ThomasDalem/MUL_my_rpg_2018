@@ -9,7 +9,10 @@
 
 void remove_endline(char *line)
 {
-    int i = my_strlen(line);
+    int i = 0;
 
-    line[i - 1] = '\0';
+    while (line[i] != '\n' && line[i] != '\0')
+        i++;
+    if (line[i] == '\n')
+        line[i] = '\0';
 }

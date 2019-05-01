@@ -8,6 +8,7 @@
 #include "collisions.h"
 #include "prototype.h"
 #include "map.h"
+#include "particles.h"
 
 sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
 {
@@ -18,7 +19,7 @@ sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
     video_mode.height = height;
     video_mode.bitsPerPixel = 32;
     window = sfRenderWindow_create(video_mode,
-                                   "My_RPG/v0.4.2", sfDefaultStyle, NULL);
+                                   "My_RPG/v1.0.1", sfDefaultStyle, NULL);
     return (window);
 }
 
@@ -44,21 +45,24 @@ void game(int *gamemode, scene_t *scene)
     pause_s pause;
     inv_t invent;
     int nb_perso;
+    particle_t *particles = NULL;
 
     *gamemode = init_all(scene, &pause, &invent);
+    if (*gamemode == 84)
+        return;
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 1) {
-        disp_scene(scene);
+        disp_scene(scene, particles);
         move_ennemie(scene);
         *gamemode = is_a_fight(scene, &invent, &pause);
         check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
         while (sfRenderWindow_pollEvent(scene->window, &event) 
-                && *gamemode == 1) {
+               && *gamemode == 1)
             *gamemode = allevent(scene, &event, &pause, &invent);
-        }
+        move_particles(scene->map->particles);
     }
-    if (scene->perso->stat.life <= 0) {
+    if (scene->perso->stat.life <= 0)
         loosescreen(gamemode, scene);
-    }
+    free_graph(scene->map);
     close_window(scene, &pause, gamemode, &invent);
 }
 

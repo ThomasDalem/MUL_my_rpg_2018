@@ -8,11 +8,26 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
+#include <SFML/Graphics/Color.h>
+#include <SFML/Graphics/Sprite.h>
+#include <SFML/Audio/Sound.h>
+#include <SFML/System/Clock.h>
+#include <SFML/Window/Event.h>
+
 typedef struct musics
 {
-    sfMusic *main;
+    sfMusic *sound;
     sfTime time_cl;
 } musics;
+
+typedef struct particle_s {
+    sfVector2f begin_pos;
+    sfVector2f velocity;
+    sfCircleShape *circle;
+    float bounce_vel;
+    sfClock *move_clock;
+    struct particle_s *next;
+} particle_t;
 
 typedef struct back_s
 {
@@ -55,6 +70,8 @@ typedef struct pnj
     info_t info;
     struct object *object;
     musics *talk;
+    musics *talk2;
+    musics *talk3;
 } pnj;
 
 typedef struct button_s
@@ -155,6 +172,8 @@ typedef struct obj_s
     struct obj_s *next;
     struct ai action;
     musics *talk;
+    musics *talk2;
+    musics *talk3;
 } obj_t;
 
 typedef struct pause_t
@@ -220,10 +239,8 @@ typedef struct map_obj_s
 
 typedef struct map_s
 {
-    sfTexture *texture;
-    sfSprite *sprite;
     map_obj_t *objects;
-    int nbr;
+    particle_t *particles;
     struct map_s *up;
     struct map_s *down;
     struct map_s *left;
