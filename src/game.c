@@ -62,7 +62,7 @@ void game(int *gamemode, scene_t *scene)
     }
     if (scene->perso->stat.life <= 0)
         loosescreen(gamemode, scene);
-    free_particles(scene->map->particles);
+    free_graph(scene->map);
     close_window(scene, &pause, gamemode, &invent);
 }
 

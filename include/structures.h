@@ -235,11 +235,8 @@ typedef struct map_obj_s
 
 typedef struct map_s
 {
-    sfTexture *texture;
-    sfSprite *sprite;
     map_obj_t *objects;
     particle_t *particles;
-    int nbr;
     struct map_s *up;
     struct map_s *down;
     struct map_s *left;

@@ -46,7 +46,6 @@ SRC =	src/anime_ennemie.c							\
 		src/loose/loose_button.c 					\
 		src/inventory_gestion.c						\
 		src/main.c									\
-		src/maps/create_map.c						\
 		src/maps/create_graph.c						\
 		src/maps/get_top_left_map.c					\
 		src/maps/change_map.c						\
@@ -54,6 +53,7 @@ SRC =	src/anime_ennemie.c							\
 		src/maps/remove_endline.c					\
 		src/maps/get_object_stats.c					\
 		src/maps/add_particles.c					\
+		src/maps/free_graph.c						\
 		src/particles/create_particles.c			\
 		src/particles/move_particles.c				\
 		src/particles/free_particles.c				\

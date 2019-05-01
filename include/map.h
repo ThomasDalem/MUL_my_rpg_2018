@@ -19,5 +19,6 @@ int init_map(char const *filepath, map_t *map);
 void remove_endline(char *line);
 int get_object_stats(FILE *stream, map_obj_t *obj, char *path);
 int add_particles(FILE *stream, map_t *map);
+void free_graph(map_t *node);
 
 #endif /* !MAP_H_ */
