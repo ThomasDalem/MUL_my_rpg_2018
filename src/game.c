@@ -58,6 +58,7 @@ void game(int *gamemode, scene_t *scene)
         while (sfRenderWindow_pollEvent(scene->window, &event) 
                && *gamemode == 1)
             *gamemode = allevent(scene, &event, &pause, &invent);
+        move_particles(scene->map->particles);
     }
     if (scene->perso->stat.life <= 0)
         loosescreen(gamemode, scene);
