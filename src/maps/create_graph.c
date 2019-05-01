@@ -39,7 +39,8 @@ static map_t *create_line(int x, int nbr)
 
     if (!line)
         return (NULL);
-    for (int i = 0; i < x; i++) {
+    nbr++;
+    for (int i = 1; i < x; i++) {
         cursor->right = create_node(cursor, nbr);
         nbr++;
         if (!cursor->right)
