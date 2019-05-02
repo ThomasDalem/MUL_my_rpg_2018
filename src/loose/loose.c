@@ -48,8 +48,8 @@ int init_loose_scene(scene_t *scene)
     scene->text_back = sfTexture_createFromFile(path_back, NULL);
     scene->spr_back = sfSprite_create();
     sfSprite_setTexture(scene->spr_back, scene->text_back, sfFalse);
-    init_button_loose(scene->button[0], "restart", 773, 200 + 0 * 200);
-    init_button_loose(scene->button[1], "menu", 773, 200 + 1 * 200);
-    init_button_loose(scene->button[2], "quit", 773, 200 + 2 * 200);
+    init_button_loose(scene->button[0], "restart", 773, 300 + 0 * 200);
+    init_button_loose(scene->button[1], "menu", 773, 300 + 1 * 200);
+    init_button_loose(scene->button[2], "quit", 773, 300 + 2 * 200);
     return (0);
 }
