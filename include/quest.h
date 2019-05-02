@@ -13,5 +13,6 @@
 quest_t *create_quest(void);
 void set_quest_name(sfRenderWindow *window, quest_t *quest, char *name);
 void display_quest(quest_t *quest, sfRenderWindow *window);
+void set_quest_rewards(sfRenderWindow *win, quest_t *quest, int money, int exp);
 
 #endif /* !QUEST_H_ */

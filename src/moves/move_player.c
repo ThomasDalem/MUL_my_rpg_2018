@@ -23,18 +23,18 @@ static sfIntRect change_animation(obj_t *player, int direction)
 
 void move_player(scene_t *scene, obj_t *player, int direction)
 {
-    static float last_move = 0.0;
     sfVector2f offset = {0, 0};
     sfIntRect sprite_rect;
     sfTime time = sfClock_getElapsedTime(player->move_clock);
     float seconds = sfTime_asSeconds(time);
 
+    sfClock_restart(scene->perso->move_clock);
     if (direction == 0)
         return;
-    offset.y += (direction == UP) ? -10.0f * seconds * 60.0f : 0;
-    offset.y += (direction == DOWN) ? 10.0f * seconds * 60.0f : 0;
-    offset.x += (direction == LEFT) ? -10.0f * seconds * 60.0f : 0;
-    offset.x += (direction == RIGHT) ? 10.0f * seconds * 60.0f : 0;
+    offset.y += (direction == UP) ? -5.0f * seconds * 60.0f : 0;
+    offset.y += (direction == DOWN) ? 5.0f * seconds * 60.0f : 0;
+    offset.x += (direction == LEFT) ? -5.0f * seconds * 60.0f : 0;
+    offset.x += (direction == RIGHT) ? 5.0f * seconds * 60.0f : 0;
     sprite_rect = change_animation(player, direction);
     sfSprite_setTextureRect(player->sprite, sprite_rect);
     anim(player);

@@ -5,6 +5,7 @@
 ** Event gestion
 */
 
+#include "quest.h"
 #include "prototype.h"
 
 void reboot(but_s **button)

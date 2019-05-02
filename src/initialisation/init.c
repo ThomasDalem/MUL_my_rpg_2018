@@ -63,7 +63,7 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent)
 
     if (init_pause(pause) == 84)
         return (84);
-    scene->map = get_top_left_map(create_graph(2, 2));
+    scene->map = get_top_left_map(create_graph(3, 3));
     if (init_perso(scene->perso) == 84)
         return (84);
     if (init_inventory(invent, scene) == 84)

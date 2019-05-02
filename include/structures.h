@@ -255,9 +255,12 @@ typedef struct quest_s {
     char *description;
     sfFont *font;
     sfText *text;
+    sfText *rewards;
     sfRectangleShape *rect;
     int status;
-    int reward;
+    int money;
+    int exp;
+    struct quest_s *next;
 } quest_t;
 
 #endif

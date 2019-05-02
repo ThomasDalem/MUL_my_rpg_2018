@@ -13,4 +13,5 @@ void display_quest(quest_t *quest, sfRenderWindow *window)
 {
     sfRenderWindow_drawRectangleShape(window, quest->rect, NULL);
     sfRenderWindow_drawText(window, quest->text, NULL);
+    sfRenderWindow_drawText(window, quest->rewards, NULL);
 }

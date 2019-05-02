@@ -14,8 +14,11 @@
 static void create_text(quest_t *quest)
 {
     quest->text = sfText_create();
+    quest->rewards = sfText_create();
     sfText_setFont(quest->text, quest->font);
+    sfText_setFont(quest->rewards, quest->font);
     sfText_setFillColor(quest->text, sfBlack);
+    sfText_setFillColor(quest->rewards, sfBlack);
 }
 
 static void create_rect(quest_t *quest)
@@ -29,7 +32,7 @@ static void create_rect(quest_t *quest)
     sfRectangleShape_setOutlineThickness(quest->rect, 2);
 }
 
-quest_t *create_quest(void)
+quest_t *create_quest(quest_t *next)
 {
     quest_t *quest = malloc(sizeof(quest_t));
 
@@ -37,10 +40,21 @@ quest_t *create_quest(void)
         return (NULL);
     quest->quest_name = NULL;
     quest->description = NULL;
-    quest->reward = 0;
+    quest->money = 0;
     quest->status = 0;
     quest->font = sfFont_createFromFile("./assets/texts/basic.ttf");
     create_text(quest);
     create_rect(quest);
+    quest->next = next;
     return (quest);
+}
+
+quest_t *create_quests(void)
+{
+    quest_t *quests = NULL;
+
+    quests = create_quest(quests);
+    if (quests == NULL)
+        return (NULL);
+    return (quests);
 }

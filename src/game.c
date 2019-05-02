@@ -49,7 +49,8 @@ void game(int *gamemode, scene_t *scene)
     particle_t *particles = NULL;
     
     scene->quest = create_quest();
-    set_quest_name(scene->window, scene->quest, "Objective : Try to kill an enemy.");
+    set_quest_name(scene->window, scene->quest, "Objective : Kill the enemy.");
+    set_quest_rewards(scene->window, scene->quest, 100, 35);
     *gamemode = init_all(scene, &pause, &invent);
     if (*gamemode == 84)
         return;
@@ -64,7 +65,6 @@ void game(int *gamemode, scene_t *scene)
         }
         move_player(scene, scene->perso, scene->perso->move_dir);
         move_particles(scene->map->particles);
-        sfClock_restart(scene->perso->move_clock);
     }
     if (scene->perso->stat.life <= 0)
         loosescreen(gamemode, scene);
