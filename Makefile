@@ -64,14 +64,6 @@ SRC =	src/collisions/check_collisions.c			\
 		src/moves/move_ennemie.c					\
 		src/moves/move_player.c						\
 		src/menus/pause.c							\
-<<<<<<< HEAD
-		src/reboot.c 								\
-		src/select.c								\
-		src/sell.c 									\
-		src/set_str.c								\
-        src/sound.c                                 \
-		src/tools.c									\
-=======
 		src/particles/create_particles.c			\
 		src/particles/move_particles.c				\
 		src/particles/free_particles.c				\
@@ -82,7 +74,6 @@ SRC =	src/collisions/check_collisions.c			\
 		src/tools/create_sprite.c 					\
 		src/tools/set_str.c							\
 		src/tools/tools.c							\
->>>>>>> c391142e3da22456adc4a7f215a67d54d56fdf51
 
 OBJ =	$(SRC:.c=.o)
 

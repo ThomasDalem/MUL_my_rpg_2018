@@ -150,16 +150,12 @@ char *set_attack_str(obj_t *perso);
 char *set_life_str(obj_t *perso);
 char *set_defense_str(obj_t *perso);
 char *set_magic_str(obj_t *perso);
-
-<<<<<<< HEAD
 //sell
-int fill_sell_str(scene_t *scene);
 int init_sell(scene_t *scene);
-=======
+int fill_sell_str(scene_t *scene);
 //sound.c
 void talk(scene_t *scene);
 
->>>>>>> c391142e3da22456adc4a7f215a67d54d56fdf51
 //tools.c
 int lf_stat(char *str, char **env);
 int my_argvlen(char **argv);
