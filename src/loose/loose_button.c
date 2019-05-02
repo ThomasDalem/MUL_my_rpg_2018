@@ -59,11 +59,16 @@ int loosescreen(int *gamemode, scene_t *scene)
 {
     sfEvent click;
     int a = 0;
+    musics *dead_scream = malloc(sizeof(musics));
 
+    if (dead_scream == NULL)
+        return (84);
+    dead_scream->sound = sfMusic_createFromFile("assets/sound/dead_scream.ogg");
     *gamemode = init_loose_scene(scene);
     if (*gamemode == 84)
         return (84);
     *gamemode = 0;
+    sfMusic_play(dead_scream->sound);
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 0) {
         disp_loose(scene);
         button_disp(scene->button, scene);
