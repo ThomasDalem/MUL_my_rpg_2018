@@ -13,8 +13,9 @@ void disp_sell(scene_t *scene)
 
     sfRenderWindow_drawRectangleShape(scene->window, scene->sell->back, NULL);
     while (scene->sell->things[i] != NULL) {
-        sfRenderWindow_drawRectangleShape(scene->window, scene->sell->things[i]->but, NULL);
-        i++;
+        sfRenderWindow_drawRectangleShape(scene->window,
+                                          scene->sell->things[i]->but, NULL);
+        i ++;
     }
     sfRenderWindow_drawText(scene->window, scene->sell->money, NULL);
 }
