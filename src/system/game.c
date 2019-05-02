@@ -19,7 +19,7 @@ sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
     video_mode.height = height;
     video_mode.bitsPerPixel = 32;
     window = sfRenderWindow_create(video_mode,
-                                   "My_RPG/v1.0.1", sfDefaultStyle, NULL);
+                                   "My_RPG/v1.0.5", sfDefaultStyle, NULL);
     return (window);
 }
 
@@ -55,9 +55,8 @@ void game(int *gamemode, scene_t *scene)
         move_ennemie(scene);
         *gamemode = is_a_fight(scene, &invent, &pause);
         check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
-        //*gamemode = check_if_sell(scene);
-        while (sfRenderWindow_pollEvent(scene->window, &event) && 
-                *gamemode == 1)
+        while (sfRenderWindow_pollEvent(scene->window, &event) &&
+               *gamemode == 1)
             *gamemode = allevent(scene, &event, &pause, &invent);
         move_particles(scene->map->particles);
     }
@@ -66,5 +65,3 @@ void game(int *gamemode, scene_t *scene)
     free_graph(scene->map);
     close_window(scene, &pause, gamemode, &invent);
 }
-
-

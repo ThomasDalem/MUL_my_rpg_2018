@@ -19,6 +19,6 @@ void cond_mouse(but_s **button, scene_t *scene)
             sfRectangleShape_setOutlineColor(button[i]->but, sfWhite);
         else if (button[i]->is_clicked == 0)
             sfRectangleShape_setOutlineColor(button[i]->but, sfRed);
-        i++;
+        i ++;
     }
 }

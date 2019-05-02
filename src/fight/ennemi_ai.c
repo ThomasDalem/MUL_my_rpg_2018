@@ -76,7 +76,7 @@ void ennemie_ai_part3(scene_t *scene)
 void repart_ennemi_action(scene_t *scene, float second, int diff)
 {
     if (scene->ennemi->action.act != 0 && second < 0.75 &&
-        scene->ennemi->fight->is_attacking != 1 && 
+        scene->ennemi->fight->is_attacking != 1 &&
         scene->ennemi->fight->is_blocking != 1)
         return;
     if ((diff > 0 && diff < 70) || (diff < 0 && diff >= -70)) {

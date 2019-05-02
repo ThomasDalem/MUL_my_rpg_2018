@@ -100,7 +100,7 @@ int set_equipement(inv_t *invent, scene_t *scene)
         invent->equipement[i] = malloc(sizeof(but_s));
         if (invent->equipement[i] == NULL)
             return (84);
-        i++;
+        i ++;
     }
     invent->equipement[i] = NULL;
     init_helmet(invent->equipement[0], 300, 20, invent->stat_equip[0]);

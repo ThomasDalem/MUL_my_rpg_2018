@@ -12,7 +12,6 @@ void disp_loose(scene_t *scene)
     int i = 0;
 
     sfRenderWindow_clear(scene->window, sfBlack);
-    //sfRenderWindow_drawSprite(scene->window, scene->spr_back, NULL);
     while (scene->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window,
                                           scene->button[i]->but, NULL);
@@ -50,7 +49,7 @@ void destroy_loose(scene_t *scene, int *gamemode)
     while (scene->button[i] != NULL) {
         sfRectangleShape_destroy(scene->button[i]->but);
         free(scene->button[i]);
-        i++;
+        i ++;
     }
     free(scene->button);
 }

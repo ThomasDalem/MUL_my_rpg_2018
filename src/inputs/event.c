@@ -13,23 +13,23 @@ void reboot(but_s **button)
 
     while (button[i] != NULL) {
         button[i]->is_clicked = 0;
-        i++;
+        i ++;
     }
 }
 
 int move_case(scene_t *scene, sfEvent *event)
 {
     switch (event->key.code) {
-        case sfKeyA : move_player(scene, scene->perso, LEFT);
-            break;
-        case sfKeyD : move_player(scene, scene->perso, RIGHT);
-            break;
-        case sfKeyQ : move_player(scene, scene->perso, LEFT);
-            break;
-        case sfKeyS : move_player(scene, scene->perso, DOWN);
-            break;
-        case sfKeyZ : move_player(scene, scene->perso, UP);
-            break;
+    case sfKeyA : move_player(scene, scene->perso, LEFT);
+        break;
+    case sfKeyD : move_player(scene, scene->perso, RIGHT);
+        break;
+    case sfKeyQ : move_player(scene, scene->perso, LEFT);
+        break;
+    case sfKeyS : move_player(scene, scene->perso, DOWN);
+        break;
+    case sfKeyZ : move_player(scene, scene->perso, UP);
+        break;
     }
     return (0);
 }

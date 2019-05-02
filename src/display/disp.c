@@ -49,7 +49,8 @@ void disp_scene(scene_t *scene, particle_t *particles)
     while (pnj) {
         sfRenderWindow_drawSprite(scene->window, pnj->sprite, NULL);
         if (pnj->discuss == 1) {
-            sfRenderWindow_drawSprite(scene->window, pnj->text.sprite_bubble, NULL);
+            sfRenderWindow_drawSprite(scene->window, pnj->text.sprite_bubble,
+                                      NULL);
             sfRenderWindow_drawText(scene->window, pnj->text.phrase, NULL);
         }
         pnj = pnj->next;

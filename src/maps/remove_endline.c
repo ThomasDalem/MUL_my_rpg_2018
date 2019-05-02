@@ -12,7 +12,7 @@ void remove_endline(char *line)
     int i = 0;
 
     while (line[i] != '\n' && line[i] != '\0')
-        i++;
+        i ++;
     if (line[i] == '\n')
         line[i] = '\0';
 }
