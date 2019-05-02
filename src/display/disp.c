@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include "prototype.h"
 #include "particles.h"
+#include "quest.h"
 
 static int recreate_particles(particle_t *particles)
 {
@@ -34,7 +35,7 @@ static void disp_map(sfRenderWindow *window, map_t *map)
     recreate_particles(map->particles);
 }
 
-void disp_scene(scene_t *scene, particle_t *particles)
+void disp_scene(scene_t *scene, quest_t *quest)
 {
     obj_t *ennemie = scene->ennemi;
     obj_t *pnj = scene->pnj;
@@ -55,5 +56,6 @@ void disp_scene(scene_t *scene, particle_t *particles)
         }
         pnj = pnj->next;
     }
+    display_quest(quest, scene->window);
     sfRenderWindow_display(scene->window);
 }

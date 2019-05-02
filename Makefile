@@ -59,6 +59,14 @@ SRC =	src/collisions/check_collisions.c			\
 		src/maps/add_particles.c					\
 		src/maps/free_graph.c						\
 		src/menus/button.c							\
+		src/particles/create_particles.c			\
+		src/particles/move_particles.c				\
+		src/particles/free_particles.c				\
+		src/particles/reset_particles.c				\
+		src/quests/create_quest.c					\
+		src/quests/display_quest.c					\
+		src/quests/set_quest_attributes.c			\
+		src/quests/set_quest_rewards.c				\
 		src/menus/menu.c							\
 		src/moves/move.c							\
 		src/moves/move_ennemie.c					\

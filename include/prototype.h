@@ -50,7 +50,7 @@ int is_colliding(sfFloatRect rect1, sfFloatRect rect2);
 void start_discuss(scene_t *scene);
 
 //disp
-void disp_scene(scene_t *scene, particle_t *particles);
+void disp_scene(scene_t *scene, quest_t *quest);
 void disp_hud(scene_t *scene, obj_t *perso, int x, int y);
 //event.c
 int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
