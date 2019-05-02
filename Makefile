@@ -5,20 +5,16 @@
 ## My_Sokoban
 ##
 
-SRC =	src/anime_ennemie.c							\
-		src/button.c 								\
-		src/free/close.c							\
-		src/create_sprite.c 						\
-		src/discuss.c 								\
-		src/disp.c									\
-		src/disp_invent.c 							\
-		src/collisions/check_collisions.c			\
+SRC =	src/collisions/check_collisions.c			\
 		src/collisions/collision.c					\
-		src/event.c									\
+		src/display/disp.c							\
+		src/display/disp_invent.c 					\
+		src/entities/anime_ennemie.c				\
+		src/entities/discuss.c 						\
+		src/free/close.c							\
 		src/free/free.c                         	\
         src/free/music_free.c                   	\
         src/free/perso_free.c                   	\
-		src/game.c									\
 		src/fight/diff.c 							\
 		src/fight/disp_hud.c 						\
 		src/fight/alive.c 							\
@@ -44,10 +40,13 @@ SRC =	src/anime_ennemie.c							\
 		src/initialisation/init_sound.c				\
 		src/initialisation/init_use_throw_button.c 	\
 		src/initialisation/set_stats_equipement.c	\
+		src/inputs/event.c							\
+		src/inputs/mouse.c							\
+		src/inputs/select.c							\
+		src/inventory/inventory_gestion.c			\
+		src/inventory/inventory_use_throw.c			\
 		src/loose/loose.c 							\
 		src/loose/loose_button.c 					\
-		src/inventory_gestion.c						\
-		src/inventory_use_throw.c 					\
 		src/main.c									\
 		src/maps/create_graph.c						\
 		src/maps/get_top_left_map.c					\
@@ -57,21 +56,22 @@ SRC =	src/anime_ennemie.c							\
 		src/maps/get_object_stats.c					\
 		src/maps/add_particles.c					\
 		src/maps/free_graph.c						\
-		src/particles/create_particles.c			\
-		src/particles/move_particles.c				\
-		src/particles/free_particles.c				\
-		src/particles/reset_particles.c				\
+		src/menus/button.c 							\
 		src/menus/menu.c							\
-		src/mouse.c									\
 		src/moves/move.c							\
 		src/moves/move_ennemie.c					\
 		src/moves/move_player.c						\
 		src/menus/pause.c							\
-		src/reboot.c 								\
-		src/select.c								\
-		src/set_str.c								\
-        src/sound.c                                 \
-		src/tools.c									\
+		src/particles/create_particles.c			\
+		src/particles/move_particles.c				\
+		src/particles/free_particles.c				\
+		src/particles/reset_particles.c				\
+		src/system/game.c							\
+		src/system/reboot.c 						\
+        src/system/sound.c                          \
+		src/tools/create_sprite.c 					\
+		src/tools/set_str.c							\
+		src/tools/tools.c							\
 
 OBJ =	$(SRC:.c=.o)
 
