@@ -167,13 +167,7 @@ typedef struct obj_s
     sfCircleShape *detect_zone;
     sfClock *move_clock;
     sfClock *anim_clock;
-<<<<<<< HEAD
-=======
-    struct stats stat;
-    struct obj_s *next;
-    struct ai action;
     int move_dir;
->>>>>>> quests
     musics *talk;
     musics *talk2;
     musics *talk3;

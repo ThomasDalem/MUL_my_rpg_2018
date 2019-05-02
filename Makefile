@@ -72,10 +72,6 @@ SRC =	src/collisions/check_collisions.c			\
 		src/moves/move_ennemie.c					\
 		src/moves/move_player.c						\
 		src/menus/pause.c							\
-		src/particles/create_particles.c			\
-		src/particles/move_particles.c				\
-		src/particles/free_particles.c				\
-		src/particles/reset_particles.c				\
 		src/system/game.c							\
 		src/system/reboot.c							\
 		src/system/sound.c							\
