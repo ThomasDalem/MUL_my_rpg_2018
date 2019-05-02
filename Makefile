@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2018
 ## Makefile
 ## File description:
-## My_Sokoban
+## RPG
 ##
 
 SRC =	src/collisions/check_collisions.c			\
@@ -77,8 +77,6 @@ SRC =	src/collisions/check_collisions.c			\
 
 OBJ =	$(SRC:.c=.o)
 
-OBJC =	$(SRCC:.c=.o)
-
 NAME =	my_rpg
 
 INC = -I./include
@@ -91,13 +89,9 @@ CRIT = --coverage -lcriterion
 
 WALL = -Wall -Wextra -Werror
 
-CRITERION = unit_tests
-
 CC = gcc -g3
 
 CPPFLAGS = -I./include
-
-ARGUMENTS =
 
 all:	$(NAME)
 
@@ -113,7 +107,7 @@ valgrind:	$(OBJ)
 			make -C ./lib/my
 			gcc -o $(NAME) $(OBJ) $(LIB) $(LE)
 			rm -f $(OBJ)
-			valgrind ./$(NAME) $(ARGUMENTS)
+			valgrind ./$(NAME)
 
 clean:
 	rm -f $(OBJ)

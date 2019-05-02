@@ -41,6 +41,7 @@ void orient_pnj(scene_t *scene, sfIntRect *rect_perso)
     float y = fabs(pos_perso.y) - fabs(pos_pnj.y);
     int i = 0;
 
+    talk(scene);
     if (fabs(x) > fabs(y))
         i = 1;
     if (i == 1 && x < 0)
@@ -61,7 +62,6 @@ void start_discuss(scene_t *scene)
     sfIntRect rect_pnj = sfSprite_getTextureRect(scene->pnj->sprite);
     sfFloatRect pos_pnj;
 
-    talk(scene);
     while (scene->pnj != NULL) {
         rect_pnj = sfSprite_getTextureRect(scene->pnj->sprite);
         pos_pnj = sfCircleShape_getGlobalBounds(scene->pnj->detect_zone);
