@@ -15,8 +15,8 @@ void discuss(scene_t *scene)
 
     scene->pnj->discuss = 1;
     pos.x = pos.x - rect.width * 1.5;
-    pos.y = pos.y - sfSprite_getGlobalBounds(scene->pnj->text.sprite_bubble)
-        height;
+    pos.y = pos.y - sfSprite_getGlobalBounds\
+        (scene->pnj->text.sprite_bubble).height;
     srand(time(NULL));
     i = rand() % 5;
     if (scene->pnj->text.nb_dialog == 0)
