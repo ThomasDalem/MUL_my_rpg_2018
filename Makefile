@@ -42,6 +42,8 @@ SRC =	src/anime_ennemie.c							\
 		src/initialisation/init_phrase.c 			\
 		src/initialisation/init_pnj.c 				\
 		src/initialisation/init_sound.c				\
+		src/initialisation/init_sell.c 				\
+		src/initialisation/init_sell_equipement.c 	\
 		src/initialisation/init_use_throw_button.c 	\
 		src/initialisation/set_stats_equipement.c	\
 		src/loose/loose.c 							\
@@ -69,6 +71,7 @@ SRC =	src/anime_ennemie.c							\
 		src/menus/pause.c							\
 		src/reboot.c 								\
 		src/select.c								\
+		src/sell.c 									\
 		src/set_str.c								\
         src/sound.c                                 \
 		src/tools.c									\

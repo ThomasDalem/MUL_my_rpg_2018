@@ -149,6 +149,9 @@ char *set_life_str(obj_t *perso);
 char *set_defense_str(obj_t *perso);
 char *set_magic_str(obj_t *perso);
 
+//sell
+int fill_sell_str(scene_t *scene);
+int init_sell(scene_t *scene);
 //tools.c
 int lf_stat(char *str, char **env);
 int my_argvlen(char **argv);

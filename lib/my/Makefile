@@ -16,6 +16,7 @@ SRC =	my_putint_in_str.c	\
 		my_strmcat.c		\
 		my_getnbr.c			\
 		my_strcmp.c			\
+		reallocation.c 		\
 
 OBJ =	$(SRC:.c=.o)
 

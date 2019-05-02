@@ -97,7 +97,7 @@ int mainscreen(int *gamemode, scene_t *scene)
         while (sfRenderWindow_pollEvent(scene->window, &click))
             screenevent(&click, scene, gamemode);
     }
-    sfMusic_stop(scene->music->sound);
+    sfMusic_destroy(scene->music->sound);
     destroy_menu(scene, gamemode);
     return (0);
 }

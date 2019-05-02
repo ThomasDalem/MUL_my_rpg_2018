@@ -81,6 +81,7 @@ int init_inventory_button(inv_t *invent)
     invent->button[10] == NULL;
     while (j != 10) {
         init_button(invent->button[j], x, 800);
+        invent->button[j]->object.type = 0;
         j++;
         x = x + 160;
     }

@@ -12,6 +12,8 @@ int main(int ac, char **argv, char **env)
     int gamemode = 0;
     scene_t scene;
 
+    if (env[0] == NULL)
+        return (84);
     scene.window = createmywindow(1920, 1080);
     if (ac == 2 && my_str("-h", argv[1]) == 0)
         return (0);

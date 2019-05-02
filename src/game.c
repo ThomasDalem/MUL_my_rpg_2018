@@ -55,8 +55,9 @@ void game(int *gamemode, scene_t *scene)
         move_ennemie(scene);
         *gamemode = is_a_fight(scene, &invent, &pause);
         check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
-        while (sfRenderWindow_pollEvent(scene->window, &event) 
-               && *gamemode == 1)
+        //*gamemode = check_if_sell(scene);
+        while (sfRenderWindow_pollEvent(scene->window, &event) && 
+                *gamemode == 1)
             *gamemode = allevent(scene, &event, &pause, &invent);
         move_particles(scene->map->particles);
     }

@@ -154,6 +154,9 @@ typedef struct fight_scene
 
 typedef struct obj_s
 {
+    int nb_perso;
+    int discuss;
+    int money;
     sfTexture *texture;
     sfSprite *sprite;
     sfVector2f move;
@@ -162,19 +165,17 @@ typedef struct obj_s
     sfIntRect char_right;
     sfIntRect char_left;
     sfCircleShape *detect_zone;
-    int nb_perso;
-    int discuss;
-    struct textes_variables text;
-    struct fight_t *fight;
     sfClock *move_clock;
     sfClock *anim_clock;
-    struct stats stat;
-    struct obj_s *next;
-    struct ai action;
     musics *talk;
     musics *talk2;
     musics *talk3;
-} obj_t;
+    struct textes_variables text;
+    struct fight_t *fight;
+    struct stats stat;
+    struct obj_s *next;
+    struct ai action;
+ } obj_t;
 
 typedef struct pause_t
 {
@@ -202,6 +203,15 @@ typedef struct inventory
     struct button_s **equipement;
 } inv_t;
 
+typedef struct sell
+{
+    char **str;
+    sfRectangleShape *back;
+    sfFont *font;
+    sfText *money;
+    struct button_s **things;
+} sell_t;
+
 typedef struct scene_s
 {
     sfRenderWindow *window;
@@ -211,6 +221,7 @@ typedef struct scene_s
     sfSprite *spr_back;
     struct button_s **button;
     struct obj_s *perso;
+    struct sell *sell;
     struct obj_s *ennemi;
     struct obj_s *pnj;
     struct object *object;
