@@ -34,6 +34,7 @@ static const int RIGHT = 4;
 void move_player(scene_t *scene, obj_t *player, int direction);
 void chose_ennemi_action(scene_t *scene);
 void free_enn(scene_t *scene);
+void restart_screen(scene_t *scene);
 
 //anime_ennemie.c
 
@@ -65,7 +66,7 @@ int free_music(scene_t *scene);
 void free_perso(scene_t *scene);
 
 //game.c
-sfRenderWindow *createmywindow(unsigned int width, unsigned int height);
+sfRenderWindow *createmywindow(int fs, unsigned int width, unsigned int height);
 void game(int *gamemode, scene_t *scene);
 void anim(obj_t *player);
 
@@ -94,6 +95,7 @@ void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite);
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
 int init_end_button(but_s *button);
 int init_start_button(but_s *button);
+int init_fs_button(but_s *button);
 
 //inititalisation/init_phrase.c
 int copy_into_by(obj_t *pnj);

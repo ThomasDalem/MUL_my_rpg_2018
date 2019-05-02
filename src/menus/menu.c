@@ -33,6 +33,8 @@ void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
             (*gamemode) = 1;
         if (button_is_clicked(scene->button[1]->but, mouse) == 0)
             (*gamemode) = 3;
+        if (button_is_clicked(scene->button[2]->but, mouse) == 0)
+            restart_screen(scene);
         reboot(scene->button);
     }
     if (event->type == sfEvtClosed) {
@@ -46,13 +48,14 @@ int init_menu_scene(scene_t *scene)
     char *path_back = "assets/textures/menu.jpg";
 
     scene->perso = NULL;
-    scene->ennemi = NULL; 
+    scene->ennemi = NULL;
     scene->button = malloc(sizeof(but_s) * 3);
     if (scene->button == NULL)
         return (84);
     scene->button[0] = malloc(sizeof(but_s));
     scene->button[1] = malloc(sizeof(but_s));
-    scene->button[2] = NULL;
+    scene->button[2] = malloc(sizeof(but_s));
+    scene->button[3] = NULL;
     if (scene->button[0] == NULL || scene->button[1] == NULL)
         return (84);
     scene->text_back = sfTexture_createFromFile(path_back, NULL);
@@ -60,6 +63,7 @@ int init_menu_scene(scene_t *scene)
     sfSprite_setTexture(scene->spr_back, scene->text_back, sfFalse);
     init_start_button(scene->button[0]);
     init_end_button(scene->button[1]);
+    init_fs_button(scene->button[2]);
     return (0);
 }
 

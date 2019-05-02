@@ -10,7 +10,7 @@
 #include "map.h"
 #include "particles.h"
 
-sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
+sfRenderWindow *createmywindow(int fs, unsigned int width, unsigned int height)
 {
     sfRenderWindow *window;
     sfVideoMode video_mode;
@@ -18,8 +18,14 @@ sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
     video_mode.width = width;
     video_mode.height = height;
     video_mode.bitsPerPixel = 32;
-    window = sfRenderWindow_create(video_mode,
-                                   "My_RPG/v1.0.1", sfDefaultStyle, NULL);
+    if (fs == 0) {
+        window = sfRenderWindow_create(video_mode,
+                                       "My_RPG/v1.0.1", sfDefaultStyle, NULL);
+    }
+    if (fs > 0) {
+        window = sfRenderWindow_create(video_mode,
+                                       "My_RPG/v1.0.1", sfFullscreen, NULL);
+    }
     return (window);
 }
 
