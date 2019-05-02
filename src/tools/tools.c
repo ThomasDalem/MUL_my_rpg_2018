@@ -24,19 +24,6 @@ int my_argvlen(char **argv)
     int i = 0;
 
     while (argv[i] != NULL)
-	i ++;
+        i ++;
     return (i);
-}
-
-int env_check(char **env)
-{
-    int y = lf_stat("DISPLAY", env);
-    int o = lf_stat("X11 display", env);
-    int b = lf_stat("X11", env);
-
-    if (env == NULL || env[y] == NULL || env[o] == NULL ||
-        env[b] == NULL || y < 0) {
-        printf("my_jevaistenikersalope\n");
-        return (84);
-    }
 }

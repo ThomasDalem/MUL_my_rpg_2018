@@ -32,6 +32,8 @@ static const int LEFT = 3;
 static const int RIGHT = 4;
 
 void move_player(scene_t *scene, obj_t *player, int direction);
+void chose_ennemi_action(scene_t *scene);
+void free_enn(scene_t *scene);
 
 //anime_ennemie.c
 
@@ -149,9 +151,15 @@ char *set_life_str(obj_t *perso);
 char *set_defense_str(obj_t *perso);
 char *set_magic_str(obj_t *perso);
 
+<<<<<<< HEAD
 //sell
 int fill_sell_str(scene_t *scene);
 int init_sell(scene_t *scene);
+=======
+//sound.c
+void talk(scene_t *scene);
+
+>>>>>>> c391142e3da22456adc4a7f215a67d54d56fdf51
 //tools.c
 int lf_stat(char *str, char **env);
 int my_argvlen(char **argv);
