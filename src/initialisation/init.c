@@ -68,8 +68,6 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent)
         return (84);
     if (init_inventory(invent, scene) == 84)
         return (84);
-    if (init_ennemie(scene) == 84)
-        return (84);
     if (init_pnj(scene) == 84)
         return (84);
     if (init_sell(scene) == 84)

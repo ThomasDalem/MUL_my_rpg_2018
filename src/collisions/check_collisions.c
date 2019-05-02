@@ -23,11 +23,13 @@ int check_collision_objs(sfSprite *player, map_obj_t *objects, sfVector2f dir)
     return (0);
 }
 
-int check_collision_enemies(sfSprite *player, obj_t *enemies, sfVector2f dir)
+int check_collision_enemies(obj_t *character, obj_t *enemies, sfVector2f dir)
 {
     while (enemies) {
-        if (will_collide(player, enemies->sprite, dir))
+        if (will_collide(character->sprite, enemies->sprite, dir)
+            && character != enemies) {
             return (1);
+        } 
         enemies = enemies->next;
     }
     return (0);
@@ -47,7 +49,7 @@ int check_collision_scene(scene_t *scene, sfSprite *player, sfVector2f dir)
 {
     if (check_collision_objs(player, scene->map->objects, dir))
         return (1);
-    if (check_collision_enemies(player, scene->ennemi, dir))
+    if (check_collision_enemies(scene->perso, scene->map->enemies, dir))
         return (1);
     if (check_collision_npc(player, scene->pnj, dir))
         return (1);

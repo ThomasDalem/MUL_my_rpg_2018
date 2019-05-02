@@ -7,6 +7,7 @@
 
 SRC =	src/collisions/check_collisions.c			\
 		src/collisions/collision.c					\
+		src/collisions/check_enemy_collisions.c		\
 		src/display/disp.c							\
 		src/display/disp_invent.c					\
 		src/entities/anime_ennemie.c				\
@@ -44,7 +45,6 @@ SRC =	src/collisions/check_collisions.c			\
 		src/initialisation/set_stats_equipement.c	\
 		src/inputs/event.c							\
 		src/inputs/mouse.c							\
-		src/inputs/select.c							\
 		src/inventory/inventory_gestion.c			\
 		src/inventory/inventory_use_throw.c			\
 		src/loose/loose.c 							\
@@ -58,6 +58,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/maps/get_object_stats.c					\
 		src/maps/add_particles.c					\
 		src/maps/free_graph.c						\
+		src/maps/add_enemy.c						\
 		src/menus/button.c							\
 		src/particles/create_particles.c			\
 		src/particles/move_particles.c				\
@@ -71,6 +72,9 @@ SRC =	src/collisions/check_collisions.c			\
 		src/moves/move.c							\
 		src/moves/move_ennemie.c					\
 		src/moves/move_player.c						\
+		src/moves/get_distance.c					\
+		src/moves/enemy_movement.c					\
+		src/moves/change_animation.c				\
 		src/menus/pause.c							\
 		src/system/game.c							\
 		src/system/reboot.c							\

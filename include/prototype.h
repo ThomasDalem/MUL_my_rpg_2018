@@ -34,6 +34,7 @@ static const int RIGHT = 4;
 void move_player(scene_t *scene, obj_t *player, int direction);
 void chose_ennemi_action(scene_t *scene);
 void free_enn(scene_t *scene);
+void create_ennemie(obj_t *ennemie);
 
 //anime_ennemie.c
 
@@ -126,19 +127,23 @@ int mainscreen(int *gamemode, scene_t *scene);
 
 //mouse.c
 void cond_mouse(but_s **button, scene_t *scene);
+sfIntRect change_animation(obj_t *player, int direction);
+sfIntRect change_enemy_animation(obj_t *player, int direction);
 
 //move.c
 void move_right(scene_t *scene);
 void move_left(scene_t *scene);
 void move_down(scene_t *scene);
 void move_up(scene_t *scene);
+sfVector2f get_distance(obj_t *enemy, obj_t *player);
+void move_enemy(scene_t *scene, obj_t *player, int direction);
 
 //move ennemie
-void move_enn_up(scene_t *scene, int x, int y);
-void move_enn_down(scene_t *scene, int x, int y);
-void move_enn_left(scene_t *scene, int x, int y);
-void move_enn_right(scene_t *scene, int x, int y);
-void move_ennemie(scene_t *scene);
+void move_enn_up(obj_t *enemy);
+void move_enn_down(obj_t *enemy);
+void move_enn_left(obj_t *enemy);
+void move_enn_right(obj_t *enemy);
+void move_ennemie(scene_t *scene, map_t *map);
 
 //pause.c
 int pause_function(scene_t *scene, pause_s *pause);

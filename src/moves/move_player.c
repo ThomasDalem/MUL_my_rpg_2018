@@ -5,21 +5,9 @@
 ** move_player
 */
 
-#include <stdio.h>
 #include "prototype.h"
 #include "structures.h"
 #include "collisions.h"
-
-static sfIntRect change_animation(obj_t *player, int direction)
-{
-    sfIntRect sprite_rect = sfSprite_getTextureRect(player->sprite);
-
-    sprite_rect.top = (direction == UP) ? 214 : sprite_rect.top;
-    sprite_rect.top = (direction == DOWN) ? 24 : sprite_rect.top;
-    sprite_rect.top = (direction == LEFT) ? 88 : sprite_rect.top;
-    sprite_rect.top = (direction == RIGHT) ? 152 : sprite_rect.top;
-    return (sprite_rect);
-}
 
 void move_player(scene_t *scene, obj_t *player, int direction)
 {
@@ -28,7 +16,7 @@ void move_player(scene_t *scene, obj_t *player, int direction)
     sfTime time = sfClock_getElapsedTime(player->move_clock);
     float seconds = sfTime_asSeconds(time);
 
-    sfClock_restart(scene->perso->move_clock);
+    sfClock_restart(player->move_clock);
     if (direction == 0)
         return;
     offset.y += (direction == UP) ? -5.0f * seconds * 60.0f : 0;
