@@ -36,7 +36,7 @@ void attack(obj_t *perso1, obj_t *perso2)
         sfSprite_move(perso1->sprite, (sfVector2f){-20, 0});
     per_rect = sfSprite_getGlobalBounds(perso1->sprite);
     sfClock_restart(perso1->fight->attack_time.clock);
-    if (sfFloatRect_intersects(&per_rect, &enn_rect, NULL) == sfTrue && 
+    if (sfFloatRect_intersects(&per_rect, &enn_rect, NULL) == sfTrue &&
         perso2->fight->is_blocking != 1) {
         perso2->stat.life = perso2->stat.life - perso1->stat.attack;
         if (diff(perso1, perso2) == 1)

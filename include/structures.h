@@ -171,6 +171,7 @@ typedef struct obj_s
     sfCircleShape *detect_zone;
     sfClock *move_clock;
     sfClock *anim_clock;
+    int move_dir;
     musics *talk;
     musics *talk2;
     musics *talk3;
@@ -223,6 +224,7 @@ typedef struct scene_s
     //option *option;
     sfTexture *text_back;
     sfSprite *spr_back;
+    struct quest_s *quest;
     struct button_s **button;
     struct obj_s *perso;
     struct sell *sell;
@@ -262,5 +264,18 @@ typedef struct map_s
     struct map_s *right;
     char *map_file;
 } map_t;
+
+typedef struct quest_s {
+    char *quest_name;
+    char *description;
+    sfFont *font;
+    sfText *text;
+    sfText *rewards;
+    sfRectangleShape *rect;
+    int status;
+    int money;
+    int exp;
+    struct quest_s *next;
+} quest_t;
 
 #endif

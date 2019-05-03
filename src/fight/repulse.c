@@ -22,8 +22,8 @@ int cond_repulse(sfFloatRect per_rect, sfFloatRect enn_rect)
     return (0);
 }
 
-void calc_repulse_vector(scene_t *scene, sfVector2f *perso, 
-                        sfVector2f *enn, sfVector2f *end)
+void calc_repulse_vector(scene_t *scene, sfVector2f *perso,
+                         sfVector2f *enn, sfVector2f *end)
 {
     float pos_perso = fabs(sfSprite_getPosition(scene->perso->sprite).x);
     float pos_ennemie = fabs(sfSprite_getPosition(scene->ennemi->sprite).x);
@@ -50,7 +50,7 @@ void calc_repulse_vector(scene_t *scene, sfVector2f *perso,
 
 obj_t *move_repulse(obj_t *perso, sfVector2f vec, sfTime time, float end)
 {
-    float second = sfTime_asSeconds(time); 
+    float second = sfTime_asSeconds(time);
 
     if (second > 0.02 && sfSprite_getPosition(perso->sprite).x != end) {
         sfSprite_move(perso->sprite, vec);
@@ -90,7 +90,7 @@ void check_repulse(scene_t *scene, sfSprite *sprite, inv_t *invent)
     sfVector2f pos_enn = sfSprite_getPosition(scene->ennemi->sprite);
     sfMusic *music;
 
-    if (scene->perso->fight->is_attacking != 1 && 
+    if (scene->perso->fight->is_attacking != 1 &&
         scene->ennemi->fight->is_attacking != 1 &&
         cond_repulse(per_rect, enn_rect) == 1) {
         music = sfMusic_createFromFile("./assets/sound/repulse.ogg");

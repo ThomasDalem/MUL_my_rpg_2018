@@ -38,7 +38,8 @@ void free_enn(scene_t *scene);
 //anime_ennemie.c
 
 //close.c
-void close_window(scene_t *scene, pause_s *pause, int *gamemode, inv_t *invent);
+void close_window(scene_t *scene,
+                  pause_s *pause, int *gamemode, inv_t *invent);
 
 //collision
 int check_collision(scene_t *scene, sfVector2f direction);
@@ -50,7 +51,7 @@ int is_colliding(sfFloatRect rect1, sfFloatRect rect2);
 void start_discuss(scene_t *scene);
 
 //disp
-void disp_scene(scene_t *scene, particle_t *particles);
+void disp_scene(scene_t *scene, quest_t *quest);
 void disp_hud(scene_t *scene, obj_t *perso, int x, int y);
 //event.c
 int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
@@ -88,9 +89,11 @@ int init_fight_perso(obj_t *perso);
 int init_inventory(inv_t *invent, scene_t *scene);
 int set_stats_equipement(inv_t *invent);
 int set_equipement(inv_t *invent, scene_t *scene);
-void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite);
+void set_sprite_inventory(inv_t *invent,
+                          scene_t *scene, sfVector2f pos_sprite);
 int create_string_equip(but_s *button, struct stats equip);
-
+int set_text_inventory(inv_t *invent, scene_t *scene);
+void set_pos_text(inv_t *invent, sfVector2f pos_text);
 //initialisation/init_menu.c
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
 int init_end_button(but_s *button);
@@ -159,6 +162,8 @@ void fill_equipement(scene_t *scene);
 void add_new_equipement(scene_t *scene, inv_t *invent, int i);
 int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode);
 void add_new_equipement(scene_t *scene, inv_t *invent, int i);
+void add_equipement(but_s *things, char *str, int r);
+int set_money_text(scene_t *scene);
 //sound.c
 void talk(scene_t *scene);
 

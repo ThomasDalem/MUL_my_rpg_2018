@@ -16,13 +16,13 @@ void check_all_use_throw_button(but_s **button, scene_t *scene)
     while (button[i] != NULL) {
         if (button_is_clicked(button[i]->next[0].but, mouse) == 0)
             button[i]->next[0].is_clicked = 1;
-        else 
+        else
             button[i]->next[0].is_clicked = 0;
         if (button_is_clicked(button[i]->next[1].but, mouse) == 0)
             button[i]->next[1].is_clicked = 1;
-        else 
+        else
             button[i]->next[1].is_clicked = 0;
-        i++;
+        i ++;
     }
 }
 
@@ -36,7 +36,7 @@ void button_use_throw_disp(but_s *button, scene_t *scene)
             button->next[i].is_clicked == 0)
             sfRectangleShape_setOutlineColor(button->next[i].but, sfWhite);
         else if (button->next[i].is_clicked == 1 &&
-                button_is_clicked(button->next[i].but, mouse) == 0)
+                 button_is_clicked(button->next[i].but, mouse) == 0)
             sfRectangleShape_setOutlineColor(button->next[i].but, sfBlue);
         else
             sfRectangleShape_setOutlineColor(button->next[i].but, sfRed);
@@ -61,7 +61,7 @@ int check_use_throw(but_s *button, sfVector2i mouse)
         button->next[0].is_clicked = 1;
         return (1);
     }
-    else 
+    else
         button->next[0].is_clicked = 1;
     if (button_is_clicked(button->next[1].but, mouse) == 0) {
         button->next[1].is_clicked = 1;
@@ -83,7 +83,7 @@ int cond_use_throw(but_s **button, scene_t *scene)
             r = check_use_throw(button[i], mouse);
             return (r);
         }
-        i++;
+        i ++;
     }
     return (0);
 }

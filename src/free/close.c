@@ -40,9 +40,7 @@ void free_inventory(inv_t *invent)
 
 void close_window(scene_t *scene, pause_s *pause, int *gamemode, inv_t *invent)
 {
-    //free_pause(pause);
     free_global(scene);
-    if (*gamemode == 3) {
+    if (*gamemode == 3)
         sfRenderWindow_close(scene->window);
-    }
 }

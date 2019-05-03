@@ -9,6 +9,7 @@
 #include "prototype.h"
 #include "map.h"
 #include "particles.h"
+#include "quest.h"
 
 sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
 {
@@ -19,7 +20,7 @@ sfRenderWindow *createmywindow(unsigned int width, unsigned int height)
     video_mode.height = height;
     video_mode.bitsPerPixel = 32;
     window = sfRenderWindow_create(video_mode,
-                                   "My_RPG/v1.0.1", sfDefaultStyle, NULL);
+                                   "My_RPG/v1.0.7", sfDefaultStyle, NULL);
     return (window);
 }
 
@@ -46,12 +47,15 @@ void game(int *gamemode, scene_t *scene)
     inv_t invent;
     int nb_perso;
     particle_t *particles = NULL;
-
+    
+    scene->quest = create_quest();
+    set_quest_name(scene->window, scene->quest, "Objective : Kill the enemy.");
+    set_quest_rewards(scene->window, scene->quest, 100, 35);
     *gamemode = init_all(scene, &pause, &invent);
     if (*gamemode == 84)
         return;
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 1) {
-        disp_scene(scene, particles);
+        disp_scene(scene, scene->quest);
         move_ennemie(scene);
         *gamemode = is_a_fight(scene, &invent, &pause);
         check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
@@ -59,6 +63,7 @@ void game(int *gamemode, scene_t *scene)
         while (sfRenderWindow_pollEvent(scene->window, &event) && 
                 *gamemode == 1)
             *gamemode = allevent(scene, &event, &pause, &invent);
+        move_player(scene, scene->perso, scene->perso->move_dir);
         move_particles(scene->map->particles);
     }
     if (scene->perso->stat.life <= 0)
@@ -66,5 +71,3 @@ void game(int *gamemode, scene_t *scene)
     free_graph(scene->map);
     close_window(scene, &pause, gamemode, &invent);
 }
-
-

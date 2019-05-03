@@ -10,20 +10,21 @@
 void add_equipement_texture(inv_t *invent, int j)
 {
     sfIntRect rect = {0, 0, 0, 0};
-    sfTexture *texture = sfTexture_createFromFile("assets/textures/equip.jpg", NULL);
-    sfTexture *sw_texture = sfTexture_createFromFile("assets/textures/sword_icon.png", NULL);
+    sfTexture *texture = sfTexture_createFromFile(
+        "assets/textures/equip.jpg", NULL);
+    sfTexture *sw_texture = sfTexture_createFromFile(
+        "assets/textures/sword_icon.png", NULL);
 
     sfRectangleShape_setTexture(invent->button[j]->but, texture, sfTrue);
-    if (invent->button[j]->object.effect == 1) 
+    if (invent->button[j]->object.effect == 1)
         rect = create_char_perso(37, 52, 200, 178);
-    if (invent->button[j]->object.effect == 2) 
+    if (invent->button[j]->object.effect == 2)
         rect = create_char_perso(235, 13, 279, 258);
-    if (invent->button[j]->object.effect == 3) 
+    if (invent->button[j]->object.effect == 3)
         rect = create_char_perso(513, 52, 200, 277);
-    if (invent->button[j]->object.effect == 4) 
+    if (invent->button[j]->object.effect == 4)
         rect = create_char_perso(810, 13, 277, 188);
-    if (rect.top != 0)
-        sfRectangleShape_setTextureRect(invent->button[j]->but, rect);
+    sfRectangleShape_setTextureRect(invent->button[j]->but, rect);
     if (invent->button[j]->object.effect == 5) {
         sfRectangleShape_setTexture(invent->button[j]->but, sw_texture, sfTrue);
         rect = create_char_perso(0, 0, 224, 224);

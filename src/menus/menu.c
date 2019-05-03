@@ -15,9 +15,9 @@ void disp_menu(scene_t *scene)
     sfRenderWindow_drawSprite(scene->window, scene->spr_back, NULL);
     while (scene->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window,
-                                            scene->button[i]->but, NULL);
+                                          scene->button[i]->but, NULL);
         sfRenderWindow_drawText(scene->window, scene->button[i]->txt, NULL);
-        i++;
+        i ++;
     }
     sfRenderWindow_display(scene->window);
 }
@@ -46,7 +46,7 @@ int init_menu_scene(scene_t *scene)
     char *path_back = "assets/textures/menu.jpg";
 
     scene->perso = NULL;
-    scene->ennemi = NULL; 
+    scene->ennemi = NULL;
     scene->button = malloc(sizeof(but_s) * 3);
     if (scene->button == NULL)
         return (84);
@@ -70,7 +70,7 @@ void destroy_menu(scene_t *scene, int *gamemode)
     while (scene->button[i] != NULL) {
         sfRectangleShape_destroy(scene->button[i]->but);
         free(scene->button[i]);
-        i++;
+        i ++;
     }
     free(scene->button);
     if (*gamemode == 3)

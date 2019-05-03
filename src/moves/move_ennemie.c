@@ -31,7 +31,7 @@ void set_good_rect(scene_t *scene, sfVector2f move, sfIntRect *rect_perso)
 
     if (fabs(move.x) > fabs(move.y))
         i = 1;
-    else 
+    else
         i = 0;
     if (i == 1 && move.x < 0)
         *rect_perso = scene->ennemi->char_left;

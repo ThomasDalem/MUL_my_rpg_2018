@@ -20,7 +20,8 @@ int is_colliding(sfFloatRect rect1, sfFloatRect rect2)
     return (0);
 }
 
-int will_rect_collide(sfFloatRect rect1, sfFloatRect rect2, sfVector2f direction)
+int will_rect_collide(sfFloatRect rect1, sfFloatRect rect2,
+                      sfVector2f direction)
 {
     rect1.top += direction.y;
     rect1.left += direction.x;
