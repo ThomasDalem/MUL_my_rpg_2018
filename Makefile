@@ -7,6 +7,7 @@
 
 SRC =	src/collisions/check_collisions.c			\
 		src/collisions/collision.c					\
+		src/add_equipement.c 						\
 		src/display/disp.c							\
 		src/display/disp_invent.c 					\
 		src/entities/anime_ennemie.c				\
@@ -47,6 +48,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/inputs/select.c							\
 		src/inventory/inventory_gestion.c			\
 		src/inventory/inventory_use_throw.c			\
+		src/inventory/switch_equipement.c 			\
 		src/loose/loose.c 							\
 		src/loose/loose_button.c 					\
 		src/main.c									\
@@ -73,6 +75,7 @@ SRC =	src/collisions/check_collisions.c			\
         src/system/sound.c                          \
 		src/tools/create_sprite.c 					\
 		src/tools/set_str.c							\
+		src/sell.c 							\
 		src/tools/tools.c							\
 
 OBJ =	$(SRC:.c=.o)

@@ -59,7 +59,7 @@ void init_button(but_s *button, int x, int y)
     button->but = sfRectangleShape_create();
     sfRectangleShape_setOutlineColor(button->but, sfBlue);
     sfRectangleShape_setOutlineThickness(button->but, 3);
-    sfRectangleShape_setFillColor(button->but, sfTransparent);
+    sfRectangleShape_setFillColor(button->but, sfWhite);
     sfRectangleShape_setSize(button->but, size);
     sfRectangleShape_setPosition(button->but, pos);
     create_use_button(&button->next[0], x, y);

@@ -54,7 +54,10 @@ typedef struct object
 {
     sfTexture *texture;
     sfSprite *sprite;
+    int cost;
+    int number;
     int type;
+    int effect;
     int damage;
     int life;
     int defense;
@@ -83,6 +86,7 @@ typedef struct button_s
     sfVector2f pos;
     int is_clicked;
     int is_placed;
+    int is_filled;
     struct object object;
     info_t info;
     sfFont *font;

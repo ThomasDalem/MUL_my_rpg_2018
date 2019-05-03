@@ -89,6 +89,7 @@ int init_inventory(inv_t *invent, scene_t *scene);
 int set_stats_equipement(inv_t *invent);
 int set_equipement(inv_t *invent, scene_t *scene);
 void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite);
+int create_string_equip(but_s *button, struct stats equip);
 
 //initialisation/init_menu.c
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
@@ -144,7 +145,8 @@ void move_ennemie(scene_t *scene);
 int pause_function(scene_t *scene, pause_s *pause);
 
 //select.c
-
+//switch
+int switch_equipement(scene_t *scene, inv_t *invent);
 //set_str.c
 char *set_attack_str(obj_t *perso);
 char *set_life_str(obj_t *perso);
@@ -153,6 +155,10 @@ char *set_magic_str(obj_t *perso);
 //sell
 int init_sell(scene_t *scene);
 int fill_sell_str(scene_t *scene);
+void fill_equipement(scene_t *scene);
+void add_new_equipement(scene_t *scene, inv_t *invent, int i);
+int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode);
+void add_new_equipement(scene_t *scene, inv_t *invent, int i);
 //sound.c
 void talk(scene_t *scene);
 

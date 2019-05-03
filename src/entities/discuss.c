@@ -67,7 +67,7 @@ void start_discuss(scene_t *scene)
         pos_pnj = sfCircleShape_getGlobalBounds(scene->pnj->detect_zone);
         if (scene->pnj->discuss == 1)
             scene->pnj->text.nb_dialog ++;
-        if (scene->pnj->text.nb_dialog == 3) {
+        if (scene->pnj->text.nb_dialog >= 3) {
             scene->pnj->text.nb_dialog = 0;
             scene->pnj->discuss = 0;
         }
