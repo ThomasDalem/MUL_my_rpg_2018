@@ -63,8 +63,8 @@ int init_fs_button(but_s *button)
     sfVector2f size;
     sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
 
-    pos.x = 200;
-    pos.y = 700;
+    pos.x = 1350;
+    pos.y = 900;
     size.x = 300;
     size.y = 100;
     button->is_clicked = 0;
@@ -77,7 +77,7 @@ int init_fs_button(but_s *button)
     sfRectangleShape_setTexture(button->but, start, sfFalse);
     button->txt = sfText_create();
     button->font = sfFont_createFromFile("assets/texts/menu.otf");
-    set_text(button->txt, "Fullscreen", button->font, (sfVector2f){200, 713});
+    set_text(button->txt, "Option", button->font, (sfVector2f){1440, 930});
     return (1);
 }
 

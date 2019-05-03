@@ -189,6 +189,13 @@ typedef struct pause_t
     sfText *txt_qg;
 } pause_s;
 
+typedef struct option_s
+{
+    sfTexture *text_back;
+    sfSprite *spr_back;
+    struct button_s **button;
+} option_t;
+
 typedef struct inventory
 {
     sfFont *font;
@@ -216,7 +223,6 @@ typedef struct scene_s
 {
     sfRenderWindow *window;
     musics *music;
-    //option *option;
     sfTexture *text_back;
     sfSprite *spr_back;
     struct button_s **button;

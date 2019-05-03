@@ -74,6 +74,8 @@ SRC =	src/collisions/check_collisions.c			\
 		src/tools/create_sprite.c 					\
 		src/tools/set_str.c							\
 		src/tools/tools.c							\
+		src/option/option.c							\
+		src/option/init_option.c					\
 
 OBJ =	$(SRC:.c=.o)
 

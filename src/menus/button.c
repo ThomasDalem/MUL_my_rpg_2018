@@ -21,7 +21,7 @@ void button_disp(but_s **button, scene_t *scene)
             sfRectangleShape_setOutlineColor(button[i]->but, sfBlue);
         else
             sfRectangleShape_setOutlineColor(button[i]->but, sfRed);
-        i ++;
+        i++;
     }
 }
 
@@ -35,7 +35,7 @@ void check_all_button(but_s **button, scene_t *scene)
         if (button_is_clicked(button[i]->but, mouse) == 0) {
             button[i]->is_clicked = 1;
         }
-        else 
+        else
             button[i]->is_clicked = 0;
         i++;
     }

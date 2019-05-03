@@ -67,7 +67,7 @@ void free_perso(scene_t *scene);
 
 //game.c
 sfRenderWindow *createmywindow(int fs, unsigned int width, unsigned int height);
-void game(int *gamemode, scene_t *scene);
+void game(int *gamemode, scene_t *scene, option_t *option);
 void anim(obj_t *player);
 
 //initialisation/game
@@ -120,11 +120,11 @@ void disp_invent(scene_t *scene, inv_t *invent);
 //main.c
 
 //menu.c
-void screenevent(sfEvent *event, scene_t *scene, int *gamemode);
+void screenevent(sfEvent *event, scene_t *scene, int *gamemode, option_t *option);
 void disp_menu(scene_t *scene);
 int init_menu_scene(scene_t *scene);
 void destroy_menu(scene_t *scene, int *gamemode);
-int mainscreen(int *gamemode, scene_t *scene);
+int mainscreen(int *gamemode, scene_t *scene, option_t *option);
 
 //mouse.c
 void cond_mouse(but_s **button, scene_t *scene);
@@ -146,6 +146,15 @@ void move_ennemie(scene_t *scene);
 int pause_function(scene_t *scene, pause_s *pause);
 
 //select.c
+
+//option
+int init_option(option_t *option);
+static int option_click(scene_t *scene, option_t *option);
+static int option_event(sfEvent *event, scene_t *scene, option_t *option);
+void disp_option(scene_t *scene, option_t *option);
+int option_function(scene_t *scene, option_t *option);
+void init_exit(but_s *button);
+void init_fs(but_s *button);
 
 //set_str.c
 char *set_attack_str(obj_t *perso);
