@@ -12,6 +12,7 @@ int main(int ac, char **argv, char **env)
     int gamemode = 0;
     scene_t scene;
 
+    srand(time(NULL));
     if (env[0] == NULL)
         return (84);
     scene.window = createmywindow(1920, 1080);

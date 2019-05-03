@@ -65,6 +65,8 @@ int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
         stop_movement(scene, event);
     if (event->key.code == sfKeyEscape)
         return (pause_function(scene, pause));
+    if (event->key.code == sfKeyU && scene->quest->next)
+        scene->quest = scene->quest->next;
     if (event->type == sfEvtClosed)
         return (3);
     return (1);

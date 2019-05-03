@@ -158,7 +158,7 @@ typedef struct fight_scene
 
 typedef struct obj_s
 {
-    int nb_perso;
+    int id;
     int discuss;
     int money;
     sfTexture *texture;
@@ -171,6 +171,7 @@ typedef struct obj_s
     sfCircleShape *detect_zone;
     sfClock *move_clock;
     sfClock *anim_clock;
+    sfClock *dir_clock;
     int move_dir;
     musics *talk;
     musics *talk2;
@@ -258,6 +259,7 @@ typedef struct map_s
 {
     map_obj_t *objects;
     particle_t *particles;
+    obj_t *enemies;
     struct map_s *up;
     struct map_s *down;
     struct map_s *left;
