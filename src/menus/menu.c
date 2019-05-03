@@ -22,7 +22,7 @@ void disp_menu(scene_t *scene)
     sfRenderWindow_display(scene->window);
 }
 
-void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
+void screenevent(sfEvent *event, scene_t *scene, int *gamemode, option_t *option)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(scene->window);
 
@@ -34,7 +34,7 @@ void screenevent(sfEvent *event, scene_t *scene, int *gamemode)
         if (button_is_clicked(scene->button[1]->but, mouse) == 0)
             (*gamemode) = 3;
         if (button_is_clicked(scene->button[2]->but, mouse) == 0)
-            restart_screen(scene);
+            option_function(scene, option);
         reboot(scene->button);
     }
     if (event->type == sfEvtClosed) {
@@ -49,7 +49,7 @@ int init_menu_scene(scene_t *scene)
 
     scene->perso = NULL;
     scene->ennemi = NULL;
-    scene->button = malloc(sizeof(but_s) * 3);
+    scene->button = malloc(sizeof(but_s) * 4);
     if (scene->button == NULL)
         return (84);
     scene->button[0] = malloc(sizeof(but_s));
@@ -81,7 +81,7 @@ void destroy_menu(scene_t *scene, int *gamemode)
         sfRenderWindow_close(scene->window);
 }
 
-int mainscreen(int *gamemode, scene_t *scene)
+int mainscreen(int *gamemode, scene_t *scene, option_t *option)
 {
     sfEvent click;
     int a = 0;
@@ -96,7 +96,7 @@ int mainscreen(int *gamemode, scene_t *scene)
         disp_menu(scene);
         button_disp(scene->button, scene);
         while (sfRenderWindow_pollEvent(scene->window, &click))
-            screenevent(&click, scene, gamemode);
+            screenevent(&click, scene, gamemode, option);
     }
     sfMusic_stop(scene->music->sound);
     destroy_menu(scene, gamemode);

@@ -46,7 +46,7 @@ void anim(obj_t *player)
     }
 }
 
-void game(int *gamemode, scene_t *scene)
+void game(int *gamemode, scene_t *scene, option_t *option)
 {
     sfEvent event;
     pause_s pause;

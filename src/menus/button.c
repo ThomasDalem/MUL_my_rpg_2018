@@ -21,7 +21,7 @@ void button_disp(but_s **button, scene_t *scene)
             sfRectangleShape_setOutlineColor(button[i]->but, sfBlue);
         else
             sfRectangleShape_setOutlineColor(button[i]->but, sfRed);
-        i ++;
+        i++;
     }
 }
 

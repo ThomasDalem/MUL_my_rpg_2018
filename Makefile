@@ -87,6 +87,8 @@ SRC =	src/collisions/check_collisions.c			\
 		src/tools/set_str.c							\
 		src/sell.c 									\
 		src/tools/tools.c							\
+		src/option/option.c							\
+		src/option/init_option.c					\
 
 OBJ =	$(SRC:.c=.o)
 
