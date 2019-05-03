@@ -52,6 +52,7 @@ int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
 {
     sfVector2i mouse;
     int r = 1;
+    static int done = 0;
 
     if (event->type == sfEvtKeyPressed) {
         switch (event->key.code) {
@@ -65,8 +66,6 @@ int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
         stop_movement(scene, event);
     if (event->key.code == sfKeyEscape)
         return (pause_function(scene, pause));
-    if (event->key.code == sfKeyU && scene->quest->next)
-        scene->quest = scene->quest->next;
     if (event->type == sfEvtClosed)
         return (3);
     return (1);

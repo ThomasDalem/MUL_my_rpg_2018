@@ -10,6 +10,7 @@
 #include <SFML/Graphics/Text.h>
 #include <stdlib.h>
 #include "structures.h"
+#include "quest.h"
 
 static void create_text(quest_t *quest)
 {

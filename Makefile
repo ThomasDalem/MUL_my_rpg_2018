@@ -26,6 +26,8 @@ SRC =	src/collisions/check_collisions.c			\
 		src/fight/jump.c							\
 		src/fight/orient.c							\
 		src/fight/repulse.c							\
+		src/fight/free_obj.c						\
+		src/fight/remove_enemy.c					\
 		src/free/close.c							\
 		src/free/free.c								\
 		src/free/music_free.c						\

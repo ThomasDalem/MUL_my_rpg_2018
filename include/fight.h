@@ -58,4 +58,6 @@ int animation_fight(obj_t *player, int direction);
 int check_alive(scene_t *scene);
 void create_use_button(but_s *button, int x, int y);
 void create_throw_button(but_s *button, int x, int y);
+void free_enemy(obj_t *obj);
+void remove_enemy(obj_t *enemy, obj_t **list);
 #endif /* !FIGHT_H_ */
