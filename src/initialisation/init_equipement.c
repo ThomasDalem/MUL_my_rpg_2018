@@ -14,7 +14,13 @@ int create_string_equip(but_s *button, struct stats equip)
     button->font = sfFont_createFromFile("assets/texts/Timeless.ttf");
     if (str == NULL)
         return (84);
-    my_strcpy(str, "ATTACK = ");
+    if (equip.life != 0) {
+        my_strcpy(str, "COST = ");
+        my_strcat(str, int_to_char(equip.life));
+        my_strcat(str, " ATTACK = ");
+    }
+    else
+        my_strcpy(str, "ATTACK = ");
     my_strcat(str, int_to_char(equip.attack));
     my_strcat(str, " DEFENSE = ");
     my_strcat(str, int_to_char(equip.defense));
@@ -37,7 +43,7 @@ void create_icone(but_s *button, int x, int y)
     if (y == 120)
         rect = create_char_perso(235, 13, 279, 258);
     if (y == 220)
-        rect = create_char_perso(513, 52, 148, 277);
+        rect = create_char_perso(513, 52, 200, 277);
     if (y == 320)
         rect = create_char_perso(810, 13, 277, 188);
     sfRectangleShape_setTextureRect(button->but, rect);
@@ -100,7 +106,7 @@ int set_equipement(inv_t *invent, scene_t *scene)
         invent->equipement[i] = malloc(sizeof(but_s));
         if (invent->equipement[i] == NULL)
             return (84);
-        i++;
+        i ++;
     }
     invent->equipement[i] = NULL;
     init_helmet(invent->equipement[0], 300, 20, invent->stat_equip[0]);

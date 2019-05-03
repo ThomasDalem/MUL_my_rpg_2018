@@ -23,6 +23,7 @@ static map_t *create_node(map_t *prev_node, int nbr)
     node->left = prev_node;
     node->right = NULL;
     node->particles = NULL;
+    node->enemies = NULL;
     node->map_file = my_strmcat("./maps/map", int_to_char(nbr));
     save = node->map_file;
     node->map_file = my_strmcat(node->map_file, ".map");
@@ -40,9 +41,9 @@ static map_t *create_line(int x, int nbr)
     if (!line)
         return (NULL);
     nbr++;
-    for (int i = 1; i < x; i++) {
+    for (int i = 1; i < x; i ++) {
         cursor->right = create_node(cursor, nbr);
-        nbr++;
+        nbr ++;
         if (!cursor->right)
             return (NULL);
         cursor = cursor->right;
@@ -68,7 +69,7 @@ map_t *create_graph(int x, int y)
     map_t *prev_line = NULL;
     int nbr = 0;
 
-    for (int i = 0; i < y; i++) {
+    for (int i = 0; i < y; i ++) {
         line = create_line(x, nbr);
         nbr += x;
         if (!line)

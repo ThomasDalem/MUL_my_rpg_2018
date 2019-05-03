@@ -11,7 +11,8 @@ int init_button_loose(but_s *button, char *str, int x, int y)
 {
     sfVector2f pos = {x, y};
     sfVector2f size = {300, 100};
-    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
+    sfTexture *start = sfTexture_createFromFile
+        ("assets/textures/button.jpg", NULL);
 
     button->is_clicked = 0;
     button->but = sfRectangleShape_create();
@@ -38,7 +39,7 @@ int init_loose_scene(scene_t *scene)
     for (i = 0; i != 3; i++)
         scene->button[i] = malloc(sizeof(but_s));
     scene->button[i] = NULL;
-    if (scene->button[0] == NULL || scene->button[1] == NULL || 
+    if (scene->button[0] == NULL || scene->button[1] == NULL ||
         scene->button[2] == NULL)
         return (84);
     scene->text_back = sfTexture_createFromFile(path_back, NULL);

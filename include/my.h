@@ -58,5 +58,6 @@ int my_lf_char(char *str, char c);
 char *my_cut_str(char *str, int s);
 char *int_to_char(int nb);
 char **reallocation(char **str, int taille);
+char **my_str_to_word_array(char const *str, char ch);
 
 #endif /* ! MY_H */

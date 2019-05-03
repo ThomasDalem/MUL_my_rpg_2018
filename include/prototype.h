@@ -35,11 +35,13 @@ void move_player(scene_t *scene, obj_t *player, int direction);
 void chose_ennemi_action(scene_t *scene);
 void free_enn(scene_t *scene);
 void restart_screen(scene_t *scene);
+void create_ennemie(obj_t *ennemie);
 
 //anime_ennemie.c
 
 //close.c
-void close_window(scene_t *scene, pause_s *pause, int *gamemode, inv_t *invent);
+void close_window(scene_t *scene,
+                  pause_s *pause, int *gamemode, inv_t *invent);
 
 //collision
 int check_collision(scene_t *scene, sfVector2f direction);
@@ -51,7 +53,7 @@ int is_colliding(sfFloatRect rect1, sfFloatRect rect2);
 void start_discuss(scene_t *scene);
 
 //disp
-void disp_scene(scene_t *scene, particle_t *particles);
+void disp_scene(scene_t *scene, quest_t *quest);
 void disp_hud(scene_t *scene, obj_t *perso, int x, int y);
 //event.c
 int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent);
@@ -89,8 +91,11 @@ int init_fight_perso(obj_t *perso);
 int init_inventory(inv_t *invent, scene_t *scene);
 int set_stats_equipement(inv_t *invent);
 int set_equipement(inv_t *invent, scene_t *scene);
-void set_sprite_inventory(inv_t *invent, scene_t *scene, sfVector2f pos_sprite);
-
+void set_sprite_inventory(inv_t *invent,
+                          scene_t *scene, sfVector2f pos_sprite);
+int create_string_equip(but_s *button, struct stats equip);
+int set_text_inventory(inv_t *invent, scene_t *scene);
+void set_pos_text(inv_t *invent, sfVector2f pos_text);
 //initialisation/init_menu.c
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
 int init_end_button(but_s *button);
@@ -128,25 +133,30 @@ int mainscreen(int *gamemode, scene_t *scene);
 
 //mouse.c
 void cond_mouse(but_s **button, scene_t *scene);
+sfIntRect change_animation(obj_t *player, int direction);
+sfIntRect change_enemy_animation(obj_t *player, int direction);
 
 //move.c
 void move_right(scene_t *scene);
 void move_left(scene_t *scene);
 void move_down(scene_t *scene);
 void move_up(scene_t *scene);
+sfVector2f get_distance(obj_t *enemy, obj_t *player);
+void move_enemy(scene_t *scene, obj_t *player, int direction);
 
 //move ennemie
-void move_enn_up(scene_t *scene, int x, int y);
-void move_enn_down(scene_t *scene, int x, int y);
-void move_enn_left(scene_t *scene, int x, int y);
-void move_enn_right(scene_t *scene, int x, int y);
-void move_ennemie(scene_t *scene);
+void move_enn_up(obj_t *enemy);
+void move_enn_down(obj_t *enemy);
+void move_enn_left(obj_t *enemy);
+void move_enn_right(obj_t *enemy);
+void move_ennemie(scene_t *scene, map_t *map);
 
 //pause.c
 int pause_function(scene_t *scene, pause_s *pause);
 
 //select.c
-
+//switch
+int switch_equipement(scene_t *scene, inv_t *invent);
 //set_str.c
 char *set_attack_str(obj_t *perso);
 char *set_life_str(obj_t *perso);
@@ -155,6 +165,12 @@ char *set_magic_str(obj_t *perso);
 //sell
 int init_sell(scene_t *scene);
 int fill_sell_str(scene_t *scene);
+void fill_equipement(scene_t *scene);
+void add_new_equipement(scene_t *scene, inv_t *invent, int i);
+int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode);
+void add_new_equipement(scene_t *scene, inv_t *invent, int i);
+void add_equipement(but_s *things, char *str, int r);
+int set_money_text(scene_t *scene);
 //sound.c
 void talk(scene_t *scene);
 

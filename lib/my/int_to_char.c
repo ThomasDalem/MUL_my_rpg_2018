@@ -7,11 +7,22 @@
 
 #include <stdlib.h>
 
+static int get_number_size(int number)
+{
+    int i = 0;
+
+    while (number >= 10) {
+        number /= 10;
+        i++;
+    }
+    return (i + 1);
+}
+
 char *int_to_char(int nb)
 {
     int n = 1;
     int i = 0;
-    char *str2 = malloc(sizeof(char) * 12);
+    char *str2 = malloc(sizeof(char) * (get_number_size(nb) + 1));
 
     if (str2 == NULL)
         return (NULL);

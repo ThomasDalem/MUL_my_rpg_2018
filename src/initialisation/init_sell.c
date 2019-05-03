@@ -23,7 +23,7 @@ int set_money_text(scene_t *scene)
 int init_sell_button(scene_t *scene)
 {
     int i = 0;
-    sfVector2f pos = {20, 100};
+    sfVector2f pos = {100, 100};
     sfVector2f size = {100, 100};
 
     while (i != 5) {
@@ -42,17 +42,22 @@ int init_sell_button(scene_t *scene)
     scene->sell->things[i] = NULL;
     return (0);
 }
-/*
+
 void fill_equipement(scene_t *scene)
 {
     int i = 0;
-    int r = rand[]
+    int r = rand() % 15;
 
     while (scene->sell->things[i] != NULL) {
-
+        if (scene->sell->str[r][0] == '1') {
+            scene->sell->things[i]->object.number = r;
+            add_equipement(scene->sell->things[i], scene->sell->str[r], r);
+            i++;
+        }
+        r = rand() % 5;
     }
 }
-*/
+
 int init_sell(scene_t *scene)
 {
     scene->sell = malloc(sizeof(struct sell));
@@ -72,6 +77,6 @@ int init_sell(scene_t *scene)
         return (84);
     if (fill_sell_str(scene) == 84)
         return (84);
-    //fill_equipement(scene);
+    fill_equipement(scene);
     return (0);
 }

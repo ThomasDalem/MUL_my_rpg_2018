@@ -46,6 +46,8 @@ static int add_objects_to_map(map_t *map, FILE *stream)
     while (getline(&line, &len, stream) != -1) {
         if (my_strcmp(line, "sparks\n") == 0)
             add_particles(stream, map);
+        else if (my_strcmp(line, "enemy\n") == 0)
+            add_enemy(stream, map);
         else
             map->objects = create_object(map->objects, stream, line);
         line = NULL;

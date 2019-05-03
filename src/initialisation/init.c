@@ -42,6 +42,7 @@ int init_perso(obj_t *perso)
     perso->char_right = create_char_perso(152, 4, 24, 40);
     perso->move = (sfVector2f){1.5, 1.5};
     perso->money = 100;
+    perso->move_dir = 0;
     perso->move_clock = sfClock_create();
     perso->anim_clock = sfClock_create();
     perso->stat = create_stat_perso(100, 10, 5, 5);
@@ -60,15 +61,12 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent)
     scene->ennemi = NULL;
     scene->pnj = NULL;
     scene->perso = malloc(sizeof(obj_t));
-
     if (init_pause(pause) == 84)
         return (84);
-    scene->map = get_top_left_map(create_graph(2, 2));
+    scene->map = get_top_left_map(create_graph(3, 3));
     if (init_perso(scene->perso) == 84)
         return (84);
     if (init_inventory(invent, scene) == 84)
-        return (84);
-    if (init_ennemie(scene) == 84)
         return (84);
     if (init_pnj(scene) == 84)
         return (84);

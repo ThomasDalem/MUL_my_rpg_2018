@@ -14,11 +14,13 @@ void orient_left_right(scene_t *scene)
 
     if (rect_perso.left < 167 && scene->perso->fight->is_jumping == 0) {
         init_right_perso(scene->perso);
-        sfSprite_setTextureRect(scene->perso->sprite, scene->perso->fight->rect);
+        sfSprite_setTextureRect(scene->perso->sprite,
+                                scene->perso->fight->rect);
     }
     if (rect_enn.left > 147 && scene->ennemi->fight->is_jumping == 0) {
         init_left_perso(scene->ennemi);
-        sfSprite_setTextureRect(scene->ennemi->sprite, scene->ennemi->fight->rect);
+        sfSprite_setTextureRect(scene->ennemi->sprite,
+                                scene->ennemi->fight->rect);
     }
 }
 
@@ -29,11 +31,13 @@ void orient_right_left(scene_t *scene)
 
     if (rect_perso.left > 147 && scene->perso->fight->is_jumping == 0) {
         init_left_perso(scene->perso);
-        sfSprite_setTextureRect(scene->perso->sprite, scene->perso->fight->rect);
+        sfSprite_setTextureRect(scene->perso->sprite,
+                                scene->perso->fight->rect);
     }
     if (rect_enn.left < 167 && scene->ennemi->fight->is_jumping == 0) {
         init_right_perso(scene->ennemi);
-        sfSprite_setTextureRect(scene->ennemi->sprite, scene->ennemi->fight->rect);
+        sfSprite_setTextureRect(scene->ennemi->sprite,
+                                scene->ennemi->fight->rect);
     }
 }
 

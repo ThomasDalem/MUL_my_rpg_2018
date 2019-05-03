@@ -13,10 +13,9 @@ static int check_click(scene_t *scene, pause_s *pause)
     int i = 0;
 
     while (pause->button[i] != NULL) {
-        if (button_is_clicked(pause->button[i]->but, mouse) == 0) {
+        if (button_is_clicked(pause->button[i]->but, mouse) == 0)
             return (i + 1);
-        }
-        i++;
+        i ++;
     }
     return (0);
 }
@@ -27,12 +26,10 @@ static int pause_event(sfEvent *event, scene_t *scene, pause_s *pause)
 
     if (event->type == sfEvtMouseButtonPressed)
         check_all_button(pause->button, scene);
-    if (event->type == sfEvtMouseButtonReleased) {
+    if (event->type == sfEvtMouseButtonReleased)
         return (check_click(scene, pause));
-    }
-    if (event->type == sfEvtClosed) {
+    if (event->type == sfEvtClosed)
         return (3);
-    }
     return (0);
 }
 
@@ -43,9 +40,10 @@ static void disp_pause(scene_t *scene, pause_s *pause)
     //sfRenderWindow_drawSprite(scene->window, pause->spr_back, NULL);
     sfRenderWindow_drawRectangleShape(scene->window, pause->filter, NULL);
     while (pause->button[i] != NULL) {
-        sfRenderWindow_drawRectangleShape(scene->window, pause->button[i]->but, NULL);
+        sfRenderWindow_drawRectangleShape(scene->window, pause->button[i]->but,
+                                          NULL);
         sfRenderWindow_drawText(scene->window, pause->button[i]->txt, NULL);
-        i++;
+        i ++;
     }
 }
 

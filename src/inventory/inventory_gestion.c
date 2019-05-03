@@ -30,15 +30,17 @@ void key_event(sfEvent *event, scene_t *scene, inv_t *invent)
         mouse = sfMouse_getPositionRenderWindow(scene->window);
         check_all_button(invent->button, scene);
     }
-    if (event->type == sfEvtMouseButtonReleased)
+    if (event->type == sfEvtMouseButtonReleased) {
+        switch_equipement(scene, invent);
         reboot_use_throw(invent->button);
+    }
 }
 
 static int invent_event(sfEvent *event, scene_t *scene, inv_t *invent)
 {
     if (event->key.code == sfKeyF)
         return (1);
-     if (event->type == sfEvtKeyPressed) { 
+    if (event->type == sfEvtKeyPressed) {
         if (event->key.code == sfKeyS)
             sfSprite_setTextureRect(invent->sprite, scene->perso->char_down);
         if (event->key.code == sfKeyZ)

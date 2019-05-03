@@ -41,7 +41,7 @@ particle_t *create_particles(int number, int x, int y)
 {
     particle_t *particles = NULL;
 
-    for (int i = 0; i < number; i++) {
+    for (int i = 0; i < number; i ++) {
         particles = create_particle(particles, x, y);
         if (particles == NULL)
             return (NULL);
