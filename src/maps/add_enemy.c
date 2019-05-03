@@ -42,6 +42,7 @@ static obj_t *create_enemy(FILE *stream, obj_t *next)
     enemy->anim_clock = sfClock_create();
     enemy->move_clock = sfClock_create();
     enemy->dir_clock = sfClock_create();
+    enemy->move_dir = 0;
     enemy->next = next;
     return (enemy);
 }
