@@ -8,11 +8,12 @@
 SRC =	src/collisions/check_collisions.c			\
 		src/collisions/check_enemy_collisions.c		\
 		src/collisions/collision.c					\
-		src/add_equipement.c 						\
-		src/display/disp.c							\
-		src/display/disp_invent.c					\
+		src/display/disp.c						\
+		src/display/disp_invent.c				\
 		src/entities/anime_ennemie.c				\
 		src/entities/discuss.c						\
+		src/equipements/add_equipement.c		\
+		src/equipements/sell.c					\
 		src/fight/alive.c							\
 		src/fight/after_fight.c 					\
 		src/fight/attack.c							\
@@ -29,10 +30,10 @@ SRC =	src/collisions/check_collisions.c			\
 		src/fight/repulse.c							\
 		src/fight/free_obj.c						\
 		src/fight/remove_enemy.c					\
-		src/free/close.c							\
-		src/free/free.c								\
-		src/free/music_free.c						\
-		src/free/perso_free.c						\
+		src/free/close.c						\
+		src/free/free.c							\
+		src/free/music_free.c					\
+		src/free/perso_free.c					\
 		src/initialisation/create_string_equip.c 	\
 		src/initialisation/init.c					\
 		src/initialisation/init_ennemie.c			\
@@ -49,47 +50,46 @@ SRC =	src/collisions/check_collisions.c			\
 		src/initialisation/init_sound.c				\
 		src/initialisation/init_use_throw_button.c	\
 		src/initialisation/set_stats_equipement.c	\
-		src/inputs/event.c							\
-		src/inputs/mouse.c							\
+		src/inputs/event.c						\
+		src/inputs/mouse.c						\
 		src/inventory/inventory_gestion.c			\
 		src/inventory/inventory_use_throw.c			\
 		src/inventory/switch_equipement.c 			\
-		src/loose/loose.c 							\
-		src/loose/loose_button.c 					\
+		src/loose/loose.c 						\
+		src/loose/loose_button.c				\
 		src/main.c									\
-		src/maps/add_particles.c					\
-		src/maps/change_map.c						\
-		src/maps/create_graph.c						\
-		src/maps/get_top_left_map.c					\
-		src/maps/get_objects.c						\
-		src/maps/remove_endline.c					\
-		src/maps/get_object_stats.c					\
-		src/maps/free_graph.c						\
-		src/maps/add_enemy.c						\
+		src/maps/add_particles.c				\
+		src/maps/change_map.c					\
+		src/maps/create_graph.c					\
+		src/maps/get_top_left_map.c				\
+		src/maps/get_objects.c					\
+		src/maps/remove_endline.c				\
+		src/maps/get_object_stats.c				\
+		src/maps/free_graph.c					\
+		src/maps/add_enemy.c					\
 		src/menus/button.c							\
 		src/menus/menu.c							\
 		src/menus/pause.c							\
-		src/moves/move.c							\
-		src/moves/move_ennemie.c					\
-		src/moves/move_player.c						\
-		src/moves/change_animation.c				\
-		src/moves/get_distance.c					\
-		src/moves/enemy_movement.c					\
+		src/moves/move.c						\
+		src/moves/move_ennemie.c				\
+		src/moves/move_player.c					\
+		src/moves/change_animation.c			\
+		src/moves/get_distance.c				\
+		src/moves/enemy_movement.c				\
 		src/particles/create_particles.c			\
 		src/particles/move_particles.c				\
 		src/particles/free_particles.c				\
 		src/particles/reset_particles.c				\
-		src/quests/create_quest.c					\
-		src/quests/display_quest.c					\
-		src/quests/set_quest_attributes.c			\
-		src/quests/set_quest_rewards.c				\
+		src/quests/create_quest.c				\
+		src/quests/display_quest.c				\
+		src/quests/set_quest_attributes.c		\
+		src/quests/set_quest_rewards.c			\
 		src/system/game.c							\
 		src/system/reboot.c							\
 		src/system/sound.c							\
-		src/tools/create_sprite.c					\
-		src/tools/set_str.c							\
-		src/sell.c 									\
-		src/tools/tools.c							\
+		src/tools/create_sprite.c				\
+		src/tools/set_str.c						\
+		src/tools/tools.c						\
 		src/option/option.c							\
 		src/option/init_option.c					\
 

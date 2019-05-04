@@ -36,6 +36,10 @@ void chose_ennemi_action(scene_t *scene);
 void free_enn(scene_t *scene);
 void restart_screen(scene_t *scene);
 void create_ennemie(obj_t *ennemie);
+void init_disp_potion(but_s *things);
+void init_potion_str(but_s *thing, char *str, int r);
+void set_new_equipement(scene_t *scene, inv_t *invent, int i);
+void jump_condition(scene_t *scene);
 
 //anime_ennemie.c
 
