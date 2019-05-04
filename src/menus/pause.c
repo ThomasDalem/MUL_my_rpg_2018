@@ -15,7 +15,7 @@ static int check_click(scene_t *scene, pause_s *pause)
     while (pause->button[i] != NULL) {
         if (button_is_clicked(pause->button[i]->but, mouse) == 0)
             return (i + 1);
-        i ++;
+        i++;
     }
     return (0);
 }
@@ -41,9 +41,9 @@ static void disp_pause(scene_t *scene, pause_s *pause)
     sfRenderWindow_drawRectangleShape(scene->window, pause->filter, NULL);
     while (pause->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window, pause->button[i]->but,
-                                          NULL);
+                                            NULL);
         sfRenderWindow_drawText(scene->window, pause->button[i]->txt, NULL);
-        i ++;
+        i++;
     }
 }
 
