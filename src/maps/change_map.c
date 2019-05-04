@@ -22,10 +22,10 @@ int check_maps(sfVector2f player_pos, scene_t *scene)
 {
     map_t *next_map = NULL;
 
-    next_map = (player_pos.x > 2000) ? scene->map->right : next_map;
-    next_map = (player_pos.x < -50) ? scene->map->left : next_map;
-    next_map = (player_pos.y > 1100) ? scene->map->down : next_map;
-    next_map = (player_pos.y < -50) ? scene->map->up : next_map;
+    next_map = (player_pos.x > 1920) ? scene->map->right : next_map;
+    next_map = (player_pos.x < -20) ? scene->map->left : next_map;
+    next_map = (player_pos.y > 1090) ? scene->map->down : next_map;
+    next_map = (player_pos.y < -20) ? scene->map->up : next_map;
     if (next_map) {
         player_pos = sfSprite_getPosition(scene->perso->sprite);
         player_pos = change_player_pos(next_map, scene->map, player_pos);

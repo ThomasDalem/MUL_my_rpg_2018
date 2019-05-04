@@ -80,6 +80,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/quests/display_quest.c					\
 		src/quests/set_quest_attributes.c			\
 		src/quests/set_quest_rewards.c				\
+		src/quests/quest_end.c						\
 		src/system/game.c							\
 		src/system/reboot.c							\
 		src/system/sound.c							\
