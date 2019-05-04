@@ -32,21 +32,8 @@ void add_equipement_texture(inv_t *invent, int j)
     }
 }
 
-void add_new_equipement(scene_t *scene, inv_t *invent, int i)
+void add_new_equipement(scene_t *scene, inv_t *invent, int i, int j)
 {
-    int j = 0;
-    sfIntRect rect;
-
-    while (invent->button[j] != NULL && invent->button[j]->object.type != 0)
-        j++;
-    if (invent->button[j] == NULL) {
-        scene->sell->color_place.a = 255;
-        return;
-    }
-    if (scene->perso->money < 20) {
-        scene->sell->color_money.a = 255;
-        return;
-    }
     invent->button[j]->object.type = 1;
     invent->button[j]->object.effect = scene->sell->things[i]->object.effect;
     invent->button[j]->object.damage = scene->sell->things[i]->object.damage;
@@ -55,6 +42,41 @@ void add_new_equipement(scene_t *scene, inv_t *invent, int i)
     add_equipement_texture(invent, j);
     scene->perso->money-= scene->sell->things[i]->object.cost;
     set_money_text(scene);
+}
+
+void add_potion_equipement(scene_t *scene, inv_t *invent, int i, int j)
+{
+    invent->button[j]->object.type = 2;
+    invent->button[j]->object.effect = scene->sell->things[i]->object.effect;
+    invent->button[j]->object.duration = 
+                                    scene->sell->things[i]->object.duration;
+    invent->button[j]->object.capacities = 
+        scene->sell->things[i]->object.capacities;
+    invent->button[j]->object.cost = 0;
+    add_equipement_texture(invent, j);
+    init_disp_potion(invent->button[j]);
+    scene->perso->money-= scene->sell->things[i]->object.cost;
+    set_money_text(scene);
+}
+
+void set_new_equipement(scene_t *scene, inv_t *invent, int i)
+{
+    int j = 0;
+
+    while (invent->button[j] != NULL && invent->button[j]->object.type != 0)
+        j++;
+    if (invent->button[j] == NULL) {
+        scene->sell->color_place.a = 255;
+        return;
+    }
+    if (scene->perso->money - scene->sell->things[i]->object.cost < 0) {
+        scene->sell->color_money.a = 255;
+        return;
+    }
+    if (scene->sell->things[i]->object.type == 1)
+        add_new_equipement(scene, invent, i, j);
+    if (scene->sell->things[i]->object.type == 2)
+        add_potion_equipement(scene, invent, i, j);
 }
 
 void check_text(scene_t *scene)

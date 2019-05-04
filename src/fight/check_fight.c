@@ -89,6 +89,7 @@ int is_a_fight(scene_t *scene, inv_t *invent, pause_s *pause)
     while (scene->ennemi != NULL && i == 1) {
         pos_enn = sfSprite_getGlobalBounds(scene->ennemi->sprite);
         if (check_fight(scene->perso->sprite, scene->ennemi->sprite) == 1) {
+            scene->perso->is_fighting = 1;
             i = start_fight(scene, invent, pause);
             remove_enemy(scene->ennemi, &scene->map->enemies);
             after_fight_function(scene, pos);

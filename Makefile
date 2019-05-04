@@ -33,6 +33,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/free/free.c								\
 		src/free/music_free.c						\
 		src/free/perso_free.c						\
+		src/initialisation/create_string_equip.c 	\
 		src/initialisation/init.c					\
 		src/initialisation/init_ennemie.c			\
 		src/initialisation/init_equipement.c		\
@@ -42,6 +43,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/initialisation/init_pause.c				\
 		src/initialisation/init_phrase.c			\
 		src/initialisation/init_pnj.c				\
+		src/initialisation/init_potion.c 			\
 		src/initialisation/init_sell.c				\
 		src/initialisation/init_sell_equipement.c	\
 		src/initialisation/init_sound.c				\

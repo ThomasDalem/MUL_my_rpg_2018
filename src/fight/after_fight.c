@@ -16,4 +16,5 @@ void after_fight_function(scene_t *scene, sfVector2f pos)
     sfSprite_setScale(scene->perso->sprite, scale);
     sfSprite_setPosition(scene->perso->sprite, pos);
     scene->perso->money+= 20;
+    scene->perso->is_fighting = 0;
 }

@@ -32,7 +32,7 @@ void check_pay(scene_t *scene, inv_t *invent, sfVector2i mouse)
 
     while (scene->sell->things[i] != NULL) {
         if (button_is_clicked(scene->sell->things[i]->but, mouse) == 0)
-            add_new_equipement(scene, invent, i);
+            set_new_equipement(scene, invent, i);
         i++;
     }
 }

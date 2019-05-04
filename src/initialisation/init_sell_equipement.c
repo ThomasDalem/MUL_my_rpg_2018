@@ -62,6 +62,10 @@ void add_equipement(but_s *things, char *str, int r)
         init_sell_str(things, arr[2], r);
         init_disp_equip(things);
     }
+    if (things->object.type == 2) {
+        init_potion_str(things, arr[2], r);
+        init_disp_potion(things);
+    }
 }
 
 int fill_sell_str(scene_t *scene)

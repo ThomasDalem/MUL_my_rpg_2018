@@ -30,7 +30,7 @@ void disp_fight(scene_t *scene, sfSprite *sprite, inv_t *invent);
 //fight/repulse.c
 void check_repulse(scene_t *scene, sfSprite *sprite, inv_t *invent);
 void set_sprite_inventory(inv_t *invent, scene_t *scene,
-                          sfVector2f pos_sprite);
+                            sfVector2f pos_sprite);
 sfIntRect create_char_perso(int top, int left, int width, int height);
 int select_perso(scene_t *scene, int *gamemode);
 void finish_init_fight_perso(obj_t *perso, int x, int y);

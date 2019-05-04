@@ -63,6 +63,7 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent)
     scene->perso = malloc(sizeof(obj_t));
     if (init_pause(pause) == 84)
         return (84);
+    scene->perso->is_fighting = 0;
     scene->map = get_top_left_map(create_graph(3, 3));
     if (init_perso(scene->perso) == 84)
         return (84);

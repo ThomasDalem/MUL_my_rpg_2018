@@ -62,6 +62,8 @@ typedef struct object
     int life;
     int defense;
     int magic;
+    float duration;
+    int capacities;
 } object;
 
 typedef struct pnj
@@ -148,6 +150,9 @@ typedef struct fight_t
     sfVector2f jump_vec;
     int max_char;
     int beg_char;
+    int is_potion;
+    int type; 
+    int effect;
 } fight_s;
 
 typedef struct fight_scene
@@ -173,6 +178,7 @@ typedef struct obj_s
     sfClock *anim_clock;
     sfClock *dir_clock;
     int move_dir;
+    int is_fighting;
     musics *talk;
     musics *talk2;
     musics *talk3;

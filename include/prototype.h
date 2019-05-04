@@ -68,7 +68,7 @@ int free_music(scene_t *scene);
 void free_perso(scene_t *scene);
 
 //game.c
-sfRenderWindow *createmywindow(int fs, unsigned int width, unsigned int height);
+sfRenderWindow *createmywindow(int fs, unsigned int w, unsigned int h);
 void game(int *gamemode, scene_t *scene, option_t *option);
 void anim(obj_t *player);
 
@@ -125,7 +125,8 @@ void disp_invent(scene_t *scene, inv_t *invent);
 //main.c
 
 //menu.c
-void screenevent(sfEvent *event, scene_t *scene, int *gamemode, option_t *option);
+void screenevent(sfEvent *event, scene_t *scene, 
+                    int *gamemode, option_t *option);
 void disp_menu(scene_t *scene);
 int init_menu_scene(scene_t *scene);
 void destroy_menu(scene_t *scene, int *gamemode);
@@ -176,9 +177,8 @@ char *set_magic_str(obj_t *perso);
 int init_sell(scene_t *scene);
 int fill_sell_str(scene_t *scene);
 void fill_equipement(scene_t *scene);
-void add_new_equipement(scene_t *scene, inv_t *invent, int i);
+void add_new_equipement(scene_t *scene, inv_t *invent, int i, int j);
 int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode);
-void add_new_equipement(scene_t *scene, inv_t *invent, int i);
 void add_equipement(but_s *things, char *str, int r);
 int set_money_text(scene_t *scene);
 void check_text(scene_t *scene);

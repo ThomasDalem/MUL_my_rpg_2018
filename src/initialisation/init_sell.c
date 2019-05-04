@@ -46,7 +46,7 @@ int init_sell_button(scene_t *scene)
 void fill_equipement(scene_t *scene)
 {
     int i = 0;
-    int r = rand() % 15;
+    int r = rand() % 20;
 
     while (scene->sell->things[i] != NULL) {
         if (scene->sell->str[r][0] == '1') {
@@ -54,7 +54,12 @@ void fill_equipement(scene_t *scene)
             add_equipement(scene->sell->things[i], scene->sell->str[r], r);
             i++;
         }
-        r = rand() % 5;
+        if (scene->sell->str[r][0] == '2') {
+            scene->sell->things[i]->object.number = r;
+            add_equipement(scene->sell->things[i], scene->sell->str[r], r);
+            i++;
+        }
+        r = rand() % 20;
     }
     set_money_text(scene);
 }
