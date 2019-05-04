@@ -222,6 +222,12 @@ typedef struct sell
     sfRectangleShape *back;
     sfFont *font;
     sfText *money;
+    sfText *not_money;
+    sfText *no_place;
+    sfColor color_money;
+    sfColor color_place;
+    sfClock *clock_money;
+    sfClock *clock_place;
     struct button_s **things;
 } sell_t;
 

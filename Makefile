@@ -14,6 +14,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/entities/anime_ennemie.c				\
 		src/entities/discuss.c						\
 		src/fight/alive.c							\
+		src/fight/after_fight.c 					\
 		src/fight/attack.c							\
 		src/fight/check_fight.c						\
 		src/fight/defense.c							\

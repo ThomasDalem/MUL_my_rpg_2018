@@ -19,6 +19,10 @@ void disp_sell(scene_t *scene)
             scene->window, scene->sell->things[i]->txt, NULL);
         i++;
     }
+    sfText_setColor(scene->sell->no_place, scene->sell->color_place);
+    sfText_setColor(scene->sell->not_money, scene->sell->color_money);
+    sfRenderWindow_drawText(scene->window, scene->sell->no_place, NULL);
+    sfRenderWindow_drawText(scene->window, scene->sell->not_money, NULL);
     sfRenderWindow_drawText(scene->window, scene->sell->money, NULL);
 }
 
@@ -69,6 +73,7 @@ int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode)
         disp_sell(scene);
         button_disp(scene->sell->things, scene);
         sfRenderWindow_display(scene->window);
+        check_text(scene);
         while (sfRenderWindow_pollEvent(scene->window, &event))
             p = sell_event(&event, scene, invent);
     }

@@ -10,15 +10,15 @@
 void free_enn(scene_t *scene)
 {
     while (scene->ennemi != NULL) {
-        sfSprite_destroy(scene->ennemi->sprite);
-        sfTexture_destroy(scene->ennemi->texture);
-        sfClock_destroy(scene->ennemi->fight->jump_clock);
-        sfClock_destroy(scene->ennemi->fight->block_time);
-        sfClock_destroy(scene->ennemi->fight->attack_time.clock);
-        sfTexture_destroy(scene->ennemi->fight->texture);
-        scene->ennemi = scene->ennemi->next;
+        sfSprite_destroy(scene->map->enemies->sprite);
+        sfTexture_destroy(scene->map->enemies->texture);
+        sfClock_destroy(scene->map->enemies->fight->jump_clock);
+        sfClock_destroy(scene->map->enemies->fight->block_time);
+        sfClock_destroy(scene->map->enemies->fight->attack_time.clock);
+        sfTexture_destroy(scene->map->enemies->fight->texture);
+        scene->map->enemies = scene->map->enemies->next;
     }
-    free(scene->ennemi);
+    free(scene->map->enemies);
 }
 
 void free_perso(scene_t *scene)

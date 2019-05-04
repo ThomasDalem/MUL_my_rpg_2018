@@ -39,7 +39,7 @@ static void disp_map(sfRenderWindow *window, map_t *map)
 
 void disp_scene(scene_t *scene, quest_t *quest)
 {
-    obj_t *ennemie = scene->ennemi;
+    obj_t *ennemie = scene->map->enemies;
     obj_t *pnj = scene->pnj;
 
     sfRenderWindow_clear(scene->window, sfBlack);

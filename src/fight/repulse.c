@@ -35,7 +35,7 @@ void calc_repulse_vector(scene_t *scene, sfVector2f *perso,
         *enn = (sfVector2f){-10, 0};
         if (sfSprite_getPosition(scene->ennemi->sprite).y < 800)
             *enn = (sfVector2f){-10, 2};
-        *end = (sfVector2f){1700, 20};
+        *end = (sfVector2f){1300, 200};
     }
     if (pos_perso - pos_ennemie <= 0) {
         *perso = (sfVector2f){-10, 0};
@@ -44,7 +44,7 @@ void calc_repulse_vector(scene_t *scene, sfVector2f *perso,
         *enn = (sfVector2f){10, 0};
         if (sfSprite_getPosition(scene->ennemi->sprite).y < 800)
             *enn = (sfVector2f){10, 2};
-        *end = (sfVector2f){20, 1700};
+        *end = (sfVector2f){200, 1300};
     }
 }
 

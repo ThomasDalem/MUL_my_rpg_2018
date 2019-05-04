@@ -56,6 +56,26 @@ void fill_equipement(scene_t *scene)
         }
         r = rand() % 5;
     }
+    set_money_text(scene);
+}
+
+int set_error_text(scene_t *scene)
+{
+    sfVector2f pos_money = {1200, 200};
+    sfVector2f pos_place = {1200, 400};
+    scene->sell->no_place =  sfText_create();
+    scene->sell->not_money = sfText_create();
+    scene->sell->color_money = (sfColor){255, 255, 255, 0};
+    scene->sell->color_place = (sfColor){255, 255, 255, 0};
+    set_text(scene->sell->no_place, 
+                "no more place", scene->sell->font, pos_place);
+    set_text(scene->sell->not_money,
+                "no more money", scene->sell->font, pos_money);
+    sfText_setColor(scene->sell->no_place, scene->sell->color_place);
+    sfText_setColor(scene->sell->not_money, scene->sell->color_money);
+    scene->sell->clock_money = sfClock_create();
+    scene->sell->clock_place = sfClock_create();
+    return (0);
 }
 
 int init_sell(scene_t *scene)
@@ -74,6 +94,8 @@ int init_sell(scene_t *scene)
     scene->sell->font = sfFont_createFromFile("assets/texts/menu.otf");
     scene->sell->money = sfText_create();
     if (set_money_text(scene) == 84 || init_sell_button(scene) == 84)
+        return (84);
+    if (set_error_text(scene) == 84)
         return (84);
     if (fill_sell_str(scene) == 84)
         return (84);

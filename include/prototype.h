@@ -181,6 +181,7 @@ int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode);
 void add_new_equipement(scene_t *scene, inv_t *invent, int i);
 void add_equipement(but_s *things, char *str, int r);
 int set_money_text(scene_t *scene);
+void check_text(scene_t *scene);
 //sound.c
 void talk(scene_t *scene);
 

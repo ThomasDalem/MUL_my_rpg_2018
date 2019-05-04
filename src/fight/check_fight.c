@@ -24,28 +24,17 @@ void disp_fight(scene_t *scene, sfSprite *sprite, inv_t *invent)
     sfRenderWindow_display(scene->window);
 }
 
-void jump_condition(scene_t *scene)
+int fight_action(scene_t *scene, sfSprite *fond, inv_t *invent)
 {
-    sfTime time;
-    float second = 0;
-
-    if (scene->perso->fight->is_jumping == 1) {
-        time = sfClock_getElapsedTime(scene->perso->fight->jump_clock);
-        second = sfTime_asSeconds(time);
-        if (second > 1) {
-            scene->perso->fight->jump_vec = (sfVector2f){0, 5};
-            sfSprite_setTextureRect(scene->perso->sprite,
-                                    scene->perso->fight->jump_down_rect);
-        }
-        if (second < 2)
-            sfSprite_move(scene->perso->sprite, scene->perso->fight->jump_vec);
-        if (second > 2) {
-            scene->perso->fight->is_jumping = 0;
-            check_orient(scene);
-            sfSprite_setTextureRect(scene->perso->sprite,
-                                    scene->perso->fight->rect);
-        }
-    }
+    attack_condition(scene->perso);
+    jump_condition(scene);
+    defense_condition(scene->perso);
+    check_orient(scene);
+    check_repulse(scene, fond, invent);
+    chose_ennemi_action(scene);
+    attack_condition(scene->ennemi);
+    defense_condition(scene->ennemi);
+    ennemi_action(scene);
 }
 
 int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
@@ -55,24 +44,18 @@ int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
     int fight = 1;
 
     sfSprite_setPosition(fond, (sfVector2f){0, 0});
-    finish_init_fight_perso(scene->perso, 100, 800);
-    finish_init_fight_perso(scene->ennemi, 800, 800);
+    finish_init_fight_perso(scene->perso, 100, 710);
+    finish_init_fight_perso(scene->ennemi, 800, 710);
     sfClock_restart(scene->ennemi->action.clock);
     while (sfRenderWindow_isOpen(scene->window) && fight == 1) {
         disp_fight(scene, fond, invent);
-        attack_condition(scene->perso);
-        jump_condition(scene);
-        defense_condition(scene->perso);
-        check_orient(scene);
-        check_repulse(scene, fond, invent);
-        chose_ennemi_action(scene);
-        attack_condition(scene->ennemi);
-        defense_condition(scene->ennemi);
-        ennemi_action(scene);
+        fight_action(scene, fond, invent);
         fight = check_alive(scene);
         while (sfRenderWindow_pollEvent(scene->window, &event) && fight == 1) 
             fight = fight_event(scene, &event, pause, invent);
     }
+    if (fight == 0)
+        fight = 1;
     return (fight);
 }
 
@@ -96,17 +79,23 @@ int check_fight(sfSprite *sprite1, sfSprite *sprite2)
 
 int is_a_fight(scene_t *scene, inv_t *invent, pause_s *pause)
 {
-    obj_t *enn = scene->ennemi;
+    obj_t *enn = scene->map->enemies;
     sfFloatRect pos_enn;
     sfFloatRect pos_perso = sfSprite_getGlobalBounds(scene->perso->sprite);
+    sfVector2f pos = sfSprite_getPosition(scene->perso->sprite);
     int i = 1;
 
+    scene->ennemi = scene->map->enemies;
     while (scene->ennemi != NULL && i == 1) {
         pos_enn = sfSprite_getGlobalBounds(scene->ennemi->sprite);
-        if (check_fight(scene->perso->sprite, scene->ennemi->sprite) == 1)
+        if (check_fight(scene->perso->sprite, scene->ennemi->sprite) == 1) {
             i = start_fight(scene, invent, pause);
+            remove_enemy(scene->ennemi, &scene->map->enemies);
+            after_fight_function(scene, pos);
+            return (i);
+        }
         scene->ennemi = scene->ennemi->next;
     }
-    scene->ennemi = enn;
+    scene->map->enemies = enn;
     return (i);
 }

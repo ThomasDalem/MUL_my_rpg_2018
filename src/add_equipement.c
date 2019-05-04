@@ -39,10 +39,14 @@ void add_new_equipement(scene_t *scene, inv_t *invent, int i)
 
     while (invent->button[j] != NULL && invent->button[j]->object.type != 0)
         j++;
-    if (invent->button[j] == NULL)
+    if (invent->button[j] == NULL) {
+        scene->sell->color_place.a = 255;
         return;
-    if (scene->perso->money < 20)
-        printf("non c'est mort, tu dégage le pauvre\n");
+    }
+    if (scene->perso->money < 20) {
+        scene->sell->color_money.a = 255;
+        return;
+    }
     invent->button[j]->object.type = 1;
     invent->button[j]->object.effect = scene->sell->things[i]->object.effect;
     invent->button[j]->object.damage = scene->sell->things[i]->object.damage;
@@ -51,4 +55,23 @@ void add_new_equipement(scene_t *scene, inv_t *invent, int i)
     add_equipement_texture(invent, j);
     scene->perso->money-= scene->sell->things[i]->object.cost;
     set_money_text(scene);
+}
+
+void check_text(scene_t *scene)
+{
+    sfTime time_money = sfClock_getElapsedTime(scene->sell->clock_money);
+    sfTime time_place = sfClock_getElapsedTime(scene->sell->clock_place);
+    float second_money = sfTime_asSeconds(time_money);
+    float second_place = sfTime_asSeconds(time_place);
+
+    if (second_money > 0.01) {
+        if (scene->sell->color_money.a > 0)
+            scene->sell->color_money.a--;
+        sfClock_restart(scene->sell->clock_money);
+    }
+    if (second_place > 0.01) {
+        if (scene->sell->color_place.a > 0)
+            scene->sell->color_place.a--;
+        sfClock_restart(scene->sell->clock_place);
+    }
 }
