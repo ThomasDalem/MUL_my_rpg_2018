@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2019
 ** MUL_my_rpg_2018
 ** File description:
-** intro
+** end
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -37,14 +37,13 @@ static int change_color(sfRectangleShape *rect, sfClock *clock)
     return (0);
 }
 
-void display_intro(sfRenderWindow *window)
+void display_end(sfRenderWindow *window)
 {
     sfRectangleShape *fade = sfRectangleShape_create();
     sfEvent event;
     int quit = 0;
     sfClock *clock = sfClock_create();
-    char *filepath = "./assets/beginning.png";
-    sfTexture *texture = sfTexture_createFromFile(filepath, NULL);
+    sfTexture *texture = sfTexture_createFromFile("./assets/end.png", NULL);
     sfSprite *sprite = sfSprite_create();
 
     sfRectangleShape_setFillColor(fade, sfBlack);

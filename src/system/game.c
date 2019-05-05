@@ -77,6 +77,10 @@ void game(int *gamemode, scene_t *scene, option_t *option)
         while (sfRenderWindow_pollEvent(scene->window, &event) && 
                 *gamemode == 1)
             *gamemode = allevent(scene, &event, &pause, &invent);
+        if (scene->quest == NULL) {
+            display_end(scene->window);
+            *gamemode = 2;
+        }
     }
     if (scene->perso->stat.life <= 0)
         loosescreen(gamemode, scene);

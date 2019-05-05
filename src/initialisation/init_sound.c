@@ -13,5 +13,5 @@ int init_music(scene_t *scene)
     if (scene->music == NULL)
         return (84);
     scene->music->sound = sfMusic_createFromFile(
-        "assets/sound/main_song.ogg");
+        "assets/sound/Menu.ogg");
 }
