@@ -25,6 +25,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/fight/ennemi_ai.c						\
 		src/fight/fight_event.c						\
 		src/fight/fight_move.c						\
+		src/fight/fight_norm.c 						\
 		src/fight/jump.c							\
 		src/fight/orient.c							\
 		src/fight/repulse.c							\

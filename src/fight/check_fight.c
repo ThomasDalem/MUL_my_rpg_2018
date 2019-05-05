@@ -12,11 +12,11 @@ void disp_fight(scene_t *scene, sfSprite *sprite, inv_t *invent)
     sfRenderWindow_clear(scene->window, sfBlack);
     sfRenderWindow_drawSprite(scene->window, sprite, NULL);
     set_text(scene->perso->text.phrase, "PERSO", invent->font,
-             (sfVector2f){10, 10});
+            (sfVector2f){10, 10});
     sfRenderWindow_drawText(scene->window, scene->perso->text.phrase, NULL);
     disp_hud(scene, scene->perso, 10, 10);
     set_text(scene->ennemi->text.phrase, "ENNEMIE", invent->font,
-             (sfVector2f){1700, 10});
+            (sfVector2f){1700, 10});
     disp_hud(scene, scene->ennemi, 1700, 10);
     sfRenderWindow_drawText(scene->window, scene->ennemi->text.phrase, NULL);
     sfRenderWindow_drawSprite(scene->window, scene->perso->sprite, NULL);
@@ -52,7 +52,7 @@ int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
         fight_action(scene, fond, invent);
         fight = check_alive(scene);
         potion_effect(scene);
-        while (sfRenderWindow_pollEvent(scene->window, &event) && fight == 1) 
+        while (sfRenderWindow_pollEvent(scene->window, &event) && fight == 1)
             fight = fight_event(scene, &event, pause, invent);
     }
     if (fight == 0)

@@ -38,10 +38,24 @@ static void disp_map(sfRenderWindow *window, map_t *map)
     recreate_particles(map->particles);
 }
 
+void disp_pnj(scene_t *scene)
+{
+    obj_t *pnj = scene->pnj;
+
+    while (pnj) {
+        sfRenderWindow_drawSprite(scene->window, pnj->sprite, NULL);
+        if (pnj->discuss == 1) {
+            sfRenderWindow_drawSprite(scene->window, pnj->text.sprite_bubble,
+                                    NULL);
+            sfRenderWindow_drawText(scene->window, pnj->text.phrase, NULL);
+        }
+        pnj = pnj->next;
+    }
+}
+
 void disp_scene(scene_t *scene, quest_t *quest)
 {
     obj_t *ennemie = scene->map->enemies;
-    obj_t *pnj = scene->pnj;
 
     sfRenderWindow_clear(scene->window, sfBlack);
     disp_map(scene->window, scene->map);
@@ -50,15 +64,7 @@ void disp_scene(scene_t *scene, quest_t *quest)
         sfRenderWindow_drawSprite(scene->window, ennemie->sprite, NULL);
         ennemie = ennemie->next;
     }
-    while (pnj) {
-        sfRenderWindow_drawSprite(scene->window, pnj->sprite, NULL);
-        if (pnj->discuss == 1) {
-            sfRenderWindow_drawSprite(scene->window, pnj->text.sprite_bubble,
-                                      NULL);
-            sfRenderWindow_drawText(scene->window, pnj->text.phrase, NULL);
-        }
-        pnj = pnj->next;
-    }
+    disp_pnj(scene);
     display_quest(quest, scene->window);
     sfRenderWindow_display(scene->window);
 }
