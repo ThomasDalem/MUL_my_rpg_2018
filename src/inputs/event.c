@@ -50,10 +50,6 @@ int stop_movement(scene_t *scene, sfEvent *event)
 
 int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
 {
-    sfVector2i mouse;
-    int r = 1;
-    static int done = 0;
-
     if (event->type == sfEvtKeyPressed) {
         switch (event->key.code) {
         case sfKeyE : return (inventory_gestion(invent, scene));
@@ -66,10 +62,6 @@ int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
         stop_movement(scene, event);
     if (event->key.code == sfKeyEscape)
         return (pause_function(scene, pause));
-    if (event->key.code == sfKeyN && done == 0) {
-        remove_enemy(scene->map->enemies, &scene->map->enemies);
-        done = 1;
-    }
     if (event->type == sfEvtClosed)
         return (3);
     return (1);

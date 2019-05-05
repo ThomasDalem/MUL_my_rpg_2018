@@ -21,16 +21,23 @@ int check_enemies_in_map(map_t *map, int id)
     return (1);
 }
 
+int check_line_enemies(map_t *col, int check_id)
+{
+    for (map_t *line = col; line != NULL; line = line->right) {
+        if (check_enemies_in_map(line, check_id) == 0)
+            return (0);
+    }
+    return (1);
+}
+
 int check_quest_kill(void *obj, void *check)
 {
     map_t *maps = get_top_left_map((map_t *)obj);
     int *check_id = (int *)check;
 
     for (map_t *col = maps; col != NULL; col = col->down) {
-        for (map_t *line = col; line != NULL; line = line->right) {
-            if (check_enemies_in_map(line, *check_id) == 0)
-                return (0);
-        }
+        if (check_line_enemies(col, *check_id) == 0)
+            return (0);
     }
     return (1);
 }
