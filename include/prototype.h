@@ -43,6 +43,7 @@ void jump_condition(scene_t *scene);
 void  set_already_effect_str(inv_t *invent);
 int init_pnj_phrase(obj_t *pnj);
 void create_pnj(obj_t *pnj);
+void display_intro(sfRenderWindow *window);
 
 //anime_ennemie.c
 

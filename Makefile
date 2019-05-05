@@ -93,6 +93,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/system/game.c							\
 		src/system/reboot.c							\
 		src/system/sound.c							\
+		src/system/intro.c							\
 		src/tools/create_sprite.c					\
 		src/tools/set_str.c							\
 		src/tools/tools.c							\

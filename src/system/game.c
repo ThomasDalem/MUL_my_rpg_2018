@@ -65,6 +65,7 @@ void game(int *gamemode, scene_t *scene, option_t *option)
     pause_s pause;
     inv_t invent;
 
+    display_intro(scene->window);
     scene->quest = create_quests(scene->window);
     *gamemode = init_all(scene, &pause, &invent);
     if (*gamemode == 84)
