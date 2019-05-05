@@ -23,7 +23,7 @@ int cond_repulse(sfFloatRect per_rect, sfFloatRect enn_rect)
 }
 
 void calc_repulse_vector(scene_t *scene, sfVector2f *perso,
-                         sfVector2f *enn, sfVector2f *end)
+                            sfVector2f *enn, sfVector2f *end)
 {
     float pos_perso = fabs(sfSprite_getPosition(scene->perso->sprite).x);
     float pos_ennemie = fabs(sfSprite_getPosition(scene->ennemi->sprite).x);

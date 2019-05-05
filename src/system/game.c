@@ -46,6 +46,19 @@ void anim(obj_t *player)
     }
 }
 
+void loop_function(int *gamemode, scene_t *scene, 
+    pause_s *pause, inv_t *invent)
+{
+    move_player(scene, scene->perso, scene->perso->move_dir);
+    move_particles(scene->map->particles);
+    move_ennemie(scene, scene->map);
+    check_quests(scene, scene->quest);
+    if (*gamemode == 1)
+        *gamemode = check_if_sell(scene, invent, gamemode);
+    if (*gamemode == 1)
+        *gamemode = is_a_fight(scene, invent, pause);
+}
+
 void game(int *gamemode, scene_t *scene, option_t *option)
 {
     sfEvent event;
@@ -59,15 +72,10 @@ void game(int *gamemode, scene_t *scene, option_t *option)
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 1) {
         disp_scene(scene, scene->quest);
         check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
-        *gamemode = check_if_sell(scene, &invent, gamemode);
-        *gamemode = is_a_fight(scene, &invent, &pause);
+        loop_function(gamemode, scene, &pause, &invent);
         while (sfRenderWindow_pollEvent(scene->window, &event) && 
                 *gamemode == 1)
             *gamemode = allevent(scene, &event, &pause, &invent);
-        move_player(scene, scene->perso, scene->perso->move_dir);
-        move_particles(scene->map->particles);
-        move_ennemie(scene, scene->map);
-        check_quests(scene, scene->quest);
     }
     if (scene->perso->stat.life <= 0)
         loosescreen(gamemode, scene);

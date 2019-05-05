@@ -17,6 +17,8 @@ void finish_init_fight_perso(obj_t *perso, int x, int y)
     sfSprite_setPosition(perso->sprite, position);
     sfSprite_setScale(perso->sprite, scale);
     sfClock_restart(perso->fight->time_potion);
+    perso->action.act = 0;
+    perso->action.prev_act = 0;
 }
 
 void init_right_perso(obj_t *perso)

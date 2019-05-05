@@ -30,7 +30,8 @@ static void disp_map(sfRenderWindow *window, map_t *map)
 
     for (map_obj_t *obj = map->objects; obj != NULL; obj = obj->next)
         sfRenderWindow_drawSprite(window, obj->sprite, NULL);
-    for (obj_t *enemies = map->enemies; enemies != NULL; enemies = enemies->next)
+    for (obj_t *enemies = map->enemies; enemies != NULL; 
+            enemies = enemies->next)
         sfRenderWindow_drawSprite(window, enemies->sprite, NULL);
     for (; particles != NULL; particles = particles->next)
         sfRenderWindow_drawCircleShape(window, particles->circle, NULL);

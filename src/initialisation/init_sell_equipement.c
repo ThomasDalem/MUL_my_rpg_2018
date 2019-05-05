@@ -78,12 +78,14 @@ int fill_sell_str(scene_t *scene)
     scene->sell->str = malloc(sizeof(char *) * 2);
     if (fd == NULL || scene->sell->str == NULL)
         return (84);
+    scene->sell->str[i] = malloc(sizeof(char) * 4096);
     while (getline(&scene->sell->str[i], &n , fd) != -1) {
         scene->sell->str = reallocation(scene->sell->str, t);
         if (scene->sell->str == NULL)
             return (84);
         t++;
         i++;
+        scene->sell->str[i] = malloc(sizeof(char) * 4096);
     }
     scene->sell->str[i] == NULL;
     return (0);

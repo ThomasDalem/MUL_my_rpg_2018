@@ -15,14 +15,15 @@ void disp_menu(scene_t *scene)
     sfRenderWindow_drawSprite(scene->window, scene->spr_back, NULL);
     while (scene->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window,
-                                          scene->button[i]->but, NULL);
+                                        scene->button[i]->but, NULL);
         sfRenderWindow_drawText(scene->window, scene->button[i]->txt, NULL);
         i ++;
     }
     sfRenderWindow_display(scene->window);
 }
 
-void screenevent(sfEvent *event, scene_t *scene, int *gamemode, option_t *option)
+void screenevent(sfEvent *event, 
+        scene_t *scene, int *gamemode, option_t *option)
 {
     sfVector2i mouse = sfMouse_getPositionRenderWindow(scene->window);
 

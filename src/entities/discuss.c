@@ -7,6 +7,16 @@
 
 #include "prototype.h"
 
+void pos_text(scene_t *scene, sfVector2f pos)
+{
+    sfText_setFont(scene->pnj->text.phrase, scene->pnj->text.font);
+    sfText_setColor(scene->pnj->text.phrase, sfBlack);
+    sfText_setCharacterSize(scene->pnj->text.phrase, 40);
+    sfText_setPosition(scene->pnj->text.phrase, pos);
+    pos.x = pos.x - 50;
+    sfSprite_setPosition(scene->pnj->text.sprite_bubble, pos);
+}
+
 void discuss(scene_t *scene)
 {
     int i = 0;
@@ -21,19 +31,14 @@ void discuss(scene_t *scene)
     i = rand() % 5;
     if (scene->pnj->text.nb_dialog == 0)
         sfText_setString(scene->pnj->text.phrase,
-                         scene->pnj->text.hi_phrase[i]);
+                            scene->pnj->text.hi_phrase[i]);
     if (scene->pnj->text.nb_dialog == 1)
         sfText_setString(scene->pnj->text.phrase,
-                         scene->pnj->text.sell_phrase[i]);
+                            scene->pnj->text.sell_phrase[i]);
     if (scene->pnj->text.nb_dialog == 2)
         sfText_setString(scene->pnj->text.phrase,
-                         scene->pnj->text.by_phrase[i]);
-    sfText_setFont(scene->pnj->text.phrase, scene->pnj->text.font);
-    sfText_setColor(scene->pnj->text.phrase, sfBlack);
-    sfText_setCharacterSize(scene->pnj->text.phrase, 40);
-    sfText_setPosition(scene->pnj->text.phrase, pos);
-    pos.x = pos.x - 50;
-    sfSprite_setPosition(scene->pnj->text.sprite_bubble, pos);
+                            scene->pnj->text.by_phrase[i]);
+    pos_text(scene, pos);
 }
 
 void orient_pnj(scene_t *scene, sfIntRect *rect_perso)
@@ -59,6 +64,13 @@ void orient_pnj(scene_t *scene, sfIntRect *rect_perso)
     rect_perso->top = rect_perso->top + rect.top;
 }
 
+void discuss_function(scene_t *scene, sfIntRect rect_pnj)
+{
+    discuss(scene);
+    orient_pnj(scene, &rect_pnj);
+    sfSprite_setTextureRect(scene->pnj->sprite, rect_pnj);
+}
+
 void start_discuss(scene_t *scene)
 {
     obj_t *pnj = scene->pnj;
@@ -75,11 +87,8 @@ void start_discuss(scene_t *scene)
             scene->pnj->text.nb_dialog = 0;
             scene->pnj->discuss = 0;
         }
-        else if (sfFloatRect_intersects(&pos_perso, &pos_pnj, NULL) == sfTrue) {
-            discuss(scene);
-            orient_pnj(scene, &rect_pnj);
-            sfSprite_setTextureRect(scene->pnj->sprite, rect_pnj);
-        }
+        else if (sfFloatRect_intersects(&pos_perso, &pos_pnj, NULL) == sfTrue)
+            discuss_function(scene, rect_pnj);
         scene->pnj = scene->pnj->next;
     }
     scene->pnj = pnj;

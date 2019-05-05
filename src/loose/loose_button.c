@@ -14,7 +14,7 @@ void disp_loose(scene_t *scene)
     sfRenderWindow_clear(scene->window, sfBlack);
     while (scene->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window,
-                                          scene->button[i]->but, NULL);
+                                        scene->button[i]->but, NULL);
         sfRenderWindow_drawText(scene->window, scene->button[i]->txt, NULL);
         i ++;
     }

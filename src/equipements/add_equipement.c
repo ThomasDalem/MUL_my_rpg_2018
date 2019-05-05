@@ -12,7 +12,7 @@ void add_equipement_texture(inv_t *invent, int j)
     sfIntRect rect = {0, 0, 0, 0};
     sfTexture *texture = sfTexture_createFromFile(
         "assets/textures/equip.jpg", NULL);
-    sfTexture *sw_texture = sfTexture_createFromFile(
+    sfTexture *sw_te = sfTexture_createFromFile(
         "assets/textures/sword_icon.png", NULL);
 
     sfRectangleShape_setTexture(invent->button[j]->but, texture, sfTrue);
@@ -26,7 +26,7 @@ void add_equipement_texture(inv_t *invent, int j)
         rect = create_char_perso(810, 13, 277, 188);
     sfRectangleShape_setTextureRect(invent->button[j]->but, rect);
     if (invent->button[j]->object.effect == 5) {
-        sfRectangleShape_setTexture(invent->button[j]->but, sw_texture, sfTrue);
+        sfRectangleShape_setTexture(invent->button[j]->but, sw_te, sfTrue);
         rect = create_char_perso(0, 0, 224, 224);
         sfRectangleShape_setTextureRect(invent->button[j]->but, rect);
     }
