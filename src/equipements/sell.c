@@ -65,7 +65,7 @@ int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode)
     int p = 1;
     sfEvent event;
 
-    if (scene->pnj->text.nb_dialog != 2)
+    if (scene->map->pnj->text.nb_dialog != 2)
         return (1);
     fill_equipement(scene);
     while (p == 1) {
@@ -77,7 +77,7 @@ int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode)
         while (sfRenderWindow_pollEvent(scene->window, &event))
             p = sell_event(&event, scene, invent);
     }
-    scene->pnj->text.nb_dialog++;
+    scene->map->pnj->text.nb_dialog++;
     if (p == 2)
         return (1);
     return (p);
