@@ -42,8 +42,8 @@ int init_pnj_phrase(obj_t *pnj)
 void create_pnj(obj_t *pnj)
 {
     pnj->texture = sfTexture_createFromFile(
-        "assets/textures/player_2.png", NULL);
-    pnj->char_down = create_char_perso(8, 4, 24, 44);
+        "assets/textures/player.png", NULL);
+    pnj->char_down = create_char_perso(24, 4, 24, 40);
     pnj->char_up = create_char_perso(202, 6, 24,44);
     pnj->char_left = create_char_perso(72, 6, 24, 44);
     pnj->char_right = create_char_perso(138, 4, 24, 44);
