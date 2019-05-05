@@ -15,9 +15,9 @@ void disp_menu(scene_t *scene)
     sfRenderWindow_drawSprite(scene->window, scene->spr_back, NULL);
     while (scene->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window,
-                                          scene->button[i]->but, NULL);
+                                scene->button[i]->but, NULL);
         sfRenderWindow_drawText(scene->window, scene->button[i]->txt, NULL);
-        i ++;
+        i++;
     }
     sfRenderWindow_display(scene->window);
 }
@@ -63,7 +63,7 @@ int init_menu_scene(scene_t *scene)
     sfSprite_setTexture(scene->spr_back, scene->text_back, sfFalse);
     init_start_button(scene->button[0]);
     init_end_button(scene->button[1]);
-    init_fs_button(scene->button[2]);
+    init_option_button(scene->button[2]);
     return (0);
 }
 
@@ -74,7 +74,7 @@ void destroy_menu(scene_t *scene, int *gamemode)
     while (scene->button[i] != NULL) {
         sfRectangleShape_destroy(scene->button[i]->but);
         free(scene->button[i]);
-        i ++;
+        i++;
     }
     free(scene->button);
     if (*gamemode == 3)
@@ -86,13 +86,16 @@ int mainscreen(int *gamemode, scene_t *scene, option_t *option)
     sfEvent click;
     int a = 0;
 
+    scene->if_sound = 0;
     init_music(scene);
-    sfMusic_play(scene->music->sound);
+        sfMusic_play(scene->music->sound);
     *gamemode = init_menu_scene(scene);
     if (*gamemode == 84)
         return (84);
     sfMusic_setLoop(scene->music->sound, sfTrue);
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 0) {
+        if (scene->if_sound == 1)
+            sfMusic_stop(scene->music->sound);
         disp_menu(scene);
         button_disp(scene->button, scene);
         while (sfRenderWindow_pollEvent(scene->window, &click))

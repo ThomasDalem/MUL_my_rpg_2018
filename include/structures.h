@@ -227,6 +227,7 @@ typedef struct sell
 
 typedef struct scene_s
 {
+    int if_sound;
     sfRenderWindow *window;
     musics *music;
     sfTexture *text_back;

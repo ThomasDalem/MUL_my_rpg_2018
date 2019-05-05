@@ -34,7 +34,7 @@ int init_perso(obj_t *perso)
 {
     perso->sprite = sfSprite_create();
     perso->texture = sfTexture_createFromFile(
-        "assets/textures/player.png", NULL);
+        "assets/textures/player_5.png", NULL);
     sfSprite_setTexture(perso->sprite, perso->texture, sfFalse);
     perso->char_down = create_char_perso(24, 4, 24, 40);
     perso->char_up = create_char_perso(214, 6, 24, 40);

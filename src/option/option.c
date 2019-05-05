@@ -13,10 +13,16 @@ static int option_click(scene_t *scene, option_t *option)
     sfVector2i mouse = sfMouse_getPositionRenderWindow(scene->window);
 
 
-    if (button_is_clicked(option->button[1]->but, mouse) == 1)
-        return (1);
-    if (button_is_clicked(option->button[0]->but, mouse) == 1)
+    if (button_is_clicked(option->button[1]->but, mouse) == 0)
         restart_screen(scene);
+    if (button_is_clicked(option->button[0]->but, mouse) == 0)
+        return (1);
+    if (button_is_clicked(option->button[2]->but, mouse) == 0) {
+        if (scene->if_sound == 0)
+            scene->if_sound = 1;
+        if (scene->if_sound == 1)
+            scene->if_sound = 0;
+    }
     return (0);
 }
 

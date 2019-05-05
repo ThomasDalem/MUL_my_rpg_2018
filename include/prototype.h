@@ -100,7 +100,7 @@ void set_pos_text(inv_t *invent, sfVector2f pos_text);
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
 int init_end_button(but_s *button);
 int init_start_button(but_s *button);
-int init_fs_button(but_s *button);
+int init_option_button(but_s *button);
 
 //inititalisation/init_phrase.c
 int copy_into_by(obj_t *pnj);
@@ -166,6 +166,8 @@ void disp_option(scene_t *scene, option_t *option);
 int option_function(scene_t *scene, option_t *option);
 void init_exit(but_s *button);
 void init_fs(but_s *button);
+void init_mute(but_s *button);
+void mute_sound(scene_t *scene);
 
 //set_str.c
 char *set_attack_str(obj_t *perso);

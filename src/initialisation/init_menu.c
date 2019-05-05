@@ -57,11 +57,12 @@ int init_end_button(but_s *button)
     return (1);
 }
 
-int init_fs_button(but_s *button)
+int init_option_button(but_s *button)
 {
+    char *path = "assets/textures/button.jpg";
     sfVector2f pos;
     sfVector2f size;
-    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
+    sfTexture *start = sfTexture_createFromFile(path, NULL);
 
     pos.x = 1350;
     pos.y = 900;

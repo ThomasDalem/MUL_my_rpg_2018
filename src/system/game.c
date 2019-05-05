@@ -21,11 +21,11 @@ sfRenderWindow *createmywindow(int fs, unsigned int width, unsigned int height)
     video_mode.bitsPerPixel = 32;
     if (fs == 0) {
         window = sfRenderWindow_create(video_mode,
-                                       "My_RPG/v1.0.1", sfDefaultStyle, NULL);
+                                        "My_RPG/v1.0.1", sfDefaultStyle, NULL);
     }
     if (fs > 0) {
         window = sfRenderWindow_create(video_mode,
-                                       "My_RPG/v1.0.1", sfFullscreen, NULL);
+                                        "My_RPG/v1.0.1", sfFullscreen, NULL);
     }
     return (window);
 }
@@ -52,7 +52,7 @@ void game(int *gamemode, scene_t *scene, option_t *option)
     pause_s pause;
     inv_t invent;
     particle_t *particles = NULL;
-    
+
     scene->quest = create_quests(scene->window);
     *gamemode = init_all(scene, &pause, &invent);
     if (*gamemode == 84)
@@ -62,7 +62,7 @@ void game(int *gamemode, scene_t *scene, option_t *option)
         *gamemode = is_a_fight(scene, &invent, &pause);
         check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
         *gamemode = check_if_sell(scene, &invent, gamemode);
-        while (sfRenderWindow_pollEvent(scene->window, &event) && 
+        while (sfRenderWindow_pollEvent(scene->window, &event) &&
                 *gamemode == 1)
             *gamemode = allevent(scene, &event, &pause, &invent);
         move_player(scene, scene->perso, scene->perso->move_dir);
