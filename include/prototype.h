@@ -40,7 +40,7 @@ void init_disp_potion(but_s *things);
 void init_potion_str(but_s *thing, char *str, int r);
 void set_new_equipement(scene_t *scene, inv_t *invent, int i);
 void jump_condition(scene_t *scene);
-
+void  set_already_effect_str(inv_t *invent);
 int init_pnj_phrase(obj_t *pnj);
 void create_pnj(obj_t *pnj);
 
