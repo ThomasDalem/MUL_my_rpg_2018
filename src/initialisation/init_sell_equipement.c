@@ -62,6 +62,10 @@ void add_equipement(but_s *things, char *str, int r)
         init_sell_str(things, arr[2], r);
         init_disp_equip(things);
     }
+    if (things->object.type == 2) {
+        init_potion_str(things, arr[2], r);
+        init_disp_potion(things);
+    }
 }
 
 int fill_sell_str(scene_t *scene)
@@ -74,12 +78,14 @@ int fill_sell_str(scene_t *scene)
     scene->sell->str = malloc(sizeof(char *) * 2);
     if (fd == NULL || scene->sell->str == NULL)
         return (84);
+    scene->sell->str[i] = malloc(sizeof(char) * 4096);
     while (getline(&scene->sell->str[i], &n , fd) != -1) {
         scene->sell->str = reallocation(scene->sell->str, t);
         if (scene->sell->str == NULL)
             return (84);
         t++;
         i++;
+        scene->sell->str[i] = malloc(sizeof(char) * 4096);
     }
     scene->sell->str[i] == NULL;
     return (0);

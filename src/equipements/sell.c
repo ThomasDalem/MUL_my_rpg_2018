@@ -19,6 +19,10 @@ void disp_sell(scene_t *scene)
             scene->window, scene->sell->things[i]->txt, NULL);
         i++;
     }
+    sfText_setColor(scene->sell->no_place, scene->sell->color_place);
+    sfText_setColor(scene->sell->not_money, scene->sell->color_money);
+    sfRenderWindow_drawText(scene->window, scene->sell->no_place, NULL);
+    sfRenderWindow_drawText(scene->window, scene->sell->not_money, NULL);
     sfRenderWindow_drawText(scene->window, scene->sell->money, NULL);
 }
 
@@ -28,7 +32,7 @@ void check_pay(scene_t *scene, inv_t *invent, sfVector2i mouse)
 
     while (scene->sell->things[i] != NULL) {
         if (button_is_clicked(scene->sell->things[i]->but, mouse) == 0)
-            add_new_equipement(scene, invent, i);
+            set_new_equipement(scene, invent, i);
         i++;
     }
 }
@@ -61,7 +65,7 @@ int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode)
     int p = 1;
     sfEvent event;
 
-    if (scene->pnj->text.nb_dialog != 2)
+    if (!scene->map->pnj || scene->map->pnj->text.nb_dialog != 2)
         return (1);
     fill_equipement(scene);
     while (p == 1) {
@@ -69,10 +73,11 @@ int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode)
         disp_sell(scene);
         button_disp(scene->sell->things, scene);
         sfRenderWindow_display(scene->window);
+        check_text(scene);
         while (sfRenderWindow_pollEvent(scene->window, &event))
             p = sell_event(&event, scene, invent);
     }
-    scene->pnj->text.nb_dialog++;
+    scene->map->pnj->text.nb_dialog++;
     if (p == 2)
         return (1);
     return (p);

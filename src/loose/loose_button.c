@@ -14,7 +14,7 @@ void disp_loose(scene_t *scene)
     sfRenderWindow_clear(scene->window, sfBlack);
     while (scene->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window,
-                                          scene->button[i]->but, NULL);
+                                        scene->button[i]->but, NULL);
         sfRenderWindow_drawText(scene->window, scene->button[i]->txt, NULL);
         i ++;
     }
@@ -37,7 +37,6 @@ void looseevent(sfEvent *event, scene_t *scene, int *gamemode)
         reboot(scene->button);
     }
     if (event->type == sfEvtClosed) {
-        sfMusic_stop(scene->music->sound);
         *gamemode = 3;
     }
 }
@@ -75,5 +74,6 @@ int loosescreen(int *gamemode, scene_t *scene)
             looseevent(&click, scene, gamemode);
     }
     destroy_loose(scene, gamemode);
+    sfMusic_destroy(dead_scream->sound);
     return (0);
 }

@@ -30,7 +30,7 @@ void disp_fight(scene_t *scene, sfSprite *sprite, inv_t *invent);
 //fight/repulse.c
 void check_repulse(scene_t *scene, sfSprite *sprite, inv_t *invent);
 void set_sprite_inventory(inv_t *invent, scene_t *scene,
-                          sfVector2f pos_sprite);
+                            sfVector2f pos_sprite);
 sfIntRect create_char_perso(int top, int left, int width, int height);
 int select_perso(scene_t *scene, int *gamemode);
 void finish_init_fight_perso(obj_t *perso, int x, int y);
@@ -60,4 +60,7 @@ void create_use_button(but_s *button, int x, int y);
 void create_throw_button(but_s *button, int x, int y);
 void free_enemy(obj_t *obj);
 void remove_enemy(obj_t *enemy, obj_t **list);
+void after_fight_function(scene_t *scene, sfVector2f pos);
+void jump_condition(scene_t *scene);
+void start_repulse(scene_t *scene);
 #endif /* !FIGHT_H_ */

@@ -22,15 +22,40 @@ void change_stat_perso(inv_t *invent, scene_t *scene, int j)
     set_pos_text(invent, pos_text);
 }
 
+int is_a_potion(scene_t *scene, inv_t *invent, int i)
+{
+    if (invent->button[i]->object.type == 1)
+        return (1);
+    if (scene->perso->fight->is_potion == 1) {
+        sfClock_restart(invent->clock_potion);
+        invent->color_potion.a = 255;
+        sfText_setColor(invent->pot, invent->color_potion);
+        return (0);
+    }
+    if (invent->button[i]->object.effect == 1) {
+        scene->perso->stat.life+= invent->button[i]->object.capacities;
+        remove_equipement(scene, invent, i);
+        change_potion_str(invent, scene);
+        return (0);
+    }
+    scene->perso->fight->is_potion = 1;
+    sfClock_restart(scene->perso->fight->time_potion);
+    set_potion_effect(scene, invent, i);
+    change_potion_str(invent, scene);
+    remove_equipement(scene, invent, i);
+    return (0);
+}
+
 void switch_stat(scene_t *scene, inv_t *invent, int i)
 {
     int j = invent->button[i]->object.effect - 1;
     int attack = invent->stat_equip[j].attack;
     int defense = invent->stat_equip[j].defense;
     int speed = invent->stat_equip[j].magic;
-    struct stats equip;
     sfVector2f pos = sfText_getPosition(invent->equipement[j]->txt);
     
+    if (is_a_potion(scene, invent, i) == 0)
+        return;
     invent->stat_equip[j].attack = invent->button[i]->object.damage;
     invent->stat_equip[j].defense = invent->button[i]->object.defense;
     invent->stat_equip[j].magic = invent->button[i]->object.magic;
@@ -38,7 +63,6 @@ void switch_stat(scene_t *scene, inv_t *invent, int i)
     invent->button[i]->object.defense = defense;
     invent->button[i]->object.magic = speed;
     invent->stat_equip[j].life = 0;
-    equip.life = 0;
     scene->perso->stat.attack -= attack;
     scene->perso->stat.defense -= defense;
     scene->perso->stat.magic -= speed;

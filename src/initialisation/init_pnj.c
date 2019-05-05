@@ -7,6 +7,16 @@
 
 #include "prototype.h"
 
+void init_pnj_music(obj_t *pnj)
+{
+    pnj->talk = malloc(sizeof(musics));
+    pnj->talk2 = malloc(sizeof(musics));
+    pnj->talk3 = malloc(sizeof(musics));
+    pnj->talk->sound = sfMusic_createFromFile("assets/sound/talk_pnj1.ogg");
+    pnj->talk2->sound = sfMusic_createFromFile("assets/sound/talk_pnj2.ogg");
+    pnj->talk3->sound = sfMusic_createFromFile("assets/sound/talk_pnj3.ogg");
+}
+
 int init_pnj_phrase(obj_t *pnj)
 {
     sfVector2f scale = {0.7, 0.7};
@@ -26,25 +36,21 @@ int init_pnj_phrase(obj_t *pnj)
         return (84);
     pnj->text.font = sfFont_createFromFile("assets/texts/Timeless.ttf");
     pnj->text.phrase = sfText_create();
-    pnj->talk = malloc(sizeof(musics));
-    pnj->talk2 = malloc(sizeof(musics));
-    pnj->talk3 = malloc(sizeof(musics));
-    pnj->talk->sound = sfMusic_createFromFile("assets/sound/talk_pnj1.ogg");
-    pnj->talk2->sound = sfMusic_createFromFile("assets/sound/talk_pnj2.ogg");
-    pnj->talk3->sound = sfMusic_createFromFile("assets/sound/talk_pnj3.ogg");
+    init_pnj_music(pnj);
 }
 
 void create_pnj(obj_t *pnj)
 {
-    pnj->texture = sfTexture_createFromFile("assets/textures/link.png", NULL);
-    pnj->char_down = create_char_perso(0, 0, 16, 16);
-    pnj->char_up = create_char_perso(0, 0 + 61, 16, 16);
-    pnj->char_left = create_char_perso(0, 0 + 30, 16, 16);
-    pnj->char_right = create_char_perso(0, 0 + 90, 16, 16);
+    pnj->texture = sfTexture_createFromFile(
+        "assets/textures/player_2.png", NULL);
+    pnj->char_down = create_char_perso(8, 4, 24, 44);
+    pnj->char_up = create_char_perso(202, 6, 24,44);
+    pnj->char_left = create_char_perso(72, 6, 24, 44);
+    pnj->char_right = create_char_perso(138, 4, 24, 44);
     pnj->sprite = sfSprite_create();
     sfSprite_setTexture(pnj->sprite, pnj->texture, sfFalse);
-    pnj->move.y = 3;
-    pnj->move.x = 3;
+    pnj->move.y = 1.5;
+    pnj->move.x = 1.5;
     sfSprite_setTextureRect(pnj->sprite, pnj->char_down);
     sfSprite_setScale(pnj->sprite, pnj->move);
 }

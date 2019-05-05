@@ -50,10 +50,6 @@ int stop_movement(scene_t *scene, sfEvent *event)
 
 int allevent(scene_t *scene, sfEvent *event, pause_s *pause, inv_t *invent)
 {
-    sfVector2i mouse;
-    int r = 1;
-    static int done = 0;
-
     if (event->type == sfEvtKeyPressed) {
         switch (event->key.code) {
         case sfKeyE : return (inventory_gestion(invent, scene));

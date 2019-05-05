@@ -17,7 +17,7 @@ void button_disp(but_s **button, scene_t *scene)
             button[i]->is_clicked == 0)
             sfRectangleShape_setOutlineColor(button[i]->but, sfWhite);
         else if (button[i]->is_clicked == 1 &&
-                 button_is_clicked(button[i]->but, mouse) == 0)
+                button_is_clicked(button[i]->but, mouse) == 0)
             sfRectangleShape_setOutlineColor(button[i]->but, sfBlue);
         else
             sfRectangleShape_setOutlineColor(button[i]->but, sfRed);

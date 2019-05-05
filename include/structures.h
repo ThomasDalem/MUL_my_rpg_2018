@@ -62,6 +62,8 @@ typedef struct object
     int life;
     int defense;
     int magic;
+    float duration;
+    int capacities;
 } object;
 
 typedef struct pnj
@@ -145,9 +147,13 @@ typedef struct fight_t
     struct horloge attack_time;
     sfClock *jump_clock;
     sfClock *block_time;
+    sfClock *time_potion;
     sfVector2f jump_vec;
     int max_char;
     int beg_char;
+    int is_potion;
+    int type; 
+    int effect;
 } fight_s;
 
 typedef struct fight_scene
@@ -173,6 +179,7 @@ typedef struct obj_s
     sfClock *anim_clock;
     sfClock *dir_clock;
     int move_dir;
+    int is_fighting;
     musics *talk;
     musics *talk2;
     musics *talk3;
@@ -211,6 +218,9 @@ typedef struct inventory
     sfText *max_life;
     sfText *defense;
     sfText *magic;
+    sfText *pot;
+    sfColor color_potion;
+    sfClock *clock_potion;
     struct stats *stat_equip;
     struct button_s **button;
     struct button_s **equipement;
@@ -222,6 +232,12 @@ typedef struct sell
     sfRectangleShape *back;
     sfFont *font;
     sfText *money;
+    sfText *not_money;
+    sfText *no_place;
+    sfColor color_money;
+    sfColor color_place;
+    sfClock *clock_money;
+    sfClock *clock_place;
     struct button_s **things;
 } sell_t;
 
@@ -267,6 +283,7 @@ typedef struct map_s
     map_obj_t *objects;
     particle_t *particles;
     obj_t *enemies;
+    obj_t *pnj;
     struct map_s *up;
     struct map_s *down;
     struct map_s *left;
@@ -284,6 +301,8 @@ typedef struct quest_s {
     int status;
     int money;
     int exp;
+    int objective_id;
+    int (*check_quest_end)(void *obj, void *check);
     struct quest_s *next;
 } quest_t;
 

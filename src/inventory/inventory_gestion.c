@@ -56,16 +56,34 @@ static int invent_event(sfEvent *event, scene_t *scene, inv_t *invent)
     return (0);
 }
 
+void color_gestion(inv_t *invent)
+{
+    sfTime time = sfClock_getElapsedTime(invent->clock_potion);
+    float second = sfTime_asSeconds(time);
+
+    if (invent->color_potion.a == 0)
+        return;
+    if (second > 0.01) {
+        if (invent->color_potion.a > 0) {
+            invent->color_potion.a--;
+            sfText_setColor(invent->pot, invent->color_potion);
+        }
+        sfClock_restart(invent->clock_potion);
+    }
+}
+
 int inventory_gestion(inv_t *invent, scene_t *scene)
 {
     int p = 0;
     sfEvent event;
 
     while (p == 0) {
+        change_potion_str(invent, scene);
         sfRenderWindow_clear(scene->window, sfBlack);
         disp_invent(scene, invent);
         button_disp(invent->button, scene);
         use_throw_gestion(invent->button, scene);
+        color_gestion(invent);
         sfRenderWindow_display(scene->window);
         while (sfRenderWindow_pollEvent(scene->window, &event))
             p = invent_event(&event, scene, invent);

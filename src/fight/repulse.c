@@ -23,28 +23,28 @@ int cond_repulse(sfFloatRect per_rect, sfFloatRect enn_rect)
 }
 
 void calc_repulse_vector(scene_t *scene, sfVector2f *perso,
-                         sfVector2f *enn, sfVector2f *end)
+                            sfVector2f *enn, sfVector2f *end)
 {
     float pos_perso = fabs(sfSprite_getPosition(scene->perso->sprite).x);
     float pos_ennemie = fabs(sfSprite_getPosition(scene->ennemi->sprite).x);
 
     if (pos_perso - pos_ennemie >= 0) {
         *perso = (sfVector2f){10, 0};
-        if (sfSprite_getPosition(scene->perso->sprite).y < 800)
+        if (sfSprite_getPosition(scene->perso->sprite).y < 710)
             *perso = (sfVector2f){10, 2};
         *enn = (sfVector2f){-10, 0};
-        if (sfSprite_getPosition(scene->ennemi->sprite).y < 800)
+        if (sfSprite_getPosition(scene->ennemi->sprite).y < 710)
             *enn = (sfVector2f){-10, 2};
-        *end = (sfVector2f){1700, 20};
+        *end = (sfVector2f){1300, 200};
     }
     if (pos_perso - pos_ennemie <= 0) {
         *perso = (sfVector2f){-10, 0};
-        if (sfSprite_getPosition(scene->perso->sprite).y < 800)
+        if (sfSprite_getPosition(scene->perso->sprite).y < 710)
             *perso = (sfVector2f){-10, 2};
         *enn = (sfVector2f){10, 0};
-        if (sfSprite_getPosition(scene->ennemi->sprite).y < 800)
+        if (sfSprite_getPosition(scene->ennemi->sprite).y < 710)
             *enn = (sfVector2f){10, 2};
-        *end = (sfVector2f){20, 1700};
+        *end = (sfVector2f){200, 1300};
     }
 }
 
@@ -95,15 +95,12 @@ void check_repulse(scene_t *scene, sfSprite *sprite, inv_t *invent)
         cond_repulse(per_rect, enn_rect) == 1) {
         music = sfMusic_createFromFile("./assets/sound/repulse.ogg");
         sfMusic_play(music);
-        check_orient(scene);
-        sfClock_restart(scene->perso->anim_clock);
-        sfClock_restart(scene->ennemi->anim_clock);
+        start_repulse(scene);
         repulse(scene, sprite, invent);
         pos_perso = sfSprite_getPosition(scene->perso->sprite);
-        if (pos_perso.y != 800) {
-            pos_perso.y = 800;
-            sfSprite_setPosition(scene->perso->sprite, pos_perso);
-        }
+        if (pos_perso.y != 710)
+            pos_perso.y = 710;
+        sfSprite_setPosition(scene->perso->sprite, pos_perso);
         sfMusic_stop(music);
         sfMusic_destroy(music);
     }

@@ -36,7 +36,15 @@ void chose_ennemi_action(scene_t *scene);
 void free_enn(scene_t *scene);
 void restart_screen(scene_t *scene);
 void create_ennemie(obj_t *ennemie);
-
+void init_disp_potion(but_s *things);
+void init_potion_str(but_s *thing, char *str, int r);
+void set_new_equipement(scene_t *scene, inv_t *invent, int i);
+void jump_condition(scene_t *scene);
+void  set_already_effect_str(inv_t *invent);
+int init_pnj_phrase(obj_t *pnj);
+void create_pnj(obj_t *pnj);
+void display_intro(sfRenderWindow *window);
+void display_end(sfRenderWindow *window);
 //anime_ennemie.c
 
 //close.c
@@ -68,7 +76,7 @@ int free_music(scene_t *scene);
 void free_perso(scene_t *scene);
 
 //game.c
-sfRenderWindow *createmywindow(int fs, unsigned int width, unsigned int height);
+sfRenderWindow *createmywindow(int fs, unsigned int w, unsigned int h);
 void game(int *gamemode, scene_t *scene, option_t *option);
 void anim(obj_t *player);
 
@@ -96,6 +104,7 @@ void set_sprite_inventory(inv_t *invent,
 int create_string_equip(but_s *button, struct stats equip);
 int set_text_inventory(inv_t *invent, scene_t *scene);
 void set_pos_text(inv_t *invent, sfVector2f pos_text);
+void set_potion_effect(scene_t *scene, inv_t *invent, int i);
 //initialisation/init_menu.c
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
 int init_end_button(but_s *button);
@@ -109,7 +118,9 @@ int copy_into_hi(obj_t *pnj);
 
 //initialisation/init_pause.c
 int init_pause(pause_s *pause);
-
+//initialisation/potion
+void init_potion_str(but_s *thing, char *str, int r);
+void init_disp_potion(but_s *things);
 //initialisation/init_pnj.c
 int init_pnj(scene_t *scene);
 //initialisation/init_sound.c
@@ -121,11 +132,13 @@ void use_throw_gestion(but_s **button, scene_t *scene);
 int cond_use_throw(but_s **button, scene_t *scene);
 void check_all_use_throw_button(but_s **button, scene_t *scene);
 void disp_invent(scene_t *scene, inv_t *invent);
+void change_potion_str(inv_t *invent, scene_t *scene);
 
 //main.c
 
 //menu.c
-void screenevent(sfEvent *event, scene_t *scene, int *gamemode, option_t *option);
+void screenevent(sfEvent *event, scene_t *scene, 
+                    int *gamemode, option_t *option);
 void disp_menu(scene_t *scene);
 int init_menu_scene(scene_t *scene);
 void destroy_menu(scene_t *scene, int *gamemode);
@@ -143,6 +156,8 @@ void move_down(scene_t *scene);
 void move_up(scene_t *scene);
 sfVector2f get_distance(obj_t *enemy, obj_t *player);
 void move_enemy(scene_t *scene, obj_t *player, int direction);
+void move_norm(sfFloatRect *pos_zone, sfFloatRect *pos_enn, float *time,
+                obj_t *enemies);
 
 //move ennemie
 void move_enn_up(obj_t *enemy);
@@ -178,11 +193,13 @@ char *set_magic_str(obj_t *perso);
 int init_sell(scene_t *scene);
 int fill_sell_str(scene_t *scene);
 void fill_equipement(scene_t *scene);
-void add_new_equipement(scene_t *scene, inv_t *invent, int i);
+void add_new_equipement(scene_t *scene, inv_t *invent, int i, int j);
 int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode);
-void add_new_equipement(scene_t *scene, inv_t *invent, int i);
 void add_equipement(but_s *things, char *str, int r);
 int set_money_text(scene_t *scene);
+void check_text(scene_t *scene);
+void remove_equipement(scene_t *scene, inv_t *invent, int i);
+void set_new_equipement(scene_t *scene, inv_t *invent, int i);
 //sound.c
 void talk(scene_t *scene);
 
@@ -206,4 +223,7 @@ int init_button_loose(but_s *button, char *str, int x, int y);
 
 //reboot
 void reboot_use_throw(but_s **button);
+
+//potion
+void potion_effect(scene_t *scene);
 #endif

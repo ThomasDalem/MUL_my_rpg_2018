@@ -36,7 +36,7 @@ void button_use_throw_disp(but_s *button, scene_t *scene)
             button->next[i].is_clicked == 0)
             sfRectangleShape_setOutlineColor(button->next[i].but, sfWhite);
         else if (button->next[i].is_clicked == 1 &&
-                 button_is_clicked(button->next[i].but, mouse) == 0)
+                button_is_clicked(button->next[i].but, mouse) == 0)
             sfRectangleShape_setOutlineColor(button->next[i].but, sfBlue);
         else
             sfRectangleShape_setOutlineColor(button->next[i].but, sfRed);

@@ -7,6 +7,7 @@
 
 #include "prototype.h"
 #include "map.h"
+#include "quest.h"
 
 sfIntRect create_char_perso(int top, int left, int width, int height)
 {
@@ -30,6 +31,13 @@ stats create_stat_perso(int life, int attack, int defense, int magic)
     return (stat);
 }
 
+void finish_init_perso(obj_t *perso)
+{
+    perso->move_clock = sfClock_create();
+    perso->anim_clock = sfClock_create();
+    perso->stat = create_stat_perso(100, 10, 5, 5);
+}
+
 int init_perso(obj_t *perso)
 {
     perso->sprite = sfSprite_create();
@@ -43,13 +51,11 @@ int init_perso(obj_t *perso)
     perso->move = (sfVector2f){1.5, 1.5};
     perso->money = 100;
     perso->move_dir = 0;
-    perso->move_clock = sfClock_create();
-    perso->anim_clock = sfClock_create();
-    perso->stat = create_stat_perso(100, 10, 5, 5);
     sfSprite_setTextureRect(perso->sprite, perso->char_down);
     sfSprite_setScale(perso->sprite, perso->move);
     sfSprite_setPosition(perso->sprite, (sfVector2f){600, 600});
     perso->text.phrase = sfText_create();
+    finish_init_perso(perso);
     if (init_fight_perso(perso) == 84)
         return (84);
     return (0);
@@ -63,7 +69,9 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent)
     scene->perso = malloc(sizeof(obj_t));
     if (init_pause(pause) == 84)
         return (84);
+    scene->perso->is_fighting = 0;
     scene->map = get_top_left_map(create_graph(3, 3));
+    scene->quest = create_quests(scene->window);
     if (init_perso(scene->perso) == 84)
         return (84);
     if (init_inventory(invent, scene) == 84)

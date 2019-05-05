@@ -46,31 +46,52 @@ void anim(obj_t *player)
     }
 }
 
+void loop_function(int *gamemode, scene_t *scene, 
+    pause_s *pause, inv_t *invent)
+{
+    move_player(scene, scene->perso, scene->perso->move_dir);
+    move_particles(scene->map->particles);
+    move_ennemie(scene, scene->map);
+    check_quests(scene, scene->quest);
+    if (*gamemode == 1)
+        *gamemode = check_if_sell(scene, invent, gamemode);
+    if (*gamemode == 1)
+        *gamemode = is_a_fight(scene, invent, pause);
+}
+
+void set_music(sfMusic *music)
+{
+    sfMusic_setLoop(music, sfTrue);
+    sfMusic_play(music);
+}
+
 void game(int *gamemode, scene_t *scene, option_t *option)
 {
     sfEvent event;
     pause_s pause;
     inv_t invent;
-    particle_t *particles = NULL;
+    sfMusic *music = sfMusic_createFromFile("assets/sound/game_music.ogg");
 
-    scene->quest = create_quests(scene->window);
+    set_music(music);
+    display_intro(scene->window);
     *gamemode = init_all(scene, &pause, &invent);
     if (*gamemode == 84)
         return;
     while (sfRenderWindow_isOpen(scene->window) && *gamemode == 1) {
         disp_scene(scene, scene->quest);
-        *gamemode = is_a_fight(scene, &invent, &pause);
         check_maps(sfSprite_getPosition(scene->perso->sprite), scene);
-        *gamemode = check_if_sell(scene, &invent, gamemode);
+        loop_function(gamemode, scene, &pause, &invent);
         while (sfRenderWindow_pollEvent(scene->window, &event) &&
                 *gamemode == 1)
             *gamemode = allevent(scene, &event, &pause, &invent);
-        move_player(scene, scene->perso, scene->perso->move_dir);
-        move_particles(scene->map->particles);
-        move_ennemie(scene, scene->map);
+        if (scene->quest == NULL) {
+            display_end(scene->window);
+            *gamemode = 2;
+        }
     }
     if (scene->perso->stat.life <= 0)
         loosescreen(gamemode, scene);
+    sfMusic_stop(music);
     free_graph(scene->map);
     close_window(scene, &pause, gamemode, &invent);
 }
