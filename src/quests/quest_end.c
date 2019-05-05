@@ -49,6 +49,7 @@ int check_quests(scene_t *scene, quest_t *quests)
     if (quests->check_quest_end != NULL &&
         quests->check_quest_end(scene->map, &quests->objective_id) == 1) {
         scene->quest = scene->quest->next;
+        scene->perso->money += quests->money;
         return (1);
     }
     return (0);

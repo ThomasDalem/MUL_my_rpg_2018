@@ -42,7 +42,7 @@ static void disp_npc(sfRenderWindow *window, obj_t *npc)
 {
     while (npc) {
         sfRenderWindow_drawSprite(window, npc->sprite, NULL);
-        if (npc->discuss == 1) {
+        if (npc->discuss && npc->discuss == 1) {
             sfRenderWindow_drawSprite(window, npc->text.sprite_bubble,
                                       NULL);
             sfRenderWindow_drawText(window, npc->text.phrase, NULL);
