@@ -61,7 +61,8 @@ int init_fs_button(but_s *button)
 {
     sfVector2f pos;
     sfVector2f size;
-    sfTexture *start = sfTexture_createFromFile("assets/textures/button.jpg", NULL);
+    sfTexture *start = sfTexture_createFromFile(
+        "assets/textures/button.jpg", NULL);
 
     pos.x = 1350;
     pos.y = 900;

@@ -7,6 +7,16 @@
 
 #include "prototype.h"
 
+void init_pnj_music(obj_t *pnj)
+{
+    pnj->talk = malloc(sizeof(musics));
+    pnj->talk2 = malloc(sizeof(musics));
+    pnj->talk3 = malloc(sizeof(musics));
+    pnj->talk->sound = sfMusic_createFromFile("assets/sound/talk_pnj1.ogg");
+    pnj->talk2->sound = sfMusic_createFromFile("assets/sound/talk_pnj2.ogg");
+    pnj->talk3->sound = sfMusic_createFromFile("assets/sound/talk_pnj3.ogg");
+}
+
 int init_pnj_phrase(obj_t *pnj)
 {
     sfVector2f scale = {0.7, 0.7};
@@ -26,12 +36,7 @@ int init_pnj_phrase(obj_t *pnj)
         return (84);
     pnj->text.font = sfFont_createFromFile("assets/texts/Timeless.ttf");
     pnj->text.phrase = sfText_create();
-    pnj->talk = malloc(sizeof(musics));
-    pnj->talk2 = malloc(sizeof(musics));
-    pnj->talk3 = malloc(sizeof(musics));
-    pnj->talk->sound = sfMusic_createFromFile("assets/sound/talk_pnj1.ogg");
-    pnj->talk2->sound = sfMusic_createFromFile("assets/sound/talk_pnj2.ogg");
-    pnj->talk3->sound = sfMusic_createFromFile("assets/sound/talk_pnj3.ogg");
+    init_pnj_music(pnj);
 }
 
 void create_pnj(obj_t *pnj)

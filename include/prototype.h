@@ -96,6 +96,7 @@ void set_sprite_inventory(inv_t *invent,
 int create_string_equip(but_s *button, struct stats equip);
 int set_text_inventory(inv_t *invent, scene_t *scene);
 void set_pos_text(inv_t *invent, sfVector2f pos_text);
+void set_potion_effect(scene_t *scene, inv_t *invent, int i);
 //initialisation/init_menu.c
 int button_is_clicked(sfRectangleShape *button, sfVector2i click_position);
 int init_end_button(but_s *button);
@@ -109,7 +110,9 @@ int copy_into_hi(obj_t *pnj);
 
 //initialisation/init_pause.c
 int init_pause(pause_s *pause);
-
+//initialisation/potion
+void init_potion_str(but_s *thing, char *str, int r);
+void init_disp_potion(but_s *things);
 //initialisation/init_pnj.c
 int init_pnj(scene_t *scene);
 //initialisation/init_sound.c
@@ -121,6 +124,7 @@ void use_throw_gestion(but_s **button, scene_t *scene);
 int cond_use_throw(but_s **button, scene_t *scene);
 void check_all_use_throw_button(but_s **button, scene_t *scene);
 void disp_invent(scene_t *scene, inv_t *invent);
+void change_potion_str(inv_t *invent, scene_t *scene);
 
 //main.c
 
@@ -182,6 +186,8 @@ int check_if_sell(scene_t *scene, inv_t *invent, int *gamemode);
 void add_equipement(but_s *things, char *str, int r);
 int set_money_text(scene_t *scene);
 void check_text(scene_t *scene);
+void remove_equipement(scene_t *scene, inv_t *invent, int i);
+void set_new_equipement(scene_t *scene, inv_t *invent, int i);
 //sound.c
 void talk(scene_t *scene);
 
@@ -205,4 +211,7 @@ int init_button_loose(but_s *button, char *str, int x, int y);
 
 //reboot
 void reboot_use_throw(but_s **button);
+
+//potion
+void potion_effect(scene_t *scene);
 #endif

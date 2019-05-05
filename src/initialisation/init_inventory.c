@@ -105,5 +105,6 @@ int init_inventory(inv_t *invent, scene_t *scene)
     set_sprite_inventory(invent, scene, pos_sprite);
     set_stats_equipement(invent);
     set_equipement(invent, scene);
+    set_already_effect_str(invent);
     return (0);
 }

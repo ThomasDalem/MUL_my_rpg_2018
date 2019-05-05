@@ -16,6 +16,7 @@ void finish_init_fight_perso(obj_t *perso, int x, int y)
     sfSprite_setTextureRect(perso->sprite, perso->fight->rect);
     sfSprite_setPosition(perso->sprite, position);
     sfSprite_setScale(perso->sprite, scale);
+    sfClock_restart(perso->fight->time_potion);
 }
 
 void init_right_perso(obj_t *perso)
@@ -51,8 +52,10 @@ int init_fight_perso(obj_t *perso)
     perso->fight->attack_time.clock = sfClock_create();
     perso->fight->jump_clock = sfClock_create();
     perso->fight->block_time = sfClock_create();
+    perso->fight->time_potion = sfClock_create();
     perso->fight->is_jumping = 0;
     perso->fight->is_attacking = 0;
     perso->fight->is_blocking = 0;
+    perso->fight->is_potion = 0;
     return (0);
 }

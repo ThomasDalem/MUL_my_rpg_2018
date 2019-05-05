@@ -147,6 +147,7 @@ typedef struct fight_t
     struct horloge attack_time;
     sfClock *jump_clock;
     sfClock *block_time;
+    sfClock *time_potion;
     sfVector2f jump_vec;
     int max_char;
     int beg_char;
@@ -217,6 +218,9 @@ typedef struct inventory
     sfText *max_life;
     sfText *defense;
     sfText *magic;
+    sfText *pot;
+    sfColor color_potion;
+    sfClock *clock_potion;
     struct stats *stat_equip;
     struct button_s **button;
     struct button_s **equipement;

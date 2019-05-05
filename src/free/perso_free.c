@@ -9,7 +9,7 @@
 
 void free_enn(scene_t *scene)
 {
-    while (scene->ennemi != NULL) {
+    while (scene->map->enemies != NULL) {
         sfSprite_destroy(scene->map->enemies->sprite);
         sfTexture_destroy(scene->map->enemies->texture);
         sfClock_destroy(scene->map->enemies->fight->jump_clock);

@@ -7,6 +7,19 @@
 
 #include "prototype.h"
 
+void  set_already_effect_str(inv_t *invent)
+{
+    char str[] = "you can not use 2 potions at the same time";
+    sfVector2f pos = {1400, 400};
+
+    invent->pot = sfText_create();
+    set_text(invent->pot, str, invent->font, pos);
+    invent->color_potion = (sfColor){255, 255, 255, 0};
+    sfText_setPosition(invent->pot, pos);
+    sfText_setColor(invent->pot, invent->color_potion);
+    invent->clock_potion = sfClock_create();
+}
+
 int create_potion_equip(but_s *button)
 {
     char *str = malloc(sizeof(char) * 4096);

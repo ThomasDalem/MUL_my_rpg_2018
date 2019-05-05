@@ -51,6 +51,7 @@ int start_fight(scene_t *scene, inv_t *invent, pause_s *pause)
         disp_fight(scene, fond, invent);
         fight_action(scene, fond, invent);
         fight = check_alive(scene);
+        potion_effect(scene);
         while (sfRenderWindow_pollEvent(scene->window, &event) && fight == 1) 
             fight = fight_event(scene, &event, pause, invent);
     }

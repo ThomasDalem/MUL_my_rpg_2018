@@ -28,6 +28,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/fight/orient.c							\
 		src/fight/repulse.c							\
 		src/fight/free_obj.c						\
+		src/fight/potion_effect.c 					\
 		src/fight/remove_enemy.c					\
 		src/free/close.c							\
 		src/free/free.c								\
@@ -53,6 +54,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/inputs/mouse.c							\
 		src/inventory/inventory_gestion.c			\
 		src/inventory/inventory_use_throw.c			\
+		src/inventory/set_potion_str.c 				\
 		src/inventory/switch_equipement.c 			\
 		src/loose/loose.c 							\
 		src/loose/loose_button.c 					\
