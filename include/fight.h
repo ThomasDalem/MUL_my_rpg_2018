@@ -62,4 +62,5 @@ void free_enemy(obj_t *obj);
 void remove_enemy(obj_t *enemy, obj_t **list);
 void after_fight_function(scene_t *scene, sfVector2f pos);
 void jump_condition(scene_t *scene);
+void start_repulse(scene_t *scene);
 #endif /* !FIGHT_H_ */

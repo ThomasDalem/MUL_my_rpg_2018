@@ -39,7 +39,6 @@ void screenevent(sfEvent *event,
         reboot(scene->button);
     }
     if (event->type == sfEvtClosed) {
-        sfMusic_stop(scene->music->sound);
         *gamemode = 3;
     }
 }
@@ -78,8 +77,9 @@ void destroy_menu(scene_t *scene, int *gamemode)
         i ++;
     }
     free(scene->button);
-    if (*gamemode == 3)
+    if (*gamemode == 3) {
         sfRenderWindow_close(scene->window);
+    }
 }
 
 int mainscreen(int *gamemode, scene_t *scene, option_t *option)
@@ -101,5 +101,6 @@ int mainscreen(int *gamemode, scene_t *scene, option_t *option)
     }
     sfMusic_stop(scene->music->sound);
     destroy_menu(scene, gamemode);
+    sfMusic_destroy(scene->music->sound);
     return (0);
 }

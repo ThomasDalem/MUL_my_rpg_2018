@@ -29,7 +29,7 @@ int check_collision_enemies(obj_t *character, obj_t *enemies, sfVector2f dir)
         if (will_collide(character->sprite, enemies->sprite, dir)
             && character != enemies) {
             return (1);
-        } 
+        }
         enemies = enemies->next;
     }
     return (0);

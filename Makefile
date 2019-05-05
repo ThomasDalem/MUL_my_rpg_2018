@@ -25,6 +25,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/fight/ennemi_ai.c						\
 		src/fight/fight_event.c						\
 		src/fight/fight_move.c						\
+		src/fight/fight_norm.c 						\
 		src/fight/jump.c							\
 		src/fight/orient.c							\
 		src/fight/repulse.c							\
@@ -79,6 +80,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/moves/change_animation.c				\
 		src/moves/get_distance.c					\
 		src/moves/enemy_movement.c					\
+		src/moves/norm_move.c 						\
 		src/particles/create_particles.c			\
 		src/particles/move_particles.c				\
 		src/particles/free_particles.c				\

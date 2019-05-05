@@ -13,16 +13,16 @@ void disp_invent_button(scene_t *scene, inv_t *invent)
 
     while (invent->button[i] != NULL) {
         sfRenderWindow_drawRectangleShape(scene->window, 
-                                            invent->button[i]->but, NULL);
+                                        invent->button[i]->but, NULL);
         if (invent->button[i]->is_clicked == 1) {
             sfRenderWindow_drawRectangleShape(scene->window,
-                                                invent->button[i]->next[0].but,
-                                                NULL);
+                                            invent->button[i]->next[0].but,
+                                            NULL);
             sfRenderWindow_drawText(scene->window,
                                     invent->button[i]->next[0].txt, NULL);
             sfRenderWindow_drawRectangleShape(scene->window,
-                                                invent->button[i]->next[1].but,
-                                                NULL);
+                                            invent->button[i]->next[1].but,
+                                            NULL);
             sfRenderWindow_drawText(scene->window,
                                     invent->button[i]->next[1].txt,
                                     NULL);

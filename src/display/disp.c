@@ -53,15 +53,14 @@ static void disp_npc(sfRenderWindow *window, obj_t *npc)
 
 void disp_scene(scene_t *scene, quest_t *quest)
 {
-    obj_t *ennemie = scene->map->enemies;
-    obj_t *pnj = scene->pnj;
+    obj_t *enemies = scene->map->enemies;
 
     sfRenderWindow_clear(scene->window, sfBlack);
     disp_map(scene->window, scene->map);
     sfRenderWindow_drawSprite(scene->window, scene->perso->sprite, NULL);
-    while (ennemie) {
-        sfRenderWindow_drawSprite(scene->window, ennemie->sprite, NULL);
-        ennemie = ennemie->next;
+    while (enemies) {
+        sfRenderWindow_drawSprite(scene->window, enemies->sprite, NULL);
+        enemies = enemies->next;
     }
     disp_npc(scene->window, scene->map->pnj);
     display_quest(quest, scene->window);
