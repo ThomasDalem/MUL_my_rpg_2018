@@ -79,6 +79,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/moves/change_animation.c				\
 		src/moves/get_distance.c					\
 		src/moves/enemy_movement.c					\
+		src/moves/norm_move.c 						\
 		src/particles/create_particles.c			\
 		src/particles/move_particles.c				\
 		src/particles/free_particles.c				\

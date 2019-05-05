@@ -88,9 +88,7 @@ void move_ennemie(scene_t *scene, map_t *map)
     float time = 0.0f;
 
     while (enemies != NULL) {
-        pos_zone = sfCircleShape_getGlobalBounds(enemies->detect_zone);
-        pos_enn = sfSprite_getGlobalBounds(enemies->sprite);
-        time = sfTime_asSeconds(sfClock_getElapsedTime(enemies->dir_clock));
+        move_norm(&pos_zone, &pos_enn, &time, enemies);
         if (sfFloatRect_intersects(&pos_zone, &pos_perso, NULL) == sfTrue)
             follow(scene, pos_enn, enemies);
         else if (time >= 2.0f) {

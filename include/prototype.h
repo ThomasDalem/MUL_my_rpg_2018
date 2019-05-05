@@ -152,6 +152,8 @@ void move_down(scene_t *scene);
 void move_up(scene_t *scene);
 sfVector2f get_distance(obj_t *enemy, obj_t *player);
 void move_enemy(scene_t *scene, obj_t *player, int direction);
+void move_norm(sfFloatRect *pos_zone, sfFloatRect *pos_enn, float *time,
+                obj_t *enemies);
 
 //move ennemie
 void move_enn_up(obj_t *enemy);
