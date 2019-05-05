@@ -51,7 +51,7 @@ int check_collision_scene(scene_t *scene, sfSprite *player, sfVector2f dir)
         return (1);
     if (check_collision_enemies(scene->perso, scene->map->enemies, dir))
         return (1);
-    if (check_collision_npc(player, scene->pnj, dir))
+    if (check_collision_npc(player, scene->map->pnj, dir))
         return (1);
     return (0);
 }
