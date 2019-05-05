@@ -51,8 +51,7 @@ void game(int *gamemode, scene_t *scene, option_t *option)
     sfEvent event;
     pause_s pause;
     inv_t invent;
-    particle_t *particles = NULL;
-    
+
     scene->quest = create_quests(scene->window);
     *gamemode = init_all(scene, &pause, &invent);
     if (*gamemode == 84)
@@ -68,6 +67,7 @@ void game(int *gamemode, scene_t *scene, option_t *option)
         move_player(scene, scene->perso, scene->perso->move_dir);
         move_particles(scene->map->particles);
         move_ennemie(scene, scene->map);
+        check_quests(scene, scene->quest);
     }
     if (scene->perso->stat.life <= 0)
         loosescreen(gamemode, scene);

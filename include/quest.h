@@ -16,4 +16,7 @@ void set_quest_name(sfRenderWindow *window, quest_t *quest, char *name);
 void display_quest(quest_t *quest, sfRenderWindow *window);
 void set_quest_rewards(sfRenderWindow *win, quest_t *quest, int money, int exp);
 
+int check_quest_kill(void *obj, void *check);
+int check_quests(scene_t *scene, quest_t *quests);
+
 #endif /* !QUEST_H_ */

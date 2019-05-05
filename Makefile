@@ -8,11 +8,12 @@
 SRC =	src/collisions/check_collisions.c			\
 		src/collisions/check_enemy_collisions.c		\
 		src/collisions/collision.c					\
-		src/add_equipement.c 						\
 		src/display/disp.c							\
 		src/display/disp_invent.c					\
 		src/entities/anime_ennemie.c				\
 		src/entities/discuss.c						\
+		src/equipements/add_equipement.c			\
+		src/equipements/sell.c						\
 		src/fight/alive.c							\
 		src/fight/after_fight.c 					\
 		src/fight/attack.c							\
@@ -57,7 +58,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/inventory/set_potion_str.c 				\
 		src/inventory/switch_equipement.c 			\
 		src/loose/loose.c 							\
-		src/loose/loose_button.c 					\
+		src/loose/loose_button.c					\
 		src/main.c									\
 		src/maps/add_particles.c					\
 		src/maps/change_map.c						\
@@ -85,15 +86,15 @@ SRC =	src/collisions/check_collisions.c			\
 		src/quests/display_quest.c					\
 		src/quests/set_quest_attributes.c			\
 		src/quests/set_quest_rewards.c				\
+		src/quests/quest_end.c						\
 		src/system/game.c							\
 		src/system/reboot.c							\
 		src/system/sound.c							\
 		src/tools/create_sprite.c					\
 		src/tools/set_str.c							\
-		src/sell.c 									\
 		src/tools/tools.c							\
 		src/option/option.c							\
-		src/option/init_option.c					\
+		src/option/init_option.c
 
 OBJ =	$(SRC:.c=.o)
 
