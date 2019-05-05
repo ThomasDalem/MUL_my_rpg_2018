@@ -8,6 +8,7 @@
 #ifndef MAP_H_
 #define MAP_H_
 
+#include <stdio.h>
 #include "structures.h"
 
 map_t *create_graph(int x, int y);
@@ -20,6 +21,6 @@ void remove_endline(char *line);
 int get_object_stats(FILE *stream, map_obj_t *obj, char *path);
 int add_particles(FILE *stream, map_t *map);
 void free_graph(map_t *node);
-void *add_enemy(FILE *stream, map_t *map);
+void add_enemy(FILE *stream, map_t *map);
 
 #endif /* !MAP_H_ */

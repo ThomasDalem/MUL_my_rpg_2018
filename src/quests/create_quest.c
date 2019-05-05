@@ -59,10 +59,14 @@ quest_t *create_quests(sfRenderWindow *window)
         return (NULL);
     set_quest_name(window, quests, "Objective : Kill another enemy.");
     set_quest_rewards(window, quests, 1000, 354);
+    quests->check_quest_end = &check_quest_kill;
+    quests->objective_id = 0;
     quests = create_quest(quests);
     if (quests == NULL)
         return (NULL);
     set_quest_name(window, quests, "Objective : Kill the enemy.");
     set_quest_rewards(window, quests, 100, 35);
+    quests->objective_id = 1;
+    quests->check_quest_end = &check_quest_kill;
     return (quests);
 }

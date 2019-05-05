@@ -295,6 +295,8 @@ typedef struct quest_s {
     int status;
     int money;
     int exp;
+    int objective_id;
+    int (*check_quest_end)(void *obj, void *check);
     struct quest_s *next;
 } quest_t;
 
