@@ -20,6 +20,18 @@ void  set_already_effect_str(inv_t *invent)
     invent->clock_potion = sfClock_create();
 }
 
+void set_good_potion_effect(but_s *things, char *str)
+{
+    if (things->object.effect == 1)
+        my_strcat(str, " LIVE = ");
+    if (things->object.effect == 2)
+        my_strcat(str, " ATTACK = ");
+    if (things->object.effect == 3)
+        my_strcat(str, " DEFENSE = ");
+    if (things->object.effect == 4)
+        my_strcat(str, " SPEED = ");
+}
+
 int create_potion_equip(but_s *button)
 {
     char *str = malloc(sizeof(char) * 4096);
@@ -33,7 +45,7 @@ int create_potion_equip(but_s *button)
         my_strcat(str, " DURATION = ");
         my_strcat(str, int_to_char(button->object.duration));
     }
-    my_strcat(str, " EFFECT = ");
+    set_good_potion_effect(button, str);
     my_strcat(str, int_to_char(button->object.capacities));
     button->txt = sfText_create();
     sfText_setString(button->txt, str);

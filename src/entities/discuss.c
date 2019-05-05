@@ -61,7 +61,6 @@ void orient_pnj(scene_t *scene, sfIntRect *rect_perso)
         *rect_perso = scene->map->pnj->char_up;
     if (i == 0 && y > 0)
         *rect_perso = scene->map->pnj->char_down;
-    rect_perso->top = rect_perso->top + rect.top;
 }
 
 void discuss_function(scene_t *scene, sfIntRect rect_pnj)

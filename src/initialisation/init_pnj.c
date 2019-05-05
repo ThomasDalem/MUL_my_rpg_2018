@@ -41,15 +41,16 @@ int init_pnj_phrase(obj_t *pnj)
 
 void create_pnj(obj_t *pnj)
 {
-    pnj->texture = sfTexture_createFromFile("assets/textures/link.png", NULL);
-    pnj->char_down = create_char_perso(0, 0, 16, 16);
-    pnj->char_up = create_char_perso(0, 0 + 61, 16, 16);
-    pnj->char_left = create_char_perso(0, 0 + 30, 16, 16);
-    pnj->char_right = create_char_perso(0, 0 + 90, 16, 16);
+    pnj->texture = sfTexture_createFromFile(
+        "assets/textures/player_2.png", NULL);
+    pnj->char_down = create_char_perso(8, 4, 24, 44);
+    pnj->char_up = create_char_perso(202, 6, 24,44);
+    pnj->char_left = create_char_perso(72, 6, 24, 44);
+    pnj->char_right = create_char_perso(138, 4, 24, 44);
     pnj->sprite = sfSprite_create();
     sfSprite_setTexture(pnj->sprite, pnj->texture, sfFalse);
-    pnj->move.y = 3;
-    pnj->move.x = 3;
+    pnj->move.y = 1.5;
+    pnj->move.x = 1.5;
     sfSprite_setTextureRect(pnj->sprite, pnj->char_down);
     sfSprite_setScale(pnj->sprite, pnj->move);
 }
