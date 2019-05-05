@@ -59,14 +59,21 @@ void loop_function(int *gamemode, scene_t *scene,
         *gamemode = is_a_fight(scene, invent, pause);
 }
 
+void set_music(sfMusic *music)
+{
+    sfMusic_setLoop(music, sfTrue);
+    sfMusic_play(music);
+}
+
 void game(int *gamemode, scene_t *scene, option_t *option)
 {
     sfEvent event;
     pause_s pause;
     inv_t invent;
+    sfMusic *music = sfMusic_createFromFile("assets/sound/game_music.ogg");
 
+    set_music(music);
     display_intro(scene->window);
-    scene->quest = create_quests(scene->window);
     *gamemode = init_all(scene, &pause, &invent);
     if (*gamemode == 84)
         return;
@@ -84,6 +91,7 @@ void game(int *gamemode, scene_t *scene, option_t *option)
     }
     if (scene->perso->stat.life <= 0)
         loosescreen(gamemode, scene);
+    sfMusic_stop(music);
     free_graph(scene->map);
     close_window(scene, &pause, gamemode, &invent);
 }

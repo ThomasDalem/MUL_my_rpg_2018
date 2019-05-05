@@ -7,6 +7,7 @@
 
 #include "prototype.h"
 #include "map.h"
+#include "quest.h"
 
 sfIntRect create_char_perso(int top, int left, int width, int height)
 {
@@ -70,6 +71,7 @@ int init_all(scene_t *scene, pause_s *pause, inv_t *invent)
         return (84);
     scene->perso->is_fighting = 0;
     scene->map = get_top_left_map(create_graph(3, 3));
+    scene->quest = create_quests(scene->window);
     if (init_perso(scene->perso) == 84)
         return (84);
     if (init_inventory(invent, scene) == 84)
