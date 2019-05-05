@@ -60,7 +60,7 @@ quest_t *create_quests(sfRenderWindow *window)
     set_quest_name(window, quests, "Objective : Find and kill GladiOS.");
     set_quest_rewards(window, quests, 1000, 354);
     quests->check_quest_end = &check_quest_kill;
-    quests->objective_id = 0;
+    quests->objective_id = 42;
     quests = create_quest(quests);
     if (quests == NULL)
         return (NULL);
