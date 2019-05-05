@@ -44,6 +44,8 @@ int check_quest_kill(void *obj, void *check)
 
 int check_quests(scene_t *scene, quest_t *quests)
 {
+    if (quests == NULL)
+        return (0);
     if (quests->check_quest_end != NULL &&
         quests->check_quest_end(scene->map, &quests->objective_id) == 1) {
         scene->quest = scene->quest->next;
