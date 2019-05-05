@@ -69,6 +69,7 @@ SRC =	src/collisions/check_collisions.c			\
 		src/maps/get_object_stats.c					\
 		src/maps/free_graph.c						\
 		src/maps/add_enemy.c						\
+		src/maps/add_seller.c						\
 		src/menus/button.c							\
 		src/menus/menu.c							\
 		src/menus/pause.c							\

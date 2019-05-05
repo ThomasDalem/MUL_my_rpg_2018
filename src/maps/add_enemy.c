@@ -63,7 +63,10 @@ static obj_t *create_enemy(FILE *stream, obj_t *next)
     return (enemy);
 }
 
-void add_enemy(FILE *stream, map_t *map)
+int add_enemy(FILE *stream, map_t *map)
 {
     map->enemies = create_enemy(stream, map->enemies);
+    if (map->enemies == NULL)
+        return (84);
+    return (1);
 }

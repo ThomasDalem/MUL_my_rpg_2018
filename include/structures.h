@@ -282,6 +282,7 @@ typedef struct map_s
     map_obj_t *objects;
     particle_t *particles;
     obj_t *enemies;
+    obj_t *pnj;
     struct map_s *up;
     struct map_s *down;
     struct map_s *left;

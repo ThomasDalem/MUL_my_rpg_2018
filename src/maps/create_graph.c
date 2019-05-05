@@ -24,6 +24,7 @@ static map_t *create_node(map_t *prev_node, int nbr)
     node->right = NULL;
     node->particles = NULL;
     node->enemies = NULL;
+    node->pnj = NULL;
     node->map_file = my_strmcat("./maps/map", int_to_char(nbr));
     save = node->map_file;
     node->map_file = my_strmcat(node->map_file, ".map");

@@ -27,5 +27,5 @@ int add_particles(FILE *stream, map_t *map)
         return (84);
     y = my_getnbr(line);
     map->particles = create_particles(10, x, y);
-    return (0);
+    return (1);
 }

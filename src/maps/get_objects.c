@@ -37,6 +37,24 @@ static map_obj_t *create_object(map_obj_t *next_obj, FILE *stream, char *path)
     return (object);
 }
 
+static int get_object_type(char *str, map_t *map, FILE *stream)
+{
+    char const *types[4] = {"sparks\n", "enemy\n", "seller\n", NULL};
+    int (*add_functions[4])(FILE *stream, map_t *map) = {&add_particles,
+                                                        &add_enemy,
+                                                        &add_seller
+                                                        };
+
+    for (int i = 0; types[i] != NULL; i++) {
+        if (my_strcmp(str, types[i]) == 0) {
+            add_functions[i](stream, map);
+            return (1);
+        }
+    }
+    map->objects = create_object(map->objects, stream, str);
+    return (0);
+}
+
 static int add_objects_to_map(map_t *map, FILE *stream)
 {
     map_obj_t *save = NULL;
@@ -44,12 +62,7 @@ static int add_objects_to_map(map_t *map, FILE *stream)
     size_t len = 0;
 
     while (getline(&line, &len, stream) != -1) {
-        if (my_strcmp(line, "sparks\n") == 0)
-            add_particles(stream, map);
-        else if (my_strcmp(line, "enemy\n") == 0)
-            add_enemy(stream, map);
-        else
-            map->objects = create_object(map->objects, stream, line);
+        get_object_type(line, map, stream);
         line = NULL;
     }
     return (1);

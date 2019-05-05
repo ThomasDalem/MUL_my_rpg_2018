@@ -38,6 +38,19 @@ static void disp_map(sfRenderWindow *window, map_t *map)
     recreate_particles(map->particles);
 }
 
+static void disp_npc(sfRenderWindow *window, obj_t *npc)
+{
+    while (npc) {
+        sfRenderWindow_drawSprite(window, npc->sprite, NULL);
+        if (npc->discuss == 1) {
+            sfRenderWindow_drawSprite(window, npc->text.sprite_bubble,
+                                      NULL);
+            sfRenderWindow_drawText(window, npc->text.phrase, NULL);
+        }
+        npc = npc->next;
+    }
+}
+
 void disp_scene(scene_t *scene, quest_t *quest)
 {
     obj_t *ennemie = scene->map->enemies;
@@ -50,15 +63,7 @@ void disp_scene(scene_t *scene, quest_t *quest)
         sfRenderWindow_drawSprite(scene->window, ennemie->sprite, NULL);
         ennemie = ennemie->next;
     }
-    while (pnj) {
-        sfRenderWindow_drawSprite(scene->window, pnj->sprite, NULL);
-        if (pnj->discuss == 1) {
-            sfRenderWindow_drawSprite(scene->window, pnj->text.sprite_bubble,
-                                      NULL);
-            sfRenderWindow_drawText(scene->window, pnj->text.phrase, NULL);
-        }
-        pnj = pnj->next;
-    }
+    disp_npc(scene->window, scene->map->pnj);
     display_quest(quest, scene->window);
     sfRenderWindow_display(scene->window);
 }
